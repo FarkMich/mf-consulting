@@ -11,27 +11,628 @@
   </script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Michal Farkas</title>
+  <title>AI-powered websites, built in days - Michal Farkas</title>
+  <meta name="description" content="From personal brand pages to multi-page websites - I build and launch your online presence using AI. Fast, affordable, no agency overhead."/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZm9udC1mYW1pbHk9Ik1vbnRzZXJyYXQsIEFyaWFsLCBzYW5zLXNlcmlmIj4KICA8IS0tIERhcmsgYmFja2dyb3VuZCAtLT4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzBGMTcyQSIvPgogIDwhLS0gSW5kaWdvIGFjY2VudCBzcXVhcmUgcm90YXRlZCAtLT4KICA8cmVjdCB4PSI2MCIgeT0iNjAiIHdpZHRoPSIyODAiIGhlaWdodD0iMjgwIiByeD0iMzIiIGZpbGw9IiM2MzY2RjEiLz4KICA8IS0tIElubmVyIGRhcmsgc3F1YXJlIC0tPgogIDxyZWN0IHg9IjgwIiB5PSI4MCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSIyNDAiIHJ4PSIyNCIgZmlsbD0iIzBGMTcyQSIvPgogIDwhLS0gTUYgbW9ub2dyYW0gLS0+CiAgPHRleHQgeD0iMjAwIiB5PSIyNDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQ4IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iLTYiPk1GPC90ZXh0PgogIDwhLS0gQWNjZW50IGxpbmUgLS0+CiAgPHJlY3QgeD0iMTIwIiB5PSIyOTgiIHdpZHRoPSIxNjAiIGhlaWdodD0iNSIgcng9IjIiIGZpbGw9IiM2MzY2RjEiLz4KPC9zdmc+Cg=="/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet"/>
   <style>
-    body {
-      margin: 0;
-      background: #000;
-      color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --indigo: #6366F1; --indigo-dark: #4338CA; --indigo-light: #EEF2FF;
+      --dark: #0D1117; --navy: #1E293B; --slate: #334155;
+      --gray: #64748B; --light-gray: #94A3B8; --white: #FFFFFF;
+      --emerald: #10B981; --amber: #F59E0B;
     }
-    p {
-      font-size: 1.2rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      opacity: 0.6;
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--dark); color: var(--white);
+      line-height: 1.6; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: linear-gradient(var(--navy) 1px, transparent 1px),
+        linear-gradient(90deg, var(--navy) 1px, transparent 1px);
+      background-size: 120px 120px; opacity: 0.4;
+      pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: ''; position: fixed; left: 0; top: 0;
+      width: 5px; height: 100%; background: var(--indigo); z-index: 100;
+    }
+    section, header, footer, nav { position: relative; z-index: 1; }
+
+    /* NAV */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 4rem; border-bottom: 1px solid var(--navy);
+      backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 50;
+      background: rgba(13,17,23,0.88);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .nav-monogram {
+      width: 40px; height: 40px; background: var(--indigo); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 900; color: var(--dark); flex-shrink: 0;
+    }
+    .nav-name { font-size: 14px; font-weight: 700; color: var(--white); }
+    .nav-cta {
+      background: var(--indigo); color: var(--white); padding: 0.6rem 1.5rem;
+      border-radius: 6px; font-size: 13px; font-weight: 700;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--indigo-dark); }
+
+    /* FADE ANIMATIONS */
+    .fade-up {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.d1 { transition-delay: 0.1s; }
+    .fade-up.d2 { transition-delay: 0.2s; }
+    .fade-up.d3 { transition-delay: 0.3s; }
+    .fade-up.d4 { transition-delay: 0.4s; }
+
+    /* HERO */
+    .hero {
+      padding: 6rem 4rem 4rem; max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 400px;
+      gap: 5rem; align-items: center;
+    }
+    .hero-label {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 3px; color: var(--indigo);
+      border: 1px solid var(--indigo); padding: 0.35rem 1rem;
+      border-radius: 20px; margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900;
+      line-height: 1.12; margin-bottom: 1.5rem;
+    }
+    .hero h1 span { color: var(--indigo); }
+    .hero p { font-size: 1.05rem; color: var(--light-gray); max-width: 500px; margin-bottom: 2.5rem; line-height: 1.7; }
+    .hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--indigo); color: var(--white);
+      padding: 0.9rem 2rem; border-radius: 8px; font-size: 15px; font-weight: 700;
+      text-decoration: none; border: none; cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      transition: background 0.2s, transform 0.1s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--indigo-dark); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      padding: 0.9rem 2rem; border-radius: 8px; font-size: 15px; font-weight: 600;
+      text-decoration: none; border: 1px solid var(--slate);
+      font-family: 'Montserrat', sans-serif;
+      transition: border-color 0.2s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--indigo); }
+
+    /* HERO PHOTO */
+    .hero-photo { position: relative; }
+    .hero-photo img { width: 100%; border-radius: 20px; border: 1px solid var(--slate); display: block; }
+    .hero-badge {
+      position: absolute; bottom: 1.5rem; left: -1.5rem;
+      background: var(--indigo); border-radius: 12px; padding: 0.75rem 1.25rem;
+    }
+    .hero-badge-num { font-size: 1.6rem; font-weight: 900; line-height: 1; }
+    .hero-badge-label { font-size: 10px; color: rgba(255,255,255,0.75); margin-top: 2px; }
+
+    /* PROOF BAR */
+    .proof {
+      display: flex; align-items: center; justify-content: center;
+      gap: 2rem; padding: 1.75rem 4rem;
+      border-top: 1px solid var(--navy); border-bottom: 1px solid var(--navy);
+      flex-wrap: wrap;
+    }
+    .proof-item { display: flex; align-items: center; gap: 0.5rem; font-size: 13px; color: var(--gray); }
+    .proof-dot { width: 6px; height: 6px; background: var(--emerald); border-radius: 50%; flex-shrink: 0; }
+
+    /* VS STRIP - new differentiator section */
+    .vs-strip {
+      padding: 5rem 4rem; max-width: 1000px; margin: 0 auto;
+    }
+    .vs-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem;
+    }
+    .vs-card {
+      border-radius: 12px; padding: 2rem;
+    }
+    .vs-card.them {
+      background: var(--navy); border: 1px solid var(--slate);
+      opacity: 0.65;
+    }
+    .vs-card.us {
+      background: var(--navy); border: 2px solid var(--indigo);
+    }
+    .vs-card-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      margin-bottom: 1.25rem;
+    }
+    .vs-card.them .vs-card-label { color: var(--gray); }
+    .vs-card.us .vs-card-label { color: var(--indigo); }
+    .vs-item {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-size: 13px; padding: 0.4rem 0; line-height: 1.5;
+    }
+    .vs-item.bad { color: var(--gray); }
+    .vs-item.bad::before { content: '—'; color: var(--slate); flex-shrink: 0; margin-top: 1px; }
+    .vs-item.good { color: var(--white); }
+    .vs-item.good::before { content: '✓'; color: var(--emerald); flex-shrink: 0; margin-top: 1px; font-weight: 700; }
+
+    /* BOOK STRIP */
+    .book-strip {
+      background: var(--navy); border-top: 1px solid var(--slate); border-bottom: 1px solid var(--slate);
+      padding: 2rem 4rem; display: flex; align-items: center;
+      justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    }
+    .book-strip h3 { font-size: 1.1rem; font-weight: 900; margin-bottom: 0.2rem; }
+    .book-strip p { font-size: 13px; color: var(--gray); }
+    .btn-book {
+      background: var(--white); color: var(--indigo-dark);
+      padding: 0.85rem 2rem; border-radius: 8px; font-size: 14px; font-weight: 700;
+      text-decoration: none; white-space: nowrap;
+      transition: opacity 0.2s; display: inline-block; flex-shrink: 0;
+    }
+    .btn-book:hover { opacity: 0.9; }
+
+    /* HOW IT WORKS */
+    .how { padding: 6rem 4rem; max-width: 1000px; margin: 0 auto; }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--indigo); margin-bottom: 1rem; }
+    .section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; margin-bottom: 3.5rem; line-height: 1.2; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+    .step {
+      background: var(--navy); border: 1px solid var(--slate);
+      border-radius: 12px; padding: 2rem 1.5rem; position: relative;
+    }
+    .step-accent { position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--indigo); border-radius: 12px 0 0 12px; }
+    .step-num { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--indigo); margin-bottom: 1rem; }
+    .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 0.75rem; }
+    .step p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+    /* PRICING */
+    .pricing { padding: 6rem 4rem; max-width: 1100px; margin: 0 auto; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; align-items: start; }
+    .plan {
+      background: var(--navy); border: 1px solid var(--slate);
+      border-radius: 12px; padding: 2.5rem 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .plan:hover { border-color: var(--indigo); transform: translateY(-3px); }
+    .plan.featured { border: 2px solid var(--indigo); position: relative; }
+    .plan-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--indigo); color: var(--white);
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      padding: 0.25rem 1rem; border-radius: 20px; white-space: nowrap;
+    }
+    .plan-name { font-size: 13px; font-weight: 700; letter-spacing: 2px; color: var(--indigo); margin-bottom: 0.75rem; }
+    .plan-price { font-size: 3rem; font-weight: 900; line-height: 1; margin-bottom: 0.5rem; }
+    .plan-price sup { font-size: 1.4rem; vertical-align: super; font-weight: 700; }
+    .plan-desc { font-size: 13px; color: var(--gray); margin-bottom: 1.75rem; padding-bottom: 1.75rem; border-bottom: 1px solid var(--slate); }
+    .plan-features { list-style: none; margin-bottom: 2rem; }
+    .plan-features li {
+      font-size: 13px; color: var(--light-gray); padding: 0.45rem 0;
+      display: flex; align-items: flex-start; gap: 0.6rem;
+    }
+    .plan-features li::before { content: ''; width: 6px; height: 6px; background: var(--indigo); border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+    .plan-btn {
+      display: block; width: 100%; text-align: center; padding: 0.9rem;
+      border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer;
+      border: none; font-family: 'Montserrat', sans-serif;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .plan-btn-primary { background: var(--indigo); color: var(--white); }
+    .plan-btn-primary:hover { background: var(--indigo-dark); transform: translateY(-1px); }
+    .plan-btn-secondary { background: transparent; color: var(--white); border: 1px solid var(--slate) !important; }
+    .plan-btn-secondary:hover { border-color: var(--indigo) !important; }
+
+    /* WORKED WITH */
+    .worked-with { padding: 3rem 4rem; text-align: center; border-top: 1px solid var(--navy); }
+    .worked-with-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--gray); margin-bottom: 1.5rem; }
+    .logos { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .logo-pill {
+      background: var(--navy); border: 1px solid var(--slate); border-radius: 8px;
+      padding: 0.5rem 1.25rem; font-size: 13px; font-weight: 700; color: var(--light-gray);
+    }
+
+    /* ABOUT */
+    .about {
+      padding: 6rem 4rem; max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .about-photo { background: var(--navy); border: 1px solid var(--slate); border-radius: 16px; overflow: hidden; }
+    .about-photo img { width: 100%; display: block; }
+    .about h2 { font-size: 2rem; font-weight: 900; margin-bottom: 1rem; line-height: 1.2; }
+    .about h2 span { color: var(--indigo); }
+    .about p { font-size: 14px; color: var(--gray); margin-bottom: 1rem; line-height: 1.7; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .about-stat { background: var(--navy); border: 1px solid var(--slate); border-radius: 8px; padding: 1rem; }
+    .about-stat-num { font-size: 1.8rem; font-weight: 900; color: var(--indigo); line-height: 1; margin-bottom: 0.25rem; }
+    .about-stat-label { font-size: 11px; color: var(--gray); }
+
+    /* FAQ */
+    .faq { padding: 6rem 4rem; max-width: 700px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--navy); padding: 1.5rem 0; }
+    .faq-q { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .faq-q::after { content: '+'; color: var(--indigo); font-size: 20px; font-weight: 400; flex-shrink: 0; }
+    .faq-a { font-size: 13px; color: var(--gray); line-height: 1.7; }
+
+    /* CONTACT */
+    .contact { padding: 6rem 4rem; max-width: 700px; margin: 0 auto; }
+    .contact iframe { width: 100%; border: none; border-radius: 12px; min-height: 500px; }
+
+    /* CTA STRIP */
+    .cta-strip { background: var(--indigo); padding: 5rem 4rem; text-align: center; }
+    .cta-strip h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; margin-bottom: 1rem; line-height: 1.2; }
+    .cta-strip p { color: rgba(255,255,255,0.75); margin-bottom: 2rem; font-size: 15px; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      background: var(--white); color: var(--indigo-dark);
+      padding: 0.9rem 2.5rem; border-radius: 8px; font-size: 15px; font-weight: 700;
+      text-decoration: none; border: none; cursor: pointer;
+      font-family: 'Montserrat', sans-serif; transition: opacity 0.2s; display: inline-block;
+    }
+    .btn-white:hover { opacity: 0.9; }
+    .btn-white-outline {
+      background: transparent; color: var(--white);
+      padding: 0.9rem 2.5rem; border-radius: 8px; font-size: 15px; font-weight: 700;
+      text-decoration: none; border: 2px solid rgba(255,255,255,0.5);
+      transition: border-color 0.2s; display: inline-block;
+    }
+    .btn-white-outline:hover { border-color: var(--white); }
+
+    /* FOOTER */
+    footer {
+      padding: 2.5rem 4rem; border-top: 1px solid var(--navy);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem; font-size: 12px; color: var(--gray);
+    }
+    footer a { color: var(--gray); text-decoration: none; }
+    footer a:hover { color: var(--indigo); }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.78);
+      z-index: 200; align-items: center; justify-content: center; padding: 2rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: var(--navy); border: 1px solid var(--slate);
+      border-radius: 16px; padding: 2.5rem; max-width: 480px; width: 100%; position: relative;
+    }
+    .modal-close { position: absolute; top: 1rem; right: 1.25rem; background: none; border: none; color: var(--gray); font-size: 22px; cursor: pointer; line-height: 1; }
+    .modal h3 { font-size: 1.4rem; font-weight: 900; margin-bottom: 0.5rem; }
+    .modal-plan-name { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--indigo); margin-bottom: 1.5rem; }
+    .modal-price { font-size: 2.5rem; font-weight: 900; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--slate); }
+    .modal-price sup { font-size: 1.2rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--light-gray); margin-bottom: 0.4rem; }
+    .form-group input {
+      width: 100%; background: var(--dark); border: 1px solid var(--slate);
+      border-radius: 6px; padding: 0.75rem 1rem; color: var(--white);
+      font-size: 14px; font-family: 'Montserrat', sans-serif;
+      transition: border-color 0.2s; outline: none;
+    }
+    .form-group input:focus { border-color: var(--indigo); }
+    .modal-submit { width: 100%; margin-top: 1.25rem; }
+    .success-screen { display: none; text-align: center; padding: 1rem 0; }
+    .success-screen.active { display: block; }
+    .modal-form.hidden { display: none; }
+    .success-icon {
+      width: 64px; height: 64px; background: rgba(16,185,129,0.15);
+      border: 2px solid var(--emerald); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem; font-size: 28px;
+    }
+
+    @media(max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem 3rem; }
+      .hero-photo { max-width: 300px; margin: 0 auto; order: -1; }
+      .hero-badge { left: 0.5rem; bottom: 0.5rem; }
+      .vs-grid { grid-template-columns: 1fr; }
+    }
+    @media(max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .how, .pricing, .faq, .about, .worked-with, .vs-strip { padding: 4rem 1.5rem; }
+      .cta-strip { padding: 4rem 1.5rem; }
+      .book-strip { padding: 1.5rem; flex-direction: column; text-align: center; }
+      .about { grid-template-columns: 1fr; gap: 3rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+      .proof { padding: 1.5rem; gap: 1rem; }
     }
   </style>
 </head>
 <body>
-  <p>Page under construction</p>
+
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-monogram">MF</div>
+      <span class="nav-name">Michal Farkas</span>
+    </a>
+    <a href="#pricing" class="nav-cta">See Packages</a>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <div class="hero">
+      <div class="fade-up">
+        <div class="hero-label">AI-POWERED WEB CONSULTING</div>
+        <h1>Your online presence.<br/><span>Built with AI.</span><br/>Launched in days.</h1>
+        <p>Most people spend months finding an agency, waiting for proposals, and paying €5,000+ for a site they could have had in two weeks. I do it differently - with AI, lean, fast, and built to sell from day one.</p>
+        <div class="hero-cta-group">
+          <a href="#pricing" class="btn-primary">See Packages</a>
+          <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" class="btn-outline">Book a Free Call</a>
+        </div>
+      </div>
+      <div class="hero-photo fade-up d2">
+        <img src="img/photo-06ab8efe.jpg" alt="Michal Farkas"/>
+        <div class="hero-badge">
+          <div class="hero-badge-num">2</div>
+          <div class="hero-badge-label">packages, from €99</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PROOF BAR -->
+  <div class="proof fade-up">
+    <div class="proof-item"><span class="proof-dot"></span>9+ years in e-commerce</div>
+    <div class="proof-item"><span class="proof-dot"></span>Shoptet - Filmzie - FeelAfterglow</div>
+    <div class="proof-item"><span class="proof-dot"></span>AI-built projects since 2026</div>
+    <div class="proof-item"><span class="proof-dot"></span>Bratislava, Slovakia - Remote</div>
+  </div>
+
+  <!-- VS SECTION -->
+  <section class="vs-strip">
+    <div class="section-label fade-up">WHY NOT AN AGENCY</div>
+    <h2 class="section-title fade-up">Agencies charge thousands and take months.<br/>There's a smarter way.</h2>
+    <div class="vs-grid">
+      <div class="vs-card them fade-up d1">
+        <div class="vs-card-label">TRADITIONAL AGENCY</div>
+        <div class="vs-item bad">3-6 months to go live</div>
+        <div class="vs-item bad">€3,000 - €10,000+ upfront</div>
+        <div class="vs-item bad">You wait, they build on their timeline</div>
+        <div class="vs-item bad">Generic templates, endless revision rounds</div>
+        <div class="vs-item bad">Even a one-pager costs thousands</div>
+        <div class="vs-item bad">You still need to learn everything yourself</div>
+      </div>
+      <div class="vs-card us fade-up d2">
+        <div class="vs-card-label">WITH MICHAL + AI</div>
+        <div class="vs-item good">One-pager live in 2-3 days, multi-page site in under 7</div>
+        <div class="vs-item good">Transparent pricing from €99</div>
+        <div class="vs-item good">Custom-built for your brand, not a template</div>
+        <div class="vs-item good">Two clear packages - pick what fits</div>
+        <div class="vs-item good">Full handover with walkthrough</div>
+        <div class="vs-item good">Post-launch support included</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK STRIP -->
+  <div class="book-strip fade-up">
+    <div>
+      <h3>Not sure where to start?</h3>
+      <p>Book a free 30-minute call - no commitment, just clarity on what you actually need.</p>
+    </div>
+    <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" class="btn-book">Book a Free Call</a>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="section-label fade-up">PROCESS</div>
+    <h2 class="section-title fade-up">From idea to live<br/>in three steps.</h2>
+    <div class="steps">
+      <div class="step fade-up d1">
+        <div class="step-accent"></div>
+        <div class="step-num">01</div>
+        <h3>Discovery call</h3>
+        <p>We talk about your business, goals, and which package fits. Free, 30 minutes, no commitment - just clarity on what you actually need.</p>
+      </div>
+      <div class="step fade-up d2">
+        <div class="step-accent"></div>
+        <div class="step-num">02</div>
+        <h3>AI-powered build</h3>
+        <p>I design and build your site using AI tools. You get updates, give feedback, and stay in the loop throughout.</p>
+      </div>
+      <div class="step fade-up d3">
+        <div class="step-accent"></div>
+        <div class="step-num">03</div>
+        <h3>Launch & handover</h3>
+        <p>Your site goes live. You get full ownership, a walkthrough of everything, and post-launch support to make sure you're confident running it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="section-label fade-up">PACKAGES</div>
+    <h2 class="section-title fade-up">Two packages. Clear pricing.</h2>
+    <div class="pricing-grid">
+      <div class="plan fade-up d1">
+        <div class="plan-name">ONE-PAGER</div>
+        <div style="font-size:0.85rem;font-weight:600;color:var(--gray);margin-bottom:0.15rem;letter-spacing:1px;">FROM</div>
+        <div class="plan-price"><sup>€</sup>99</div>
+        <p class="plan-desc">A polished personal brand page that makes you look professional online - perfect for freelancers, consultants, and creators.</p>
+        <ul class="plan-features">
+          <li>Custom one-page design</li>
+          <li>Responsive mobile layout</li>
+          <li>Personal brand copywriting</li>
+          <li>Contact form or call-to-action</li>
+          <li>Basic SEO setup</li>
+          <li>Domain & hosting guidance</li>
+        </ul>
+        <button class="plan-btn plan-btn-secondary" onclick="openModal('One-Pager', '99')">Get Started</button>
+      </div>
+      <div class="plan featured fade-up d2">
+        <div class="plan-badge">MOST POPULAR</div>
+        <div class="plan-name">MULTI-PAGE WEBSITE</div>
+        <div style="font-size:0.85rem;font-weight:600;color:var(--gray);margin-bottom:0.15rem;letter-spacing:1px;">FROM</div>
+        <div class="plan-price"><sup>€</sup>199</div>
+        <p class="plan-desc">A multi-page website with contact form, book-a-call integration, and optional payment gateway - everything you need to convert visitors into clients.</p>
+        <ul class="plan-features">
+          <li>Everything in One-Pager</li>
+          <li>Multi-page site (services, about, contact)</li>
+          <li>Contact form & book-a-call integration</li>
+          <li>Payment gateway add-on available</li>
+          <li>Service descriptions & copy</li>
+          <li>Basic SEO & meta tags</li>
+          <li>1 week post-launch support</li>
+        </ul>
+        <button class="plan-btn plan-btn-primary" onclick="openModal('Multi-Page Website', '199')">Get Started</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKED WITH -->
+  <section class="worked-with fade-up">
+    <div class="worked-with-label">EXPERIENCE FROM</div>
+    <div class="logos">
+      <div class="logo-pill">Shoptet</div>
+      <div class="logo-pill">Filmzie</div>
+      <div class="logo-pill">FeelAfterglow</div>
+      <div class="logo-pill">Polystate.io</div>
+      <div class="logo-pill">E-commerce Day</div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-photo fade-up">
+      <img src="img/photo-06ab8efe.jpg" alt="Michal Farkas"/>
+    </div>
+    <div>
+      <div class="section-label fade-up">ABOUT</div>
+      <h2 class="fade-up">9 years in e-commerce.<br/><span>Now building with AI.</span></h2>
+      <p class="fade-up">I started my first e-shop in 2016. Since then I led marketing at Filmzie (movie streaming startup) and ran the Slovak marketing team at Shoptet - one of Central Europe's biggest e-commerce platforms.</p>
+      <p class="fade-up">Now I help entrepreneurs launch their online presence - from personal brand pages to multi-page websites - using AI tools that make the process faster and more affordable than any agency.</p>
+      <div class="about-stats fade-up">
+        <div class="about-stat"><div class="about-stat-num">9+</div><div class="about-stat-label">Years in e-commerce</div></div>
+        <div class="about-stat"><div class="about-stat-num">2</div><div class="about-stat-label">Packages to choose from</div></div>
+        <div class="about-stat"><div class="about-stat-num">Days</div><div class="about-stat-label">Not months, to launch</div></div>
+        <div class="about-stat"><div class="about-stat-num">SK/CZ</div><div class="about-stat-label">Local market expertise</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="section-label fade-up">FAQ</div>
+    <h2 class="section-title fade-up">Common questions.</h2>
+    <div class="faq-item fade-up">
+      <div class="faq-q">Do I need technical knowledge?</div>
+      <div class="faq-a">No. AI handles the technical side. You focus on your business and customers. I build and hand over a site you can run yourself - no coding required.</div>
+    </div>
+    <div class="faq-item fade-up">
+      <div class="faq-q">What platform do you build on?</div>
+      <div class="faq-a">I choose the best stack for your needs - it could be Next.js, Shopify, or a custom solution. We discuss the right approach on the discovery call based on your product and goals.</div>
+    </div>
+    <div class="faq-item fade-up">
+      <div class="faq-q">How fast is "days, not months"?</div>
+      <div class="faq-a">One-pager: 2-3 days. Multi-page website: 5-7 days.</div>
+    </div>
+    <div class="faq-item fade-up">
+      <div class="faq-q">Can you work with my existing site?</div>
+      <div class="faq-a">Yes - I can audit, redesign, or migrate what you already have. A discovery call is the best place to start and figure out what makes sense.</div>
+    </div>
+    <div class="faq-item fade-up">
+      <div class="faq-q">Do you work with Slovak and Czech clients?</div>
+      <div class="faq-a">Yes - most of my clients are from SK/CZ. I know the local platforms, payment providers, logistics options, and market specifics.</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-label fade-up">CONTACT</div>
+    <h2 class="section-title fade-up">Get in touch.</h2>
+    <p class="fade-up" style="color:var(--gray);font-size:14px;margin-bottom:2rem;text-align:center;">Have a question or ready to start? Drop me a message and I'll get back to you within 24 hours.</p>
+    <div class="fade-up">
+      <iframe data-tally-src="https://tally.so/embed/w4JbQo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="300" title="Contact form"></iframe>
+      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}</script>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="cta-strip fade-up">
+    <h2>You don't need an agency.<br/>You need a partner who builds fast.</h2>
+    <p>Pick a package or book a free discovery call - no commitment.</p>
+    <div class="cta-btns">
+      <button class="btn-white" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">See Packages</button>
+      <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" class="btn-white-outline">Book a Free Call</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Michal Farkas - <a href="https://michalfarkas.com">michalfarkas.com</a></span>
+    <span><a href="/about">About</a> &nbsp;·&nbsp; <a href="/terms">Terms</a> &nbsp;·&nbsp; <a href="/returns">Returns</a></span>
+    <span><a href="mailto:hello@michalfarkas.com">hello@michalfarkas.com</a></span>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">x</button>
+      <div class="modal-form" id="modalForm">
+        <div class="modal-plan-name" id="modalPlanName">ONE-PAGER</div>
+        <h3 id="modalTitle">Let's get started</h3>
+        <div class="modal-price"><sup>€</sup><span id="modalPrice">99</span></div>
+        <div class="form-group">
+          <label>Full name</label>
+          <input type="text" id="fieldName" placeholder="Jan Novak"/>
+        </div>
+        <div class="form-group">
+          <label>Email address</label>
+          <input type="email" id="fieldEmail" placeholder="jan@example.com"/>
+        </div>
+        <div class="form-group">
+          <label>Your website or business (optional)</label>
+          <input type="text" id="fieldBusiness" placeholder="myshop.sk"/>
+        </div>
+        <button class="btn-primary plan-btn modal-submit" onclick="handleCheckout()">Confirm & Pay</button>
+        <p style="font-size:11px;color:#475569;text-align:center;margin-top:0.75rem;">
+          Or <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" style="color:#6366F1;">book a free call first</a>
+        </p>
+      </div>
+      <div class="success-screen" id="successScreen">
+        <div class="success-icon">v</div>
+        <h3 style="margin-bottom:0.5rem;">You're in!</h3>
+        <p style="color:#64748B;font-size:14px;margin-bottom:1.5rem;">
+          I'll be in touch within 24 hours to confirm your booking and next steps.
+        </p>
+        <button class="btn-primary" onclick="closeModal()" style="width:100%;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    function openModal(plan, price) {
+      document.getElementById('modalPlanName').textContent = plan.toUpperCase();
+      document.getElementById('modalTitle').textContent = plan + ' Package';
+      document.getElementById('modalPrice').textContent = price;
+      document.getElementById('modal').classList.add('active');
+      document.getElementById('modalForm').classList.remove('hidden');
+      document.getElementById('successScreen').classList.remove('active');
+    }
+    function closeModal() { document.getElementById('modal').classList.remove('active'); }
+    function handleCheckout() {
+      const name = document.getElementById('fieldName').value.trim();
+      const email = document.getElementById('fieldEmail').value.trim();
+      if (!name || !email) { alert('Please fill in your name and email.'); return; }
+      if (!email.includes('@')) { alert('Please enter a valid email.'); return; }
+      // Production: window.location.href = 'https://buy.stripe.com/YOUR_LINK';
+      document.getElementById('modalForm').classList.add('hidden');
+      document.getElementById('successScreen').classList.add('active');
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  </script>
 </body>
 </html>
