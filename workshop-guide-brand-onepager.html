@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Build Your Personal Brand One-Pager with AI — Workshop Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --indigo: #6366F1; --indigo-dark: #4338CA; --indigo-light: #EEF2FF;
+      --dark: #0D1117; --navy: #1E293B; --slate: #334155;
+      --gray: #64748B; --light-gray: #94A3B8; --white: #FFFFFF;
+      --emerald: #10B981; --amber: #F59E0B;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--dark); color: var(--white);
+      line-height: 1.6; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: linear-gradient(var(--navy) 1px, transparent 1px),
+        linear-gradient(90deg, var(--navy) 1px, transparent 1px);
+      background-size: 120px 120px; opacity: 0.4;
+      pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: ''; position: fixed; left: 0; top: 0;
+      width: 5px; height: 100%; background: var(--indigo); z-index: 100;
+    }
+    header, nav, section, footer, div.content-wrapper { position: relative; z-index: 1; }
+
+    /* === HEADER === */
+    .workshop-header {
+      padding: 5rem 4rem 3rem;
+      max-width: 800px; margin: 0 auto;
+      text-align: center;
+    }
+    .header-badge {
+      display: inline-block;
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      color: var(--indigo); border: 1px solid var(--indigo);
+      padding: 0.35rem 1rem; border-radius: 20px;
+      margin-bottom: 2rem;
+    }
+    .workshop-header h1 {
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 900;
+      line-height: 1.15; margin-bottom: 1rem;
+    }
+    .workshop-header h1 span { color: var(--indigo); }
+    .workshop-header .subtitle {
+      color: var(--light-gray); font-size: 15px;
+      max-width: 560px; margin: 0 auto 2rem;
+    }
+    .meta-row {
+      display: flex; justify-content: center; gap: 2rem;
+      color: var(--gray); font-size: 13px; flex-wrap: wrap;
+    }
+    .meta-row .meta-item {
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .meta-dot { width: 6px; height: 6px; background: var(--emerald); border-radius: 50%; flex-shrink: 0; }
+
+    /* === STEP NAV === */
+    .steps-nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(13,17,23,0.88); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--navy); border-top: 1px solid var(--navy);
+      padding: 0 4rem;
+    }
+    .steps-nav-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; overflow-x: auto; gap: 0;
+      scrollbar-width: none;
+    }
+    .steps-nav-inner::-webkit-scrollbar { display: none; }
+    .step-nav-item {
+      padding: 1rem 1.25rem; font-size: 12px; font-weight: 600;
+      color: var(--gray); white-space: nowrap; text-decoration: none;
+      border-bottom: 2px solid transparent; transition: all 0.2s;
+    }
+    .step-nav-item:hover { color: var(--white); border-bottom-color: var(--indigo); }
+    .step-nav-item .step-num {
+      color: var(--indigo); font-weight: 900; margin-right: 0.35rem;
+    }
+
+    /* === CONTENT WRAPPER === */
+    .content-wrapper {
+      max-width: 800px; margin: 0 auto; padding: 0 4rem;
+    }
+
+    /* === STEP BLOCK === */
+    .step-block {
+      padding: 5rem 0; border-bottom: 1px solid var(--navy);
+    }
+    .step-block:last-child { border-bottom: none; }
+    .step-number {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      color: var(--indigo); margin-bottom: 0.5rem;
+    }
+    .step-block h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900;
+      margin-bottom: 0.5rem; line-height: 1.2;
+    }
+    .step-time {
+      font-size: 13px; color: var(--gray); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .step-intro {
+      font-size: 14px; color: var(--light-gray); margin-bottom: 2rem; line-height: 1.8;
+    }
+    .step-intro strong { color: var(--white); }
+    .step-text {
+      font-size: 14px; color: var(--light-gray); line-height: 1.8; margin: 1rem 0;
+    }
+    .step-text strong { color: var(--white); }
+
+    /* === PROMPT BOX === */
+    .prompt-box {
+      background: var(--navy); border: 1px solid var(--slate);
+      border-radius: 12px; margin: 1.5rem 0; overflow: hidden;
+      position: relative;
+    }
+    .prompt-box::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%; background: var(--indigo);
+      border-radius: 12px 0 0 12px;
+    }
+    .prompt-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--slate);
+    }
+    .prompt-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--indigo);
+    }
+    .copy-btn {
+      background: var(--dark); border: 1px solid var(--slate); color: var(--light-gray);
+      padding: 0.3rem 0.9rem; border-radius: 6px; font-size: 11px; font-weight: 600;
+      cursor: pointer; font-family: 'Montserrat', sans-serif; transition: all 0.2s;
+    }
+    .copy-btn:hover { border-color: var(--indigo); color: var(--white); }
+    .prompt-body {
+      padding: 1.25rem 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; line-height: 1.8; color: var(--light-gray);
+      white-space: pre-wrap; word-wrap: break-word;
+    }
+    .prompt-body .variable { color: var(--amber); font-weight: 500; }
+
+    /* === TASK BOX === */
+    .task-box {
+      background: rgba(99,102,241,0.06);
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 12px; padding: 1.5rem 1.75rem; margin: 1.5rem 0;
+    }
+    .task-box h4 {
+      font-size: 13px; font-weight: 700; color: var(--indigo);
+      margin-bottom: 0.75rem; letter-spacing: 1px;
+    }
+    .task-box p, .task-box li {
+      color: var(--light-gray); font-size: 13px; line-height: 1.7;
+    }
+    .task-box ol { padding-left: 1.25rem; margin-top: 0.5rem; }
+    .task-box li { margin-bottom: 0.4rem; }
+    .task-box li strong { color: var(--white); }
+
+    /* === TIP BOX === */
+    .tip-box {
+      background: rgba(16,185,129,0.05);
+      border: 1px solid rgba(16,185,129,0.15);
+      border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1.5rem 0;
+    }
+    .tip-box h4 {
+      font-size: 12px; font-weight: 700; color: var(--emerald);
+      margin-bottom: 0.5rem; letter-spacing: 1px;
+    }
+    .tip-box p {
+      font-size: 13px; color: var(--light-gray); line-height: 1.7;
+    }
+    .tip-box code {
+      background: var(--dark); padding: 0.15rem 0.4rem; border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--indigo);
+    }
+    .tip-box a { color: var(--indigo); }
+
+    /* === BRANDXAI SECTION === */
+    .brandx-section { padding: 5rem 0; }
+    .brandx-card {
+      background: var(--navy); border: 2px solid var(--indigo);
+      border-radius: 16px; padding: 3.5rem 2.5rem; text-align: center;
+    }
+    .brandx-card h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900;
+      margin-bottom: 1rem; line-height: 1.2;
+    }
+    .brandx-card h2 span { color: var(--indigo); }
+    .brandx-card .tagline {
+      color: var(--gray); font-size: 14px; margin-bottom: 2.5rem;
+      max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.7;
+    }
+    .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+    .tier-card {
+      background: var(--dark); border: 1px solid var(--slate);
+      border-radius: 12px; padding: 2rem 1.5rem; text-align: left;
+      transition: border-color 0.2s;
+    }
+    .tier-card:hover { border-color: var(--indigo); }
+    .tier-card.featured { border: 2px solid var(--indigo); position: relative; }
+    .tier-card.featured::before {
+      content: 'MOST POPULAR'; position: absolute; top: -10px; right: 16px;
+      background: var(--indigo); color: white; font-size: 9px; font-weight: 700;
+      letter-spacing: 1.5px; padding: 3px 10px; border-radius: 4px;
+    }
+    .tier-name { font-size: 14px; font-weight: 900; margin-bottom: 0.25rem; }
+    .tier-desc { font-size: 12px; color: var(--gray); margin-bottom: 1rem; line-height: 1.5; }
+    .tier-features { list-style: none; }
+    .tier-features li {
+      font-size: 12px; color: var(--light-gray); padding: 0.3rem 0;
+      display: flex; align-items: flex-start; gap: 0.5rem;
+    }
+    .tier-features li::before {
+      content: ''; width: 6px; height: 6px; background: var(--indigo);
+      border-radius: 50%; margin-top: 5px; flex-shrink: 0;
+    }
+
+    /* === FOOTER === */
+    .workshop-footer {
+      padding: 2.5rem 4rem; border-top: 1px solid var(--navy);
+      text-align: center; font-size: 12px; color: var(--gray);
+    }
+    .workshop-footer a { color: var(--indigo); text-decoration: none; }
+    .workshop-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .workshop-header { padding: 3rem 1.5rem 2rem; }
+      .content-wrapper { padding: 0 1.5rem; }
+      .steps-nav { padding: 0 1.5rem; }
+      .tiers { grid-template-columns: 1fr; }
+      .meta-row { flex-direction: column; gap: 0.5rem; }
+      .workshop-footer { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="workshop-header">
+    <div class="header-badge">LIVE WORKSHOP</div>
+    <h1>Build Your <span>Personal Brand</span><br/>One-Pager with AI</h1>
+    <p class="subtitle">
+      A step-by-step guide to creating your professional landing page using Claude AI.
+      No coding experience required.
+    </p>
+    <div class="meta-row">
+      <div class="meta-item"><span class="meta-dot"></span> ~60 minutes</div>
+      <div class="meta-item"><span class="meta-dot"></span> Tools: Claude AI + text editor</div>
+      <div class="meta-item"><span class="meta-dot"></span> Output: live personal page</div>
+    </div>
+  </header>
+
+  <!-- STEP NAV -->
+  <nav class="steps-nav">
+    <div class="steps-nav-inner">
+      <a href="#step-0" class="step-nav-item"><span class="step-num">00</span> Setup</a>
+      <a href="#step-1" class="step-nav-item"><span class="step-num">01</span> Discovery</a>
+      <a href="#step-2" class="step-nav-item"><span class="step-num">02</span> Visual Identity</a>
+      <a href="#step-3" class="step-nav-item"><span class="step-num">03</span> Content</a>
+      <a href="#step-4" class="step-nav-item"><span class="step-num">04</span> Build the Page</a>
+      <a href="#step-5" class="step-nav-item"><span class="step-num">05</span> Go Live</a>
+      <a href="#brandx" class="step-nav-item"><span class="step-num">&rarr;</span> BrandxAI</a>
+    </div>
+  </nav>
+
+  <div class="content-wrapper">
+
+    <!-- STEP 0: SETUP -->
+    <div class="step-block" id="step-0">
+      <div class="step-number">STEP 00</div>
+      <h2>Before We Start</h2>
+      <div class="step-time"><span class="meta-dot"></span> 5 minutes</div>
+
+      <p class="step-intro">
+        Let's make sure everyone has what they need. You only need three things for this workshop:
+        a Claude AI account, a browser, and a photo of yourself (optional but recommended).
+      </p>
+
+      <div class="task-box">
+        <h4>SETUP CHECKLIST</h4>
+        <ol>
+          <li>Open <strong><a href="https://claude.ai" style="color:var(--indigo)">claude.ai</a></strong> in your browser and sign in (free account works)</li>
+          <li>Have a professional photo of yourself ready (saved on your computer)</li>
+          <li>Open a second browser tab &mdash; we'll preview our page here later</li>
+          <li>Keep this guide open &mdash; you'll copy prompts from it</li>
+        </ol>
+      </div>
+
+      <div class="tip-box">
+        <h4>TIP: LANGUAGE</h4>
+        <p>
+          All prompts in this guide are in English, but Claude understands Slovak perfectly.
+          You can answer Claude's questions in Slovak, and you can ask it to write your content
+          in Slovak at any point. Just add "Write in Slovak" to any prompt.
+        </p>
+      </div>
+    </div>
+
+    <!-- STEP 1: DISCOVERY -->
+    <div class="step-block" id="step-1">
+      <div class="step-number">STEP 01</div>
+      <h2>Brand Discovery</h2>
+      <div class="step-time"><span class="meta-dot"></span> 10 minutes</div>
+
+      <p class="step-intro">
+        Before we design anything, we need to figure out <strong>who you are</strong> professionally.
+        The best personal brands aren't made up &mdash; they're discovered. We'll let AI help us
+        pull out the interesting parts of your story.
+      </p>
+
+      <div class="prompt-box">
+        <div class="prompt-header">
+          <span class="prompt-label">PROMPT 1 &mdash; THE INTERVIEW</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+        <div class="prompt-body">You are a personal brand strategist. Your job is to interview me so you can later help me create a personal brand landing page.
+
+Ask me 8-10 questions, one at a time. Wait for my answer before asking the next question.
+
+Focus on:
+- What I do professionally and what makes me different
+- My key achievements and projects I'm proud of
+- Who I help and what problems I solve
+- My personality and communication style
+- My goals — what do I want people to do after visiting my page
+
+Start with the first question now.</div>
+      </div>
+
+      <p class="step-text">
+        Claude will now interview you. Answer each question honestly &mdash; don't overthink it.
+        The more authentic your answers, the better your brand page will be.
+        This conversation typically takes 5-8 minutes.
+      </p>
+
+      <div class="task-box">
+        <h4>YOUR TURN</h4>
+        <p>
+          Copy the prompt above into Claude and go through the full interview.
+          Answer all questions. When Claude finishes, move to the next step.
+        </p>
+      </div>
+
+      <div class="tip-box">
+        <h4>IF YOU GET STUCK</h4>
+        <p>
+          Don't worry about giving "perfect" answers. Short, real answers are better
+          than polished corporate speak. Think about what you'd tell a friend at a coffee shop,
+          not a job interviewer.
+        </p>
+      </div>
+    </div>
+
+    <!-- STEP 2: VISUAL IDENTITY -->
+    <div class="step-block" id="step-2">
+      <div class="step-number">STEP 02</div>
+      <h2>Visual Identity</h2>
+      <div class="step-time"><span class="meta-dot"></span> 8 minutes</div>
+
+      <p class="step-intro">
+        Now we'll ask Claude to suggest a visual style for your brand &mdash; colors, fonts, and overall mood.
+        This step is what makes your page feel uniquely <em>yours</em>, not like a generic template.
+      </p>
+
+      <div class="prompt-box">
+        <div class="prompt-header">
+          <span class="prompt-label">PROMPT 2 &mdash; VISUAL STYLE</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+        <div class="prompt-body">Based on everything you've learned about me from the interview, suggest a visual identity for my personal brand page.
+
+Give me:
+1. A color palette (primary color, secondary color, background, text color) — include hex codes
+2. A font pairing (one for headings, one for body text) from Google Fonts
+3. The overall mood/vibe of the design (e.g., "bold and modern", "warm and minimal")
+4. A brief explanation of WHY these choices fit my brand
+
+Present this as a clear, organized brand brief I can use.</div>
+      </div>
+
+      <p class="step-text">
+        Review what Claude suggests. If something doesn't feel right, tell it.
+        For example: <strong>"I like the colors but make it darker"</strong> or
+        <strong>"I'd prefer something more minimalist."</strong> This is how you refine AI output &mdash;
+        you don't have to accept the first suggestion.
+      </p>
+
+      <div class="prompt-box">
+        <div class="prompt-header">
+          <span class="prompt-label">PROMPT 2B &mdash; REFINE (OPTIONAL)</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+        <div class="prompt-body">I like the direction but <span class="variable">[your feedback here]</span>.
+
+Can you adjust the color palette and explain the updated choices?</div>
+      </div>
+
+      <div class="task-box">
+        <h4>YOUR TURN</h4>
+        <p>
+          Get your visual identity from Claude. Iterate at least once &mdash; change something,
+          ask for an alternative. This teaches you an important AI skill: <strong>prompt refinement</strong>.
+        </p>
+      </div>
+    </div>
+
+    <!-- STEP 3: CONTENT -->
+    <div class="step-block" id="step-3">
+      <div class="step-number">STEP 03</div>
+      <h2>Content Generation</h2>
+      <div class="step-time"><span class="meta-dot"></span> 10 minutes</div>
+
+      <p class="step-intro">
+        Time to create the actual text for your page. We'll ask Claude to write your headline,
+        bio, project descriptions, and call-to-action &mdash; all based on the interview and brand identity
+        we've already established.
+      </p>
+
+      <div class="prompt-box">
+        <div class="prompt-header">
+          <span class="prompt-label">PROMPT 3 &mdash; PAGE CONTENT</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+        <div class="prompt-body">Now write the content for my personal brand one-pager. Based on the interview and visual identity, create:
+
+1. **Hero section:**
+   - A short professional label (3-4 words, e.g., "Marketing · E-commerce · AI")
+   - A compelling headline (2-3 words per line, max 3 lines)
+   - A tagline (one sentence that captures what I do)
+   - A short bio paragraph (3-4 sentences, first person)
+
+2. **About section:**
+   - 2 paragraphs about my professional journey and approach
+   - A list of 5-7 key skills/expertise areas
+
+3. **Projects section:**
+   - For each project or service I mentioned, write:
+     - Project name
+     - A 2-3 sentence description
+     - A call-to-action link text
+
+4. **Contact section:**
+   - A short invitation to connect (2 sentences)
+
+Keep the tone confident but approachable.
+Make it concise — this is a one-pager, not a resume.</div>
+      </div>
+
+      <p class="step-text">
+        This is where most people get excited &mdash; seeing AI write <em>about them</em> in a compelling way.
+        But don't just accept it blindly. Read every sentence and ask yourself: <strong>"Is this true? Is this me?"</strong>
+      </p>
+
+      <div class="prompt-box">
+        <div class="prompt-header">
+          <span class="prompt-label">PROMPT 3B &mdash; ITERATE ON TONE</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+        <div class="prompt-body">The content is good but I want to adjust the tone. Can you:
+- Make the bio more <span class="variable">[casual / confident / humble / bold]</span>
+- Shorten the about section — make each paragraph max 2 sentences
+- Make the project descriptions more action-oriented
+
+Keep everything else the same.</div>
+      </div>
+
+      <div class="task-box">
+        <h4>YOUR TURN</h4>
+        <p>
+          Generate your page content. Then iterate at least once on the tone or length.
+          Remember: AI gives you a great first draft, but <strong>your edits make it authentic</strong>.
+        </p>
+      </div>
+    </div>
+
+    <!-- STEP 4: BUILD THE PAGE -->
+    <div class="step-block" id="step-4">
+      <div class="step-number">STEP 04</div>
+      <h2>Build the HTML Page</h2>
+      <div class="step-time"><span class="meta-dot"></span> 15 minutes</div>
+
+      <p class="step-intro">
+        This is the magic moment. We'll ask Claude to take everything &mdash; the brand identity,
+        the content, the visual style &mdash; and generate a complete, working HTML page.
+        No coding required from you.
+      </p>
+
+      <div class="prompt-box">
+        <div class="prompt-header">
+          <span class="prompt-label">PROMPT 4 &mdash; GENERATE HTML</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+        <div class="prompt-body">Now create a complete, single-file HTML page for my personal brand using everything we've built: the brand identity, color palette, fonts, and all the content.
+
+Requirements:
+- Single HTML file with all CSS in a &lt;style&gt; tag (no external files)
+- Use the exact color palette and Google Fonts we chose
+- Dark background with a subtle grid pattern overlay
+- Responsive design that works on mobile and desktop
+- Sections: Hero with photo placeholder, About with skills, Projects as cards, Contact with social links
+- Include a LinkedIn icon link to: <span class="variable">[your LinkedIn URL]</span>
+- Smooth scroll navigation
+- Fade-in animations on scroll using IntersectionObserver
+- Photo: use a placeholder div with my initials — I'll add the real photo later
+- Footer with a small "Built with BrandxAI" badge
+
+Design style: professional, dark theme, clean spacing, rounded cards with subtle borders.
+Make it look like it was designed by a professional — this is going live on the internet.</div>
+      </div>
+
+      <p class="step-text">
+        Claude will generate a full HTML page. Here's what to do with it:
+      </p>
+
+      <div class="task-box">
+        <h4>PREVIEW YOUR PAGE</h4>
+        <ol>
+          <li>Copy the entire HTML code Claude generates</li>
+          <li>Open any text editor (Notepad on Windows, TextEdit on Mac &mdash; switch to plain text mode)</li>
+          <li>Paste the code and save the file as <strong>index.html</strong></li>
+          <li>Double-click the file to open it in your browser</li>
+          <li>You should see your personal brand page!</li>
+        </ol>
+      </div>
+
+      <p class="step-text">
+        Look at your page in the browser. If something doesn't look right, tell Claude.
+        You can be specific or vague &mdash; both work.
+      </p>
+
+      <div class="prompt-box">
+        <div class="prompt-header">
+          <span class="prompt-label">PROMPT 4B &mdash; FIX & ADJUST</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+        <div class="prompt-body">The page looks good but I need these changes:
+- <span class="variable">[e.g., "Make the hero section taller"]</span>
+- <span class="variable">[e.g., "Change the font size of the bio — it's too small"]</span>
+- <span class="variable">[e.g., "Add more space between sections"]</span>
+
+Give me the complete updated HTML file.</div>
+      </div>
+
+      <div class="tip-box">
+        <h4>ADDING YOUR PHOTO</h4>
+        <p>
+          To add your photo: save your photo in the same folder as your index.html file,
+          name it <strong>photo.jpg</strong>, then find the placeholder div in the HTML and
+          replace it with: <code>&lt;img src="photo.jpg" alt="Your Name"&gt;</code>
+        </p>
+      </div>
+    </div>
+
+    <!-- STEP 5: GO LIVE -->
+    <div class="step-block" id="step-5">
+      <div class="step-number">STEP 05</div>
+      <h2>Go Live</h2>
+      <div class="step-time"><span class="meta-dot"></span> 10 minutes</div>
+
+      <p class="step-intro">
+        Your page exists on your computer. Now let's put it on the internet so anyone
+        can see it. We'll use <strong>GitHub</strong> to store your code and <strong>Vercel</strong>
+        to host it &mdash; both are free and this is the same stack that my consulting site
+        (<a href="https://consulting.michalfarkas.com" style="color:var(--indigo)">consulting.michalfarkas.com</a>)
+        runs on. The big advantage: every time you edit a file on GitHub, Vercel automatically
+        re-deploys your site in seconds &mdash; no manual uploads, no FTP, no hassle.
+      </p>
+
+      <div class="task-box">
+        <h4>PART A &mdash; CREATE A GITHUB REPOSITORY</h4>
+        <ol>
+          <li>Go to <strong><a href="https://github.com" style="color:var(--indigo)">github.com</a></strong> and sign in (or create a free account)</li>
+          <li>Click the <strong>+</strong> icon in the top right &rarr; <strong>New repository</strong></li>
+          <li>Name it something like <strong>my-brand</strong> or <strong>personal-site</strong></li>
+          <li>Keep it <strong>Public</strong> (required for free Vercel hosting)</li>
+          <li>Check <strong>"Add a README file"</strong></li>
+          <li>Click <strong>Create repository</strong></li>
+        </ol>
+      </div>
+
+      <div class="task-box">
+        <h4>PART B &mdash; UPLOAD YOUR FILES</h4>
+        <ol>
+          <li>In your new repository, click <strong>Add file</strong> &rarr; <strong>Upload files</strong></li>
+          <li>Drag your <strong>index.html</strong> and <strong>photo.jpg</strong> into the upload area</li>
+          <li>Scroll down and click <strong>Commit changes</strong></li>
+          <li>Your files are now stored on GitHub!</li>
+        </ol>
+      </div>
+
+      <div class="task-box">
+        <h4>PART C &mdash; DEPLOY WITH VERCEL</h4>
+        <ol>
+          <li>Go to <strong><a href="https://vercel.com" style="color:var(--indigo)">vercel.com</a></strong> and click <strong>Sign Up</strong></li>
+          <li>Choose <strong>"Continue with GitHub"</strong> &mdash; this connects your accounts</li>
+          <li>Click <strong>Add New Project</strong></li>
+          <li>Find your repository (e.g., <strong>my-brand</strong>) and click <strong>Import</strong></li>
+          <li>Leave all settings as default and click <strong>Deploy</strong></li>
+          <li>Wait 30 seconds &mdash; your page is now live!</li>
+        </ol>
+      </div>
+
+      <div class="tip-box">
+        <h4>YOUR LIVE URL</h4>
+        <p>
+          Vercel gives you a URL like <code>my-brand.vercel.app</code>.
+          Share this on LinkedIn right away! You can add a custom domain
+          (like <code>yourname.com</code>) later in Vercel's project settings.
+        </p>
+      </div>
+
+      <div class="tip-box">
+        <h4>WHY GITHUB + VERCEL?</h4>
+        <p>
+          This setup is powerful: every time you update your files on GitHub,
+          Vercel automatically rebuilds and deploys your site. No manual uploads,
+          no FTP &mdash; just push your changes and they're live in seconds.
+          It's the same workflow used by professional developers.
+        </p>
+      </div>
+
+      <div class="tip-box">
+        <h4>UPDATING YOUR PAGE LATER</h4>
+        <p>
+          To make changes: go to your repository on GitHub, click on <strong>index.html</strong>,
+          click the pencil icon to edit, make your changes, and click <strong>Commit changes</strong>.
+          Vercel will automatically deploy the update within seconds.
+        </p>
+      </div>
+    </div>
+
+    <!-- BRANDXAI SECTION -->
+    <div class="brandx-section" id="brandx">
+      <div class="brandx-card">
+        <div class="step-number">WHAT'S NEXT</div>
+        <h2>You did it the hard way.<br/>Now meet <span>BrandxAI.</span></h2>
+        <p class="tagline">
+          Everything you just did in 60 minutes &mdash; the interview, the design, the code, the deployment &mdash;
+          automated into a single guided experience.
+        </p>
+
+        <div class="tiers">
+          <div class="tier-card">
+            <div class="tier-name">DIY</div>
+            <div class="tier-desc">What you just learned &mdash; free forever</div>
+            <ul class="tier-features">
+              <li>Use AI prompts yourself</li>
+              <li>Generate your own HTML</li>
+              <li>Deploy to free hosting</li>
+              <li>Full control, full effort</li>
+            </ul>
+          </div>
+          <div class="tier-card featured">
+            <div class="tier-name">BrandxAI Guided</div>
+            <div class="tier-desc">The whole process, streamlined</div>
+            <ul class="tier-features">
+              <li>Guided brand interview</li>
+              <li>Auto-generated design system</li>
+              <li>Professional templates</li>
+              <li>One-click publishing</li>
+              <li>Custom subdomain</li>
+            </ul>
+          </div>
+          <div class="tier-card">
+            <div class="tier-name">Done For You</div>
+            <div class="tier-desc">We build it, you own it</div>
+            <ul class="tier-features">
+              <li>Personal brand consultation</li>
+              <li>Custom design & development</li>
+              <li>Professional photography direction</li>
+              <li>Custom domain setup</li>
+              <li>Ongoing updates & support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="workshop-footer">
+    <p>
+      Workshop by <a href="https://michalfarkas.com">Michal Farkas</a> &nbsp;&middot;&nbsp;
+      Powered by <a href="#">BrandxAI</a> &nbsp;&middot;&nbsp;
+      <a href="https://www.linkedin.com/in/michalfarkas/">Connect on LinkedIn</a>
+    </p>
+  </footer>
+
+  <script>
+    function copyPrompt(btn) {
+      const promptBody = btn.closest('.prompt-box').querySelector('.prompt-body');
+      const text = promptBody.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.style.borderColor = '#10B981';
+        btn.style.color = '#10B981';
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.style.borderColor = '';
+          btn.style.color = '';
+        }, 2000);
+      });
+    }
+
+    // Smooth scroll for nav
+    document.querySelectorAll('.step-nav-item').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
+</body>
+</html>

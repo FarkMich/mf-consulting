@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Michal Farkas — Marketing Specialist & Storyteller</title>
+  <meta name="description" content="AI web consultant, e-commerce specialist, and builder based in Bratislava. 9+ years helping businesses grow online."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --indigo: #6366F1; --indigo-dark: #4338CA; --indigo-light: #EEF2FF;
+      --dark: #0D1117; --navy: #1E293B; --slate: #334155;
+      --gray: #64748B; --light-gray: #94A3B8; --white: #FFFFFF;
+      --emerald: #10B981; --amber: #F59E0B;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--dark); color: var(--white);
+      line-height: 1.6; overflow-x: hidden;
+    }
+    /* Grid background */
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: linear-gradient(var(--navy) 1px, transparent 1px),
+        linear-gradient(90deg, var(--navy) 1px, transparent 1px);
+      background-size: 120px 120px; opacity: 0.4;
+      pointer-events: none; z-index: 0;
+    }
+    /* Left accent bar */
+    body::after {
+      content: ''; position: fixed; left: 0; top: 0;
+      width: 5px; height: 100%; background: var(--indigo); z-index: 100;
+    }
+    section, header, footer, nav { position: relative; z-index: 1; }
+
+    /* FADE ANIMATIONS */
+    .fade-up {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.d1 { transition-delay: 0.1s; }
+    .fade-up.d2 { transition-delay: 0.2s; }
+    .fade-up.d3 { transition-delay: 0.3s; }
+    .fade-up.d4 { transition-delay: 0.4s; }
+
+    /* NAV */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 4rem; border-bottom: 1px solid var(--navy);
+      backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 50;
+      background: rgba(13,17,23,0.88);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .nav-monogram {
+      width: 40px; height: 40px; background: var(--indigo); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 900; color: var(--dark); flex-shrink: 0;
+    }
+    .nav-name { font-size: 14px; font-weight: 700; color: var(--white); }
+    .nav-cta {
+      background: var(--indigo); color: var(--white); padding: 0.6rem 1.5rem;
+      border-radius: 6px; font-size: 13px; font-weight: 700;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--indigo-dark); }
+
+    /* HERO */
+    .hero {
+      padding: 6rem 4rem 4rem; max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 380px;
+      gap: 5rem; align-items: center;
+    }
+    .hero-label {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 3px; color: var(--indigo);
+      border: 1px solid var(--indigo); padding: 0.35rem 1rem;
+      border-radius: 20px; margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900;
+      line-height: 1.12; margin-bottom: 1.5rem;
+    }
+    .hero h1 span { color: var(--indigo); }
+    .hero p {
+      font-size: 1.05rem; color: var(--light-gray);
+      max-width: 500px; margin-bottom: 2.5rem; line-height: 1.7;
+    }
+    .hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--indigo); color: var(--white);
+      padding: 0.9rem 2rem; border-radius: 8px; font-size: 15px; font-weight: 700;
+      text-decoration: none; border: none; cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      transition: background 0.2s, transform 0.1s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--indigo-dark); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      padding: 0.9rem 2rem; border-radius: 8px; font-size: 15px; font-weight: 600;
+      text-decoration: none; border: 1px solid var(--slate);
+      font-family: 'Montserrat', sans-serif;
+      transition: border-color 0.2s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--indigo); }
+
+    /* HERO PHOTO */
+    .hero-photo { position: relative; }
+    .hero-photo img {
+      width: 100%; border-radius: 20px;
+      border: 1px solid var(--slate); display: block;
+    }
+    /* Placeholder when no photo */
+    .photo-placeholder {
+      width: 100%; aspect-ratio: 3/4; border-radius: 20px;
+      border: 1px solid var(--slate); background: var(--navy);
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 0.5rem;
+    }
+    .photo-placeholder .initials {
+      font-size: 4rem; font-weight: 900; color: var(--indigo);
+    }
+    .photo-placeholder .hint {
+      font-size: 11px; color: var(--gray);
+    }
+    .hero-badge {
+      position: absolute; bottom: 1.5rem; left: -1.5rem;
+      background: var(--indigo); border-radius: 12px; padding: 0.75rem 1.25rem;
+    }
+    .hero-badge-num { font-size: 1.6rem; font-weight: 900; line-height: 1; }
+    .hero-badge-label { font-size: 10px; color: rgba(255,255,255,0.75); margin-top: 2px; }
+
+    /* PROOF BAR */
+    .proof {
+      display: flex; align-items: center; justify-content: center;
+      gap: 2rem; padding: 1.75rem 4rem;
+      border-top: 1px solid var(--navy); border-bottom: 1px solid var(--navy);
+      flex-wrap: wrap;
+    }
+    .proof-item { display: flex; align-items: center; gap: 0.5rem; font-size: 13px; color: var(--gray); }
+    .proof-dot { width: 6px; height: 6px; background: var(--emerald); border-radius: 50%; flex-shrink: 0; }
+
+    /* SECTION HELPERS */
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--indigo); margin-bottom: 1rem; }
+    .section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; margin-bottom: 3.5rem; line-height: 1.2; }
+    .section-title span { color: var(--indigo); }
+
+    /* ABOUT */
+    .about {
+      padding: 6rem 4rem; max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .about-photo { background: var(--navy); border: 1px solid var(--slate); border-radius: 16px; overflow: hidden; }
+    .about-photo img { width: 100%; display: block; }
+    .about h2 { font-size: 2rem; font-weight: 900; margin-bottom: 1rem; line-height: 1.2; }
+    .about h2 span { color: var(--indigo); }
+    .about p { font-size: 14px; color: var(--gray); margin-bottom: 1rem; line-height: 1.7; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .about-stat { background: var(--navy); border: 1px solid var(--slate); border-radius: 8px; padding: 1rem; }
+    .about-stat-num { font-size: 1.8rem; font-weight: 900; color: var(--indigo); line-height: 1; margin-bottom: 0.25rem; }
+    .about-stat-label { font-size: 11px; color: var(--gray); }
+
+    /* SKILLS */
+    .skills-list { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+    .skill-tag {
+      background: var(--navy); border: 1px solid var(--slate);
+      color: var(--light-gray); padding: 0.4rem 1rem;
+      border-radius: 20px; font-size: 12px; font-weight: 600;
+      transition: border-color 0.2s;
+    }
+    .skill-tag:hover { border-color: var(--indigo); color: var(--white); }
+
+    /* PROJECTS */
+    .projects { padding: 6rem 4rem; max-width: 1100px; margin: 0 auto; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .project-card {
+      background: var(--navy); border: 1px solid var(--slate);
+      border-radius: 12px; padding: 2.5rem 2rem; position: relative;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .project-card:hover { border-color: var(--indigo); transform: translateY(-3px); }
+    .project-accent {
+      position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+      background: var(--indigo); border-radius: 12px 0 0 12px;
+    }
+    .project-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 0.75rem; }
+    .project-card p { font-size: 13px; color: var(--gray); line-height: 1.6; margin-bottom: 1.25rem; }
+    .project-link {
+      color: var(--indigo); text-decoration: none; font-size: 13px; font-weight: 700;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      transition: gap 0.2s;
+    }
+    .project-link:hover { gap: 0.7rem; }
+
+    /* WORKED WITH */
+    .worked-with { padding: 3rem 4rem; text-align: center; border-top: 1px solid var(--navy); }
+    .worked-with-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--gray); margin-bottom: 1.5rem; }
+    .logos { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .logo-pill {
+      background: var(--navy); border: 1px solid var(--slate); border-radius: 8px;
+      padding: 0.5rem 1.25rem; font-size: 13px; font-weight: 700; color: var(--light-gray);
+    }
+
+    /* CONTACT */
+    .contact { padding: 6rem 4rem; max-width: 700px; margin: 0 auto; text-align: center; }
+    .contact p { font-size: 14px; color: var(--gray); margin-bottom: 2.5rem; line-height: 1.7; }
+    .social-links { display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 2.5rem; }
+    .social-link {
+      width: 48px; height: 48px; border-radius: 8px;
+      background: var(--navy); border: 1px solid var(--slate);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: var(--light-gray);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .social-link:hover { border-color: var(--indigo); color: var(--white); transform: translateY(-2px); }
+    .social-link svg { width: 20px; height: 20px; }
+    .contact-email { font-size: 1.3rem; font-weight: 700; }
+    .contact-email a {
+      color: var(--white); text-decoration: none;
+      border-bottom: 2px solid var(--indigo); padding-bottom: 4px;
+      transition: color 0.2s;
+    }
+    .contact-email a:hover { color: var(--indigo); }
+
+    /* CTA STRIP */
+    .cta-strip { background: var(--indigo); padding: 5rem 4rem; text-align: center; }
+    .cta-strip h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; margin-bottom: 1rem; line-height: 1.2; }
+    .cta-strip p { color: rgba(255,255,255,0.75); margin-bottom: 2rem; font-size: 15px; }
+    .btn-white {
+      background: var(--white); color: var(--indigo-dark);
+      padding: 0.9rem 2.5rem; border-radius: 8px; font-size: 15px; font-weight: 700;
+      text-decoration: none; border: none; cursor: pointer;
+      font-family: 'Montserrat', sans-serif; transition: opacity 0.2s; display: inline-block;
+    }
+    .btn-white:hover { opacity: 0.9; }
+
+    /* FOOTER */
+    footer {
+      padding: 2.5rem 4rem; border-top: 1px solid var(--navy);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem; font-size: 12px; color: var(--gray);
+    }
+    footer a { color: var(--gray); text-decoration: none; }
+    footer a:hover { color: var(--indigo); }
+    .brandx-badge { font-size: 11px; color: var(--gray); }
+    .brandx-badge span { color: var(--indigo); font-weight: 700; }
+
+    @media(max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem 3rem; }
+      .hero-photo { max-width: 300px; margin: 0 auto; order: -1; }
+      .hero-badge { left: 0.5rem; bottom: 0.5rem; }
+    }
+    @media(max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .about { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+      .projects { padding: 4rem 1.5rem; }
+      .contact { padding: 4rem 1.5rem; }
+      .cta-strip { padding: 4rem 1.5rem; }
+      .worked-with { padding: 2rem 1.5rem; }
+      .proof { padding: 1.5rem; gap: 1rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-monogram">MF</div>
+      <span class="nav-name">Michal Farkas</span>
+    </a>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <div class="hero">
+      <div class="fade-up">
+        <div class="hero-label">MARKETING &middot; E-COMMERCE &middot; AI</div>
+        <h1>Marketing specialist.<br/><span>Storyteller.</span><br/>Builder.</h1>
+        <p>9+ years in e-commerce and digital marketing. From Shoptet to Filmzie to my own ventures &mdash; I help brands find their voice and grow online. Now building with AI.</p>
+        <div class="hero-cta-group">
+          <a href="#contact" class="btn-primary">Let's Connect</a>
+          <a href="#projects" class="btn-outline">See My Work</a>
+        </div>
+      </div>
+      <div class="hero-photo fade-up d2">
+        <!-- Replace placeholder with: <img src="photo.jpg" alt="Michal Farkas"/> -->
+        <div class="photo-placeholder">
+          <div class="initials">MF</div>
+          <div class="hint">Your photo here</div>
+        </div>
+        <div class="hero-badge">
+          <div class="hero-badge-num">9+</div>
+          <div class="hero-badge-label">years in e-commerce</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PROOF BAR -->
+  <div class="proof fade-up">
+    <div class="proof-item"><span class="proof-dot"></span>9+ years in e-commerce</div>
+    <div class="proof-item"><span class="proof-dot"></span>Shoptet &middot; Filmzie &middot; FeelAfterglow</div>
+    <div class="proof-item"><span class="proof-dot"></span>Bratislava, Slovakia</div>
+    <div class="proof-item"><span class="proof-dot"></span>Building with AI since 2026</div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-photo fade-up">
+      <!-- Replace placeholder with: <img src="photo.jpg" alt="Michal Farkas"/> -->
+      <div class="photo-placeholder" style="aspect-ratio:1/1;">
+        <div class="initials">MF</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label fade-up">ABOUT</div>
+      <h2 class="fade-up">9 years in e-commerce.<br/><span>Now building with AI.</span></h2>
+      <p class="fade-up">I started my first e-shop in 2016. Since then I led marketing at Filmzie &mdash; a movie streaming startup &mdash; and ran the Slovak marketing team at Shoptet, one of Central Europe's biggest e-commerce platforms.</p>
+      <p class="fade-up">Today I'm building my own supplement brand FeelAfterglow, helping grow the E-commerce Day private club for Slovak e-shop owners, and building marketing foundations for Polystate.io &mdash; a platform for sovereign individuals and digital nomads.</p>
+      <div class="skills-list fade-up">
+        <span class="skill-tag">E-commerce Strategy</span>
+        <span class="skill-tag">PPC & Performance</span>
+        <span class="skill-tag">Brand Storytelling</span>
+        <span class="skill-tag">AI & Automation</span>
+        <span class="skill-tag">SEO</span>
+        <span class="skill-tag">Content Marketing</span>
+        <span class="skill-tag">Team Leadership</span>
+      </div>
+      <div class="about-stats fade-up">
+        <div class="about-stat"><div class="about-stat-num">9+</div><div class="about-stat-label">Years in e-commerce</div></div>
+        <div class="about-stat"><div class="about-stat-num">SK/CZ</div><div class="about-stat-label">Primary markets</div></div>
+        <div class="about-stat"><div class="about-stat-num">Days</div><div class="about-stat-label">Not months, to launch</div></div>
+        <div class="about-stat"><div class="about-stat-num">AI</div><div class="about-stat-label">Powered delivery</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="section-label fade-up">PROJECTS</div>
+    <h2 class="section-title fade-up">What I'm <span>working on.</span></h2>
+    <div class="projects-grid">
+      <div class="project-card fade-up d1">
+        <div class="project-accent"></div>
+        <h3>FeelAfterglow</h3>
+        <p>My own supplement brand focused on wellness and recovery. Building the brand, the e-shop, and the community from the ground up.</p>
+        <a href="#" class="project-link">Learn more &rarr;</a>
+      </div>
+      <div class="project-card fade-up d2">
+        <div class="project-accent"></div>
+        <h3>E-commerce Day</h3>
+        <p>A private club for Slovak e-shop owners. Knowledge sharing, networking, and real talk about running an online business.</p>
+        <a href="#" class="project-link">Learn more &rarr;</a>
+      </div>
+      <div class="project-card fade-up d3">
+        <div class="project-accent"></div>
+        <h3>Polystate.io</h3>
+        <p>Building marketing foundations for a platform that serves sovereign individuals and digital nomads worldwide.</p>
+        <a href="#" class="project-link">Learn more &rarr;</a>
+      </div>
+      <div class="project-card fade-up d4">
+        <div class="project-accent"></div>
+        <h3>AI Web Consulting</h3>
+        <p>Helping entrepreneurs launch their online presence &mdash; from personal brand pages to multi-page websites &mdash; using AI tools. Fast, affordable, no agency overhead.</p>
+        <a href="https://consulting.michalfarkas.com" class="project-link">Visit site &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKED WITH -->
+  <section class="worked-with fade-up">
+    <div class="worked-with-label">EXPERIENCE FROM</div>
+    <div class="logos">
+      <div class="logo-pill">Shoptet</div>
+      <div class="logo-pill">Filmzie</div>
+      <div class="logo-pill">FeelAfterglow</div>
+      <div class="logo-pill">Polystate.io</div>
+      <div class="logo-pill">E-commerce Day</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-label fade-up">GET IN TOUCH</div>
+    <h2 class="section-title fade-up" style="text-align:center;">Let's build something <span>together.</span></h2>
+    <p class="fade-up">Whether you need help with your e-commerce marketing, want to build your personal brand, or just want to chat about AI &mdash; I'd love to hear from you.</p>
+    <div class="social-links fade-up">
+      <a href="https://www.linkedin.com/in/michalfarkas/" class="social-link" title="LinkedIn" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+      <a href="https://michalfarkas.com" class="social-link" title="Website" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+        </svg>
+      </a>
+      <a href="mailto:hello@michalfarkas.com" class="social-link" title="Email" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="M22 4l-10 8L2 4"/>
+        </svg>
+      </a>
+    </div>
+    <div class="contact-email fade-up">
+      <a href="mailto:hello@michalfarkas.com">hello@michalfarkas.com</a>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="cta-strip fade-up">
+    <h2>Let's talk about your brand.<br/>Or anything e-commerce.</h2>
+    <p>Book a free call or drop me a message &mdash; no commitment, just clarity.</p>
+    <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" class="btn-white">Book a Free Call</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>&copy; 2026 Michal Farkas &middot; <a href="https://michalfarkas.com">michalfarkas.com</a></span>
+    <span class="brandx-badge">Built with <span>BrandxAI</span></span>
+    <span><a href="mailto:hello@michalfarkas.com">hello@michalfarkas.com</a></span>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

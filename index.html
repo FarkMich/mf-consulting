@@ -11,8 +11,8 @@
   </script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI-powered websites, built in days - Michal Farkas</title>
-  <meta name="description" content="From personal brand pages to multi-page websites - I build and launch your online presence using AI. Fast, affordable, no agency overhead."/>
+  <title>Personal branding with AI - Michal Farkas</title>
+  <meta name="description" content="Build your personal brand page or discover your brand identity with AI. Fast, affordable, secure. From €99."/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZm9udC1mYW1pbHk9Ik1vbnRzZXJyYXQsIEFyaWFsLCBzYW5zLXNlcmlmIj4KICA8IS0tIERhcmsgYmFja2dyb3VuZCAtLT4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzBGMTcyQSIvPgogIDwhLS0gSW5kaWdvIGFjY2VudCBzcXVhcmUgcm90YXRlZCAtLT4KICA8cmVjdCB4PSI2MCIgeT0iNjAiIHdpZHRoPSIyODAiIGhlaWdodD0iMjgwIiByeD0iMzIiIGZpbGw9IiM2MzY2RjEiLz4KICA8IS0tIElubmVyIGRhcmsgc3F1YXJlIC0tPgogIDxyZWN0IHg9IjgwIiB5PSI4MCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSIyNDAiIHJ4PSIyNCIgZmlsbD0iIzBGMTcyQSIvPgogIDwhLS0gTUYgbW9ub2dyYW0gLS0+CiAgPHRleHQgeD0iMjAwIiB5PSIyNDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQ4IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iLTYiPk1GPC90ZXh0PgogIDwhLS0gQWNjZW50IGxpbmUgLS0+CiAgPHJlY3QgeD0iMTIwIiB5PSIyOTgiIHdpZHRoPSIxNjAiIGhlaWdodD0iNSIgcng9IjIiIGZpbGw9IiM2MzY2RjEiLz4KPC9zdmc+Cg=="/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet"/>
@@ -131,7 +131,7 @@
     .proof-item { display: flex; align-items: center; gap: 0.5rem; font-size: 13px; color: var(--gray); }
     .proof-dot { width: 6px; height: 6px; background: var(--emerald); border-radius: 50%; flex-shrink: 0; }
 
-    /* VS STRIP - new differentiator section */
+    /* VS STRIP */
     .vs-strip {
       padding: 5rem 4rem; max-width: 1000px; margin: 0 auto;
     }
@@ -219,16 +219,6 @@
       display: flex; align-items: flex-start; gap: 0.6rem;
     }
     .plan-features li::before { content: ''; width: 6px; height: 6px; background: var(--indigo); border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
-    .plan-btn {
-      display: block; width: 100%; text-align: center; padding: 0.9rem;
-      border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer;
-      border: none; font-family: 'Montserrat', sans-serif;
-      transition: background 0.2s, transform 0.1s;
-    }
-    .plan-btn-primary { background: var(--indigo); color: var(--white); }
-    .plan-btn-primary:hover { background: var(--indigo-dark); transform: translateY(-1px); }
-    .plan-btn-secondary { background: transparent; color: var(--white); border: 1px solid var(--slate) !important; }
-    .plan-btn-secondary:hover { border-color: var(--indigo) !important; }
 
     /* WORKED WITH */
     .worked-with { padding: 3rem 4rem; text-align: center; border-top: 1px solid var(--navy); }
@@ -294,41 +284,6 @@
     footer a { color: var(--gray); text-decoration: none; }
     footer a:hover { color: var(--indigo); }
 
-    /* MODAL */
-    .modal-overlay {
-      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.78);
-      z-index: 200; align-items: center; justify-content: center; padding: 2rem;
-    }
-    .modal-overlay.active { display: flex; }
-    .modal {
-      background: var(--navy); border: 1px solid var(--slate);
-      border-radius: 16px; padding: 2.5rem; max-width: 480px; width: 100%; position: relative;
-    }
-    .modal-close { position: absolute; top: 1rem; right: 1.25rem; background: none; border: none; color: var(--gray); font-size: 22px; cursor: pointer; line-height: 1; }
-    .modal h3 { font-size: 1.4rem; font-weight: 900; margin-bottom: 0.5rem; }
-    .modal-plan-name { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--indigo); margin-bottom: 1.5rem; }
-    .modal-price { font-size: 2.5rem; font-weight: 900; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--slate); }
-    .modal-price sup { font-size: 1.2rem; }
-    .form-group { margin-bottom: 1rem; }
-    .form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--light-gray); margin-bottom: 0.4rem; }
-    .form-group input {
-      width: 100%; background: var(--dark); border: 1px solid var(--slate);
-      border-radius: 6px; padding: 0.75rem 1rem; color: var(--white);
-      font-size: 14px; font-family: 'Montserrat', sans-serif;
-      transition: border-color 0.2s; outline: none;
-    }
-    .form-group input:focus { border-color: var(--indigo); }
-    .modal-submit { width: 100%; margin-top: 1.25rem; }
-    .success-screen { display: none; text-align: center; padding: 1rem 0; }
-    .success-screen.active { display: block; }
-    .modal-form.hidden { display: none; }
-    .success-icon {
-      width: 64px; height: 64px; background: rgba(16,185,129,0.15);
-      border: 2px solid var(--emerald); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1.5rem; font-size: 28px;
-    }
-
     @media(max-width: 900px) {
       .hero { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem 3rem; }
       .hero-photo { max-width: 300px; margin: 0 auto; order: -1; }
@@ -360,9 +315,9 @@
   <header>
     <div class="hero">
       <div class="fade-up">
-        <div class="hero-label">AI-POWERED WEB CONSULTING</div>
-        <h1>Your online presence.<br/><span>Built with AI.</span><br/>Launched in days.</h1>
-        <p>Most people spend months finding an agency, waiting for proposals, and paying €5,000+ for a site they could have had in two weeks. I do it differently - with AI, lean, fast, and built to sell from day one.</p>
+        <div class="hero-label">PERSONAL BRANDING WITH AI</div>
+        <h1>Your personal brand.<br/><span>Built with AI.</span><br/>Live in days.</h1>
+        <p>Whether you need a polished personal brand page or want to discover your brand voice, values, and positioning - I use AI to get you there faster, smarter, and without the agency price tag.</p>
         <div class="hero-cta-group">
           <a href="#pricing" class="btn-primary">See Packages</a>
           <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" class="btn-outline">Book a Free Call</a>
@@ -380,34 +335,34 @@
 
   <!-- PROOF BAR -->
   <div class="proof fade-up">
-    <div class="proof-item"><span class="proof-dot"></span>9+ years in e-commerce</div>
+    <div class="proof-item"><span class="proof-dot"></span>9+ years in marketing & e-commerce</div>
     <div class="proof-item"><span class="proof-dot"></span>Shoptet - Filmzie - FeelAfterglow</div>
-    <div class="proof-item"><span class="proof-dot"></span>AI-built projects since 2026</div>
-    <div class="proof-item"><span class="proof-dot"></span>Bratislava, Slovakia - Remote</div>
+    <div class="proof-item"><span class="proof-dot"></span>AI-powered since 2026</div>
+    <div class="proof-item"><span class="proof-dot"></span>Bratislava, Slovakia</div>
   </div>
 
   <!-- VS SECTION -->
   <section class="vs-strip">
-    <div class="section-label fade-up">WHY NOT AN AGENCY</div>
-    <h2 class="section-title fade-up">Agencies charge thousands and take months.<br/>There's a smarter way.</h2>
+    <div class="section-label fade-up">WHY THIS MATTERS</div>
+    <h2 class="section-title fade-up">Most people skip personal branding.<br/>Then wonder why nobody finds them.</h2>
     <div class="vs-grid">
       <div class="vs-card them fade-up d1">
-        <div class="vs-card-label">TRADITIONAL AGENCY</div>
-        <div class="vs-item bad">3-6 months to go live</div>
-        <div class="vs-item bad">€3,000 - €10,000+ upfront</div>
-        <div class="vs-item bad">You wait, they build on their timeline</div>
-        <div class="vs-item bad">Generic templates, endless revision rounds</div>
-        <div class="vs-item bad">Even a one-pager costs thousands</div>
-        <div class="vs-item bad">You still need to learn everything yourself</div>
+        <div class="vs-card-label">WITHOUT A PERSONAL BRAND</div>
+        <div class="vs-item bad">No online presence beyond a LinkedIn profile</div>
+        <div class="vs-item bad">People Google you and find nothing</div>
+        <div class="vs-item bad">Your expertise is invisible to potential clients</div>
+        <div class="vs-item bad">No clear brand voice - you blend in with everyone</div>
+        <div class="vs-item bad">Agencies charge €2,000+ just for brand strategy</div>
+        <div class="vs-item bad">DIY branding takes months of trial and error</div>
       </div>
       <div class="vs-card us fade-up d2">
         <div class="vs-card-label">WITH MICHAL + AI</div>
-        <div class="vs-item good">One-pager live in 2-3 days, multi-page site in under 7</div>
-        <div class="vs-item good">Transparent pricing from €99</div>
-        <div class="vs-item good">Custom-built for your brand, not a template</div>
-        <div class="vs-item good">Two clear packages - pick what fits</div>
-        <div class="vs-item good">Full handover with walkthrough</div>
-        <div class="vs-item good">Post-launch support included</div>
+        <div class="vs-item good">A professional brand page live in 2-3 days</div>
+        <div class="vs-item good">AI-powered brand discovery - voice, values, positioning</div>
+        <div class="vs-item good">People find you, trust you, reach out</div>
+        <div class="vs-item good">Clear, consistent brand identity across everything</div>
+        <div class="vs-item good">Transparent pricing from €99 - no surprises</div>
+        <div class="vs-item good">Static HTML - fast, secure, no maintenance headaches</div>
       </div>
     </div>
   </section>
@@ -415,8 +370,8 @@
   <!-- BOOK STRIP -->
   <div class="book-strip fade-up">
     <div>
-      <h3>Not sure where to start?</h3>
-      <p>Book a free 30-minute call - no commitment, just clarity on what you actually need.</p>
+      <h3>Not sure which package fits?</h3>
+      <p>Book a free 30-minute call - we'll figure out together what makes sense for you.</p>
     </div>
     <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" class="btn-book">Book a Free Call</a>
   </div>
@@ -424,25 +379,25 @@
   <!-- HOW IT WORKS -->
   <section class="how" id="how">
     <div class="section-label fade-up">PROCESS</div>
-    <h2 class="section-title fade-up">From idea to live<br/>in three steps.</h2>
+    <h2 class="section-title fade-up">Simple, fast, transparent.</h2>
     <div class="steps">
       <div class="step fade-up d1">
         <div class="step-accent"></div>
         <div class="step-num">01</div>
         <h3>Discovery call</h3>
-        <p>We talk about your business, goals, and which package fits. Free, 30 minutes, no commitment - just clarity on what you actually need.</p>
+        <p>We talk about who you are, what you need, and which package fits. Free, 30 minutes, no commitment.</p>
       </div>
       <div class="step fade-up d2">
         <div class="step-accent"></div>
         <div class="step-num">02</div>
         <h3>AI-powered build</h3>
-        <p>I design and build your site using AI tools. You get updates, give feedback, and stay in the loop throughout.</p>
+        <p>I use AI tools to build your brand page or run your brand discovery. You get updates, give feedback, and stay in the loop.</p>
       </div>
       <div class="step fade-up d3">
         <div class="step-accent"></div>
         <div class="step-num">03</div>
-        <h3>Launch & handover</h3>
-        <p>Your site goes live. You get full ownership, a walkthrough of everything, and post-launch support to make sure you're confident running it.</p>
+        <h3>Delivery & handover</h3>
+        <p>You get everything - your brand page goes live on GitHub + Vercel (free, secure hosting), or you receive your full brand strategy document.</p>
       </div>
     </div>
   </section>
@@ -450,39 +405,42 @@
   <!-- PRICING -->
   <section class="pricing" id="pricing">
     <div class="section-label fade-up">PACKAGES</div>
-    <h2 class="section-title fade-up">Two packages. Clear pricing.</h2>
+    <h2 class="section-title fade-up">Two packages. Two different goals.</h2>
     <div class="pricing-grid">
       <div class="plan fade-up d1">
-        <div class="plan-name">ONE-PAGER</div>
+        <div class="plan-name">PERSONAL BRAND ONE-PAGER</div>
         <div style="font-size:0.85rem;font-weight:600;color:var(--gray);margin-bottom:0.15rem;letter-spacing:1px;">FROM</div>
         <div class="plan-price"><sup>€</sup>99</div>
-        <p class="plan-desc">A polished personal brand page that makes you look professional online - perfect for freelancers, consultants, and creators.</p>
+        <p class="plan-desc">A polished personal brand page that makes you look professional online - perfect for freelancers, consultants, and creators who need to be found.</p>
         <ul class="plan-features">
-          <li>Custom one-page design</li>
-          <li>Responsive mobile layout</li>
+          <li>Custom one-page design in HTML</li>
+          <li>Responsive - works on every device</li>
           <li>Personal brand copywriting</li>
+          <li>LinkedIn & social links integration</li>
           <li>Contact form or call-to-action</li>
           <li>Basic SEO setup</li>
-          <li>Domain & hosting guidance</li>
+          <li>Deployed on GitHub + Vercel (free hosting)</li>
+          <li>Full handover with walkthrough</li>
         </ul>
-        <button class="plan-btn plan-btn-secondary" onclick="openModal('One-Pager', '99')">Get Started</button>
+        <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" class="btn-primary" style="display:block;width:100%;text-align:center;padding:0.9rem;font-size:14px;">Book a Free Call</a>
       </div>
       <div class="plan featured fade-up d2">
-        <div class="plan-badge">MOST POPULAR</div>
-        <div class="plan-name">MULTI-PAGE WEBSITE</div>
+        <div class="plan-badge">BRAND STRATEGY</div>
+        <div class="plan-name">BRANDXAI - BUILD YOUR BRAND</div>
         <div style="font-size:0.85rem;font-weight:600;color:var(--gray);margin-bottom:0.15rem;letter-spacing:1px;">FROM</div>
-        <div class="plan-price"><sup>€</sup>199</div>
-        <p class="plan-desc">A multi-page website with contact form, book-a-call integration, and optional payment gateway - everything you need to convert visitors into clients.</p>
+        <div class="plan-price"><sup>€</sup>139</div>
+        <p class="plan-desc">Discover your brand identity with AI. I guide you through a structured process to define your voice, values, positioning, and ideal audience - so everything you do online is clear and consistent.</p>
         <ul class="plan-features">
-          <li>Everything in One-Pager</li>
-          <li>Multi-page site (services, about, contact)</li>
-          <li>Contact form & book-a-call integration</li>
-          <li>Payment gateway add-on available</li>
-          <li>Service descriptions & copy</li>
-          <li>Basic SEO & meta tags</li>
-          <li>1 week post-launch support</li>
+          <li>AI-guided brand discovery session</li>
+          <li>Brand voice & tone definition</li>
+          <li>Core values & brand story</li>
+          <li>Target audience & positioning</li>
+          <li>Visual identity direction (colors, fonts, mood)</li>
+          <li>Competitor landscape overview</li>
+          <li>Complete brand strategy document</li>
+          <li>Actionable next steps for your brand</li>
         </ul>
-        <button class="plan-btn plan-btn-primary" onclick="openModal('Multi-Page Website', '199')">Get Started</button>
+        <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" class="btn-primary" style="display:block;width:100%;text-align:center;padding:0.9rem;font-size:14px;">Book a Free Call</a>
       </div>
     </div>
   </section>
@@ -506,13 +464,13 @@
     </div>
     <div>
       <div class="section-label fade-up">ABOUT</div>
-      <h2 class="fade-up">9 years in e-commerce.<br/><span>Now building with AI.</span></h2>
+      <h2 class="fade-up">9 years in marketing.<br/><span>Now helping you stand out.</span></h2>
       <p class="fade-up">I started my first e-shop in 2016. Since then I led marketing at Filmzie (movie streaming startup) and ran the Slovak marketing team at Shoptet - one of Central Europe's biggest e-commerce platforms.</p>
-      <p class="fade-up">Now I help entrepreneurs launch their online presence - from personal brand pages to multi-page websites - using AI tools that make the process faster and more affordable than any agency.</p>
+      <p class="fade-up">Today I combine everything I've learned about marketing, storytelling, and AI to help professionals build their personal brand. Whether it's a page that represents you online or a full brand strategy that gives you clarity - I make the process fast, affordable, and personal.</p>
       <div class="about-stats fade-up">
-        <div class="about-stat"><div class="about-stat-num">9+</div><div class="about-stat-label">Years in e-commerce</div></div>
-        <div class="about-stat"><div class="about-stat-num">2</div><div class="about-stat-label">Packages to choose from</div></div>
-        <div class="about-stat"><div class="about-stat-num">Days</div><div class="about-stat-label">Not months, to launch</div></div>
+        <div class="about-stat"><div class="about-stat-num">9+</div><div class="about-stat-label">Years in marketing</div></div>
+        <div class="about-stat"><div class="about-stat-num">AI</div><div class="about-stat-label">Powered delivery</div></div>
+        <div class="about-stat"><div class="about-stat-num">Days</div><div class="about-stat-label">Not months</div></div>
         <div class="about-stat"><div class="about-stat-num">SK/CZ</div><div class="about-stat-label">Local market expertise</div></div>
       </div>
     </div>
@@ -523,24 +481,36 @@
     <div class="section-label fade-up">FAQ</div>
     <h2 class="section-title fade-up">Common questions.</h2>
     <div class="faq-item fade-up">
-      <div class="faq-q">Do I need technical knowledge?</div>
-      <div class="faq-a">No. AI handles the technical side. You focus on your business and customers. I build and hand over a site you can run yourself - no coding required.</div>
+      <div class="faq-q">What's the difference between the two packages?</div>
+      <div class="faq-a">The One-Pager is a tangible deliverable - a professional personal brand page that goes live on the internet. BrandxAI is a strategic process - together with AI, we discover your brand voice, values, positioning, and audience. One gives you a page, the other gives you clarity about your entire brand. Many people start with BrandxAI and then get the One-Pager built on top of it.</div>
     </div>
     <div class="faq-item fade-up">
-      <div class="faq-q">What platform do you build on?</div>
-      <div class="faq-a">I choose the best stack for your needs - it could be Next.js, Shopify, or a custom solution. We discuss the right approach on the discovery call based on your product and goals.</div>
+      <div class="faq-q">Do I need any technical knowledge?</div>
+      <div class="faq-a">None at all. I handle all the technical work. Your brand page is built in clean HTML - no complicated platforms, no plugins to update, no databases to manage. You get a walkthrough of everything so you understand how to make small edits yourself if you want to.</div>
     </div>
     <div class="faq-item fade-up">
-      <div class="faq-q">How fast is "days, not months"?</div>
-      <div class="faq-a">One-pager: 2-3 days. Multi-page website: 5-7 days.</div>
+      <div class="faq-q">Is my page secure?</div>
+      <div class="faq-a">Yes. Your page is static HTML hosted on Vercel with free SSL (HTTPS). Because there's no server-side code, no database, and no login system, there's essentially nothing to hack. It's one of the most secure approaches to having a website. Your contact form runs through a secure third-party service, so no data is stored on the page itself.</div>
     </div>
     <div class="faq-item fade-up">
-      <div class="faq-q">Can you work with my existing site?</div>
-      <div class="faq-a">Yes - I can audit, redesign, or migrate what you already have. A discovery call is the best place to start and figure out what makes sense.</div>
+      <div class="faq-q">Where is my page hosted?</div>
+      <div class="faq-a">Your code lives on GitHub (version-controlled, you own it) and the page is served by Vercel - both are free. Vercel provides automatic HTTPS, global CDN, and instant deploys. If you ever want to move it somewhere else, you can - it's just an HTML file.</div>
     </div>
     <div class="faq-item fade-up">
-      <div class="faq-q">Do you work with Slovak and Czech clients?</div>
-      <div class="faq-a">Yes - most of my clients are from SK/CZ. I know the local platforms, payment providers, logistics options, and market specifics.</div>
+      <div class="faq-q">How fast can I get my page live?</div>
+      <div class="faq-a">A personal brand one-pager is typically delivered in 2-3 days. The BrandxAI brand discovery process takes about a week, depending on your availability for the guided sessions.</div>
+    </div>
+    <div class="faq-item fade-up">
+      <div class="faq-q">Can I add a custom domain?</div>
+      <div class="faq-a">Yes. Vercel supports custom domains for free. I can help you set up yourname.com or any domain you own. Until then, your page is live on a clean .vercel.app URL that you can share right away.</div>
+    </div>
+    <div class="faq-item fade-up">
+      <div class="faq-q">What do I get with the BrandxAI package?</div>
+      <div class="faq-a">You get a complete brand strategy document that includes your brand voice and tone, core values, brand story, target audience profiles, market positioning, visual identity direction (colors, fonts, mood), and actionable next steps. Think of it as the blueprint for everything you do online - from social media to your website to how you introduce yourself.</div>
+    </div>
+    <div class="faq-item fade-up">
+      <div class="faq-q">Can I update my page after it's live?</div>
+      <div class="faq-a">Absolutely. Your page is on GitHub, so you can edit the HTML directly through the browser - no special software needed. When you save changes, Vercel automatically deploys the update within seconds. I walk you through this process during handover.</div>
     </div>
   </section>
 
@@ -548,7 +518,7 @@
   <section class="contact" id="contact">
     <div class="section-label fade-up">CONTACT</div>
     <h2 class="section-title fade-up">Get in touch.</h2>
-    <p class="fade-up" style="color:var(--gray);font-size:14px;margin-bottom:2rem;text-align:center;">Have a question or ready to start? Drop me a message and I'll get back to you within 24 hours.</p>
+    <p class="fade-up" style="color:var(--gray);font-size:14px;margin-bottom:2rem;text-align:center;">Have a question or ready to start? Drop me a message and I'll get back to you within 24 hours. Or <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" style="color:var(--indigo);font-weight:700;">book a free call directly</a>.</p>
     <div class="fade-up">
       <iframe data-tally-src="https://tally.so/embed/RGJWlK?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="300" title="Contact form"></iframe>
       <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}</script>
@@ -557,8 +527,8 @@
 
   <!-- CTA STRIP -->
   <section class="cta-strip fade-up">
-    <h2>You don't need an agency.<br/>You need a partner who builds fast.</h2>
-    <p>Pick a package or book a free discovery call - no commitment.</p>
+    <h2>Your brand deserves to be seen.<br/>Let's make it happen.</h2>
+    <p>Book a free discovery call or pick a package - no commitment, just clarity.</p>
     <div class="cta-btns">
       <button class="btn-white" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">See Packages</button>
       <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" class="btn-white-outline">Book a Free Call</a>
@@ -567,72 +537,16 @@
 
   <!-- FOOTER -->
   <footer>
-    <span>© 2026 Michal Farkas - <a href="https://michalfarkas.com">michalfarkas.com</a></span>
-    <span><a href="/about">About</a> &nbsp;·&nbsp; <a href="/terms">Terms</a> &nbsp;·&nbsp; <a href="/returns">Returns</a></span>
+    <span>&copy; 2026 Michal Farkas - <a href="https://michalfarkas.com">michalfarkas.com</a></span>
+    <span><a href="/about">About</a> &nbsp;&middot;&nbsp; <a href="/terms">Terms</a> &nbsp;&middot;&nbsp; <a href="/returns">Returns</a></span>
     <span><a href="mailto:hello@michalfarkas.com">hello@michalfarkas.com</a></span>
   </footer>
-
-  <!-- MODAL -->
-  <div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal()">x</button>
-      <div class="modal-form" id="modalForm">
-        <div class="modal-plan-name" id="modalPlanName">ONE-PAGER</div>
-        <h3 id="modalTitle">Let's get started</h3>
-        <div class="modal-price"><sup>€</sup><span id="modalPrice">99</span></div>
-        <div class="form-group">
-          <label>Full name</label>
-          <input type="text" id="fieldName" placeholder="Jan Novak"/>
-        </div>
-        <div class="form-group">
-          <label>Email address</label>
-          <input type="email" id="fieldEmail" placeholder="jan@example.com"/>
-        </div>
-        <div class="form-group">
-          <label>Your website or business (optional)</label>
-          <input type="text" id="fieldBusiness" placeholder="myshop.sk"/>
-        </div>
-        <button class="btn-primary plan-btn modal-submit" onclick="handleCheckout()">Confirm & Pay</button>
-        <p style="font-size:11px;color:#475569;text-align:center;margin-top:0.75rem;">
-          Or <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" style="color:#6366F1;">book a free call first</a>
-        </p>
-      </div>
-      <div class="success-screen" id="successScreen">
-        <div class="success-icon">v</div>
-        <h3 style="margin-bottom:0.5rem;">You're in!</h3>
-        <p style="color:#64748B;font-size:14px;margin-bottom:1.5rem;">
-          I'll be in touch within 24 hours to confirm your booking and next steps.
-        </p>
-        <button class="btn-primary" onclick="closeModal()" style="width:100%;">Close</button>
-      </div>
-    </div>
-  </div>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    function openModal(plan, price) {
-      document.getElementById('modalPlanName').textContent = plan.toUpperCase();
-      document.getElementById('modalTitle').textContent = plan + ' Package';
-      document.getElementById('modalPrice').textContent = price;
-      document.getElementById('modal').classList.add('active');
-      document.getElementById('modalForm').classList.remove('hidden');
-      document.getElementById('successScreen').classList.remove('active');
-    }
-    function closeModal() { document.getElementById('modal').classList.remove('active'); }
-    function handleCheckout() {
-      const name = document.getElementById('fieldName').value.trim();
-      const email = document.getElementById('fieldEmail').value.trim();
-      if (!name || !email) { alert('Please fill in your name and email.'); return; }
-      if (!email.includes('@')) { alert('Please enter a valid email.'); return; }
-      // Production: window.location.href = 'https://buy.stripe.com/YOUR_LINK';
-      document.getElementById('modalForm').classList.add('hidden');
-      document.getElementById('successScreen').classList.add('active');
-    }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
   </script>
 </body>
 </html>
