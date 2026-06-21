@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RTH8DZ813C"></script>
@@ -11,50 +11,23 @@
   </script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About - Michal Farkas | AI Web Consultant</title>
+  <title>O mne — Michal Farkaš | Marketing, e-commerce a AI</title>
+  <meta name="description" content="Michal Farkaš — 10 rokov v marketingu a e-commerce. Co-founder & CMO Afterglow, ex-Shoptet a Filmzie. Lektor 3 webinárov na Digitálnej univerzite."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --indigo: #6366F1; --indigo-dark: #4338CA; --indigo-light: #EEF2FF;
-      --dark: #0D1117; --navy: #1E293B; --slate: #334155;
-      --gray: #64748B; --light-gray: #94A3B8; --white: #FFFFFF;
-      --emerald: #10B981;
-    }
+    :root { --indigo: #6366F1; --indigo-dark: #4338CA; --dark: #0D1117; --navy: #1E293B; --slate: #334155; --gray: #64748B; --light-gray: #94A3B8; --white: #FFFFFF; --emerald: #10B981; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: var(--dark); color: var(--white);
-      line-height: 1.6; overflow-x: hidden;
-    }
-    body::before {
-      content: ''; position: fixed; inset: 0;
-      background-image: linear-gradient(var(--navy) 1px, transparent 1px), linear-gradient(90deg, var(--navy) 1px, transparent 1px);
-      background-size: 120px 120px; opacity: 0.4; pointer-events: none; z-index: 0;
-    }
-    body::after {
-      content: ''; position: fixed; left: 0; top: 0;
-      width: 5px; height: 100%; background: var(--indigo); z-index: 100;
-    }
+    body { font-family: 'Montserrat', Arial, sans-serif; background: var(--dark); color: var(--white); line-height: 1.6; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(var(--navy) 1px, transparent 1px), linear-gradient(90deg, var(--navy) 1px, transparent 1px); background-size: 120px 120px; opacity: 0.4; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; left: 0; top: 0; width: 5px; height: 100%; background: var(--indigo); z-index: 100; }
     section, header, footer, main { position: relative; z-index: 1; }
-    nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.25rem 4rem; border-bottom: 1px solid var(--navy);
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(13,17,23,0.85); backdrop-filter: blur(10px);
-    }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 4rem; border-bottom: 1px solid var(--navy); position: sticky; top: 0; z-index: 50; background: rgba(13,17,23,0.85); backdrop-filter: blur(10px); }
     .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-    .nav-monogram {
-      width: 40px; height: 40px; background: var(--indigo); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 900; color: var(--dark); flex-shrink: 0;
-    }
+    .nav-monogram { width: 40px; height: 40px; background: var(--indigo); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; color: var(--dark); flex-shrink: 0; }
     .nav-name { font-size: 14px; font-weight: 700; color: var(--white); }
-    .nav-cta {
-      background: var(--indigo); color: var(--white); padding: 0.6rem 1.5rem;
-      border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background 0.2s;
-    }
+    .nav-cta { background: var(--indigo); color: var(--white); padding: 0.6rem 1.5rem; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
     .nav-cta:hover { background: var(--indigo-dark); }
     .page-hero { padding: 5rem 4rem 3rem; max-width: 800px; margin: 0 auto; }
     .section-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--indigo); margin-bottom: 1rem; }
@@ -64,101 +37,86 @@
     .content { max-width: 800px; margin: 0 auto; padding: 0 4rem 5rem; }
     h2.content-h { font-size: 1.2rem; font-weight: 700; color: var(--white); margin: 2.5rem 0 0.75rem; }
     p.content-p { font-size: 14px; color: var(--gray); line-height: 1.8; margin-bottom: 0.75rem; }
-    ul.content-ul { padding-left: 1.25rem; margin-bottom: 0.75rem; }
-    ul.content-ul li { font-size: 14px; color: var(--gray); line-height: 1.8; margin-bottom: 0.25rem; }
-    .divider { height: 1px; background: var(--navy); margin: 2rem 0; }
-    footer {
-      padding: 2.5rem 4rem; border-top: 1px solid var(--navy);
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 1rem; font-size: 12px; color: var(--gray);
-    }
+    .webinars { display:grid; gap:1rem; margin-top:1rem; }
+    .web-card { background:var(--navy); border:1px solid var(--slate); border-radius:12px; padding:1.25rem 1.5rem; display:flex; gap:1rem; align-items:flex-start; }
+    .web-card .n { font-size:13px; font-weight:900; color:var(--indigo); flex-shrink:0; width:1.6rem; }
+    .web-card h3 { font-size:15px; font-weight:700; margin-bottom:.2rem; }
+    .web-card p { font-size:13px; color:var(--gray); }
+    .web-card .tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:1px; color:var(--indigo); margin-top:.4rem; }
+    .divider { height: 1px; background: var(--navy); margin: 2.5rem 0; }
+    .stats { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2rem; }
+    .stat { background:var(--navy); border:1px solid var(--slate); border-radius:8px; padding:1rem; }
+    .stat .num { font-size:1.8rem; font-weight:900; color:var(--indigo); line-height:1; }
+    .stat .lbl { font-size:11px; color:var(--gray); margin-top:0.25rem; }
+    footer { padding: 2.5rem 4rem; border-top: 1px solid var(--navy); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 12px; color: var(--gray); }
     footer a { color: var(--gray); text-decoration: none; }
     footer a:hover { color: var(--indigo); }
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .page-hero, .content { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .stats { grid-template-columns: 1fr 1fr; }
       footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
     }
-</style>
+  </style>
 </head>
 <body>
   <nav>
     <a href="/" class="nav-logo">
       <div class="nav-monogram">MF</div>
-      <span class="nav-name">Michal Farkas</span>
+      <span class="nav-name">Michal Farkaš</span>
     </a>
-    <a href="/" class="nav-cta">← Back to Shop</a>
+    <a href="/#registracia" class="nav-cta">Registrovať na webinár</a>
   </nav>
 
   <header class="page-hero">
-    <div class="section-label">ABOUT</div>
-    <h1>I help businesses<br/><span>launch online</span> with AI.</h1>
-    <p>AI web consultant, e-commerce specialist, and builder based in Bratislava.</p>
+    <div class="section-label">O MNE</div>
+    <h1>Pomáham firmám <span>šetriť čas</span> s AI.</h1>
+    <p>Marketér a e-commerce špecialista z Bratislavy. 10 rokov v praxi — dnes s pomocou AI.</p>
   </header>
 
   <main class="content">
-    <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:3rem;align-items:start;margin-bottom:3rem;">
+    <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:3rem;align-items:start;margin-bottom:2rem;">
       <div>
-        <img
-          src="img/photo-06ab8efe.jpg"
-          alt="Michal Farkas"
-          style="width:100%;border-radius:16px;border:1px solid #334155;display:block;"
-        />
+        <img src="img/photo-06ab8efe.jpg" alt="Michal Farkaš" style="width:100%;border-radius:16px;border:1px solid #334155;display:block;"/>
       </div>
       <div>
-        <h2 class="content-h" style="margin-top:0;">Michal Farkas</h2>
-        <p class="content-p" style="color:#6366F1;font-weight:600;font-size:13px;margin-bottom:1.25rem;">AI Web Consultant &amp; E-commerce Specialist</p>
-        <p class="content-p">I've been working in e-commerce and digital marketing since 2016 - when I launched my first e-shop. Since then I've helped build e-commerce and SaaS projects across Slovakia, Czech Republic, and Europe.</p>
-        <p class="content-p">From 2019 to 2022 I led marketing at <strong style="color:#fff;">Filmzie</strong> - a movie streaming platform startup. Between 2023 and 2025 I led the Slovak marketing team at <strong style="color:#fff;">Shoptet</strong> - one of Central Europe's leading e-commerce platforms.</p>
-        <p class="content-p">Today I'm focused on building my own supplement brand <strong style="color:#fff;">FeelAfterglow</strong>, helping grow the <strong style="color:#fff;">E-commerce Day</strong> private club for Slovak e-shop owners, and building marketing foundations for <strong style="color:#fff;">Polystate.io</strong> - a platform for sovereign individuals and digital nomads.</p>
-        <p class="content-p">In 2026, I started building websites using AI tools. What used to take an agency months and thousands of euros, I can now deliver in days. Today I offer two clear packages: personal brand one-pagers and multi-page websites with forms, booking, and optional payment integration.</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;">
-          <div style="background:#1E293B;border:1px solid #334155;border-radius:8px;padding:1rem;">
-            <div style="font-size:1.8rem;font-weight:900;color:#6366F1;line-height:1;">9+</div>
-            <div style="font-size:11px;color:#64748B;margin-top:0.25rem;">Years in e-commerce</div>
-          </div>
-          <div style="background:#1E293B;border:1px solid #334155;border-radius:8px;padding:1rem;">
-            <div style="font-size:1.8rem;font-weight:900;color:#6366F1;line-height:1;">Days</div>
-            <div style="font-size:11px;color:#64748B;margin-top:0.25rem;">To launch your website</div>
-          </div>
-          <div style="background:#1E293B;border:1px solid #334155;border-radius:8px;padding:1rem;">
-            <div style="font-size:1.8rem;font-weight:900;color:#6366F1;line-height:1;">SK/CZ</div>
-            <div style="font-size:11px;color:#64748B;margin-top:0.25rem;">Primary markets</div>
-          </div>
-          <div style="background:#1E293B;border:1px solid #334155;border-radius:8px;padding:1rem;">
-            <div style="font-size:1.8rem;font-weight:900;color:#6366F1;line-height:1;">AI</div>
-            <div style="font-size:11px;color:#64748B;margin-top:0.25rem;">Powered delivery</div>
-          </div>
+        <h2 class="content-h" style="margin-top:0;">Michal Farkaš</h2>
+        <p class="content-p" style="color:#6366F1;font-weight:600;font-size:13px;margin-bottom:1.25rem;">Marketing &amp; e-commerce · Co-founder &amp; CMO Afterglow</p>
+        <p class="content-p">V e-commerce a digitálnom marketingu pôsobím od roku 2016, keď som rozbehol svoj prvý e-shop. Odvtedy som pomáhal stavať e-commerce a SaaS projekty na Slovensku, v Česku a v Európe.</p>
+        <p class="content-p">V rokoch 2019–2022 som viedol marketing v startupe <strong style="color:#fff;">Filmzie</strong> — platforme na filmový streaming. Medzi 2023–2025 som viedol slovenský marketingový tím v <strong style="color:#fff;">Shoptete</strong> — jednej z najväčších e-commerce platforiem v strednej Európe.</p>
+        <p class="content-p">Dnes naplno staviam vlastnú značku doplnkov <strong style="color:#fff;">Afterglow</strong> (co-founder &amp; CMO), kde marketing, obsah aj nový e-shop robíme s pomocou AI.</p>
+        <p class="content-p">Od roku 2026 staviam aj weby pomocou AI — čo kedysi trvalo agentúre mesiace, dnes zvládnem za dni.</p>
+        <div class="stats">
+          <div class="stat"><div class="num">10</div><div class="lbl">rokov v marketingu a e-commerce</div></div>
+          <div class="stat"><div class="num">3</div><div class="lbl">webináre na Digitálnej univerzite</div></div>
+          <div class="stat"><div class="num">SK/CZ</div><div class="lbl">primárne trhy</div></div>
+          <div class="stat"><div class="num">AI</div><div class="lbl">denne v praxi</div></div>
         </div>
       </div>
     </div>
 
     <div class="divider"></div>
 
-    <h2 class="content-h">What I offer</h2>
-    <p class="content-p">I offer two AI-built packages for entrepreneurs and businesses who want to launch or upgrade their online presence - fast and without agency overhead.</p>
-    <ul class="content-ul">
-      <li><strong style="color:#fff;">Personal Brand One-Pager (from €99)</strong> - A polished single-page site for freelancers, consultants, and creators who need a professional online presence</li>
-      <li><strong style="color:#fff;">Multi-Page Website (from €199)</strong> - A multi-page site with contact form, book-a-call integration, and optional payment gateway add-on</li>
-    </ul>
+    <h2 class="content-h">Webináre na Digitálnej univerzite</h2>
+    <p class="content-p">Na <strong style="color:#fff;">Digitálnej univerzite</strong> som viedol tri webináre — vždy prakticky a pre ľudí, ktorí chcú reálne výsledky, nie teóriu.</p>
+    <div class="webinars">
+      <div class="web-card"><div class="n">01</div><div><h3>Budovanie značky (brand) s pomocou AI</h3><p>Ako si ujasniť hlas značky, hodnoty a positioning — a využiť pritom AI.</p><span class="tag">DIGITÁLNA UNIVERZITA</span></div></div>
+      <div class="web-card"><div class="n">02</div><div><h3>E-commerce prakticky</h3><p>Ako rozbehnúť a rásť v e-commerce — od základov po marketing.</p><span class="tag">DIGITÁLNA UNIVERZITA</span></div></div>
+      <div class="web-card"><div class="n">03</div><div><h3>Postav si web pomocou AI</h3><p>Od prvého promptu po nasadenú stránku na internete — bez vývojárov.</p><span class="tag">DIGITÁLNA UNIVERZITA</span></div></div>
+    </div>
 
     <div class="divider"></div>
 
-    <div style="text-align:center;padding:2rem 0;">
-      <a href="/" style="display:inline-block;background:#6366F1;color:#fff;padding:0.9rem 2.5rem;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;transition:background 0.2s;">See Packages →</a>
-      <p style="margin-top:1rem;font-size:13px;color:#64748B;">Or reach out directly at <a href="mailto:hello@michalfarkas.com" style="color:#6366F1;">hello@michalfarkas.com</a></p>
+    <div style="text-align:center;padding:1rem 0 2rem;">
+      <a href="/#registracia" style="display:inline-block;background:#6366F1;color:#fff;padding:0.9rem 2.5rem;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;">Zarezervovať miesto na webinár →</a>
+      <p style="margin-top:1rem;font-size:13px;color:#64748B;">Alebo napíš priamo na <a href="mailto:hello@michalfarkas.com" style="color:#6366F1;">hello@michalfarkas.com</a></p>
     </div>
   </main>
 
   <footer>
-    <span>© 2026 Michal Farkas · <a href="https://michalfarkas.com">michalfarkas.com</a></span>
-    <span>
-      <a href="/about">About</a> &nbsp;·&nbsp;
-      <a href="/terms">Terms</a> &nbsp;·&nbsp;
-      <a href="/returns">Returns</a>
-    </span>
+    <span>© 2026 Michal Farkaš · <a href="https://michalfarkas.com">michalfarkas.com</a></span>
+    <span><a href="/about">O mne</a> &nbsp;·&nbsp; <a href="/terms">Podmienky</a></span>
     <span><a href="mailto:hello@michalfarkas.com">hello@michalfarkas.com</a></span>
   </footer>
-
 </body>
 </html>

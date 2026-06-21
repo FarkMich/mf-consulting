@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RTH8DZ813C"></script>
@@ -11,542 +11,339 @@
   </script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Personal branding with AI - Michal Farkas</title>
-  <meta name="description" content="Build your personal brand page or discover your brand identity with AI. Fast, affordable, secure. From €99."/>
+  <title>Bezplatný online webinár: Automatizuj e-shop a marketing pomocou AI - Michal Farkaš</title>
+  <meta name="description" content="Bezplatný online webinár pre ľudí, ktorí AI už používajú, ale tápu v pojmoch, promptovaní a automatizácii. Získaj späť hodiny týždenne. Max 30 miest."/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZm9udC1mYW1pbHk9Ik1vbnRzZXJyYXQsIEFyaWFsLCBzYW5zLXNlcmlmIj4KICA8IS0tIERhcmsgYmFja2dyb3VuZCAtLT4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzBGMTcyQSIvPgogIDwhLS0gSW5kaWdvIGFjY2VudCBzcXVhcmUgcm90YXRlZCAtLT4KICA8cmVjdCB4PSI2MCIgeT0iNjAiIHdpZHRoPSIyODAiIGhlaWdodD0iMjgwIiByeD0iMzIiIGZpbGw9IiM2MzY2RjEiLz4KICA8IS0tIElubmVyIGRhcmsgc3F1YXJlIC0tPgogIDxyZWN0IHg9IjgwIiB5PSI4MCIgd2lkdGg9IjI0MCIgaGVpZ2h0PSIyNDAiIHJ4PSIyNCIgZmlsbD0iIzBGMTcyQSIvPgogIDwhLS0gTUYgbW9ub2dyYW0gLS0+CiAgPHRleHQgeD0iMjAwIiB5PSIyNDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQ4IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iLTYiPk1GPC90ZXh0PgogIDwhLS0gQWNjZW50IGxpbmUgLS0+CiAgPHJlY3QgeD0iMTIwIiB5PSIyOTgiIHdpZHRoPSIxNjAiIGhlaWdodD0iNSIgcng9IjIiIGZpbGw9IiM2MzY2RjEiLz4KPC9zdmc+Cg=="/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --indigo: #6366F1; --indigo-dark: #4338CA; --indigo-light: #EEF2FF;
-      --dark: #0D1117; --navy: #1E293B; --slate: #334155;
-      --gray: #64748B; --light-gray: #94A3B8; --white: #FFFFFF;
-      --emerald: #10B981; --amber: #F59E0B;
+      --indigo:#6366F1; --indigo-2:#818CF8; --indigo-dark:#4338CA;
+      --dark:#0D1117; --navy:#1E293B; --slate:#334155;
+      --gray:#64748B; --light-gray:#94A3B8; --white:#FFFFFF;
+      --emerald:#10B981; --amber:#F59E0B; --pink:#F472B6;
     }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: var(--dark); color: var(--white);
-      line-height: 1.6; overflow-x: hidden;
-    }
-    body::before {
-      content: ''; position: fixed; inset: 0;
-      background-image: linear-gradient(var(--navy) 1px, transparent 1px),
-        linear-gradient(90deg, var(--navy) 1px, transparent 1px);
-      background-size: 120px 120px; opacity: 0.4;
-      pointer-events: none; z-index: 0;
-    }
-    body::after {
-      content: ''; position: fixed; left: 0; top: 0;
-      width: 5px; height: 100%; background: var(--indigo); z-index: 100;
-    }
-    section, header, footer, nav { position: relative; z-index: 1; }
+    body { font-family:'Montserrat',Arial,sans-serif; background:var(--dark); color:var(--white); line-height:1.6; overflow-x:hidden; }
+    body::after { content:''; position:fixed; left:0; top:0; width:5px; height:100%; background:linear-gradient(var(--indigo),var(--indigo-2)); z-index:100; }
+    section, header, footer, nav { position:relative; z-index:1; }
+    .wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
 
     /* NAV */
-    nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.25rem 4rem; border-bottom: 1px solid var(--navy);
-      backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 50;
-      background: rgba(13,17,23,0.88);
-    }
-    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-    .nav-monogram {
-      width: 40px; height: 40px; background: var(--indigo); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 900; color: var(--dark); flex-shrink: 0;
-    }
-    .nav-name { font-size: 14px; font-weight: 700; color: var(--white); }
-    .nav-cta {
-      background: var(--indigo); color: var(--white); padding: 0.6rem 1.5rem;
-      border-radius: 6px; font-size: 13px; font-weight: 700;
-      text-decoration: none; transition: background 0.2s;
-    }
-    .nav-cta:hover { background: var(--indigo-dark); }
+    nav { display:flex; align-items:center; justify-content:space-between; padding:1.1rem 2.5rem; border-bottom:1px solid var(--navy); position:sticky; top:0; z-index:50; background:rgba(13,17,23,0.85); backdrop-filter:blur(10px); }
+    .nav-logo { display:flex; align-items:center; gap:0.75rem; text-decoration:none; }
+    .nav-monogram { width:40px; height:40px; background:var(--indigo); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:900; color:var(--dark); }
+    .nav-name { font-size:14px; font-weight:800; color:var(--white); }
+    .nav-right { display:flex; align-items:center; gap:1.5rem; }
+    .nav-link { color:var(--light-gray); text-decoration:none; font-size:13px; font-weight:600; }
+    .nav-link:hover { color:var(--white); }
+    .nav-cta { background:var(--indigo); color:#fff; padding:0.6rem 1.4rem; border-radius:8px; font-size:13px; font-weight:800; text-decoration:none; transition:.2s; }
+    .nav-cta:hover { background:var(--indigo-dark); }
 
-    /* FADE ANIMATIONS */
-    .fade-up {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .fade-up.d1 { transition-delay: 0.1s; }
-    .fade-up.d2 { transition-delay: 0.2s; }
-    .fade-up.d3 { transition-delay: 0.3s; }
-    .fade-up.d4 { transition-delay: 0.4s; }
+    /* buttons */
+    .btn { font-family:inherit; font-weight:800; cursor:pointer; border:none; text-decoration:none; display:inline-flex; align-items:center; gap:.6rem; border-radius:10px; transition:transform .15s, background .2s, box-shadow .2s; }
+    .btn-primary { background:var(--indigo); color:#fff; padding:1.05rem 2.4rem; font-size:1.05rem; box-shadow:0 10px 30px -8px rgba(99,102,241,.6); }
+    .btn-primary:hover { background:var(--indigo-dark); transform:translateY(-2px); }
+    .btn-ghost { background:transparent; color:#fff; border:1px solid var(--slate); padding:1.05rem 2rem; font-size:1.05rem; }
+    .btn-ghost:hover { border-color:var(--indigo); }
 
-    /* HERO */
-    .hero {
-      padding: 6rem 4rem 4rem; max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 400px;
-      gap: 5rem; align-items: center;
-    }
-    .hero-label {
-      display: inline-block; font-size: 11px; font-weight: 700;
-      letter-spacing: 3px; color: var(--indigo);
-      border: 1px solid var(--indigo); padding: 0.35rem 1rem;
-      border-radius: 20px; margin-bottom: 2rem;
-    }
-    .hero h1 {
-      font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900;
-      line-height: 1.12; margin-bottom: 1.5rem;
-    }
-    .hero h1 span { color: var(--indigo); }
-    .hero p { font-size: 1.05rem; color: var(--light-gray); max-width: 500px; margin-bottom: 2.5rem; line-height: 1.7; }
-    .hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--indigo); color: var(--white);
-      padding: 0.9rem 2rem; border-radius: 8px; font-size: 15px; font-weight: 700;
-      text-decoration: none; border: none; cursor: pointer;
-      font-family: 'Montserrat', sans-serif;
-      transition: background 0.2s, transform 0.1s; display: inline-block;
-    }
-    .btn-primary:hover { background: var(--indigo-dark); transform: translateY(-1px); }
-    .btn-outline {
-      background: transparent; color: var(--white);
-      padding: 0.9rem 2rem; border-radius: 8px; font-size: 15px; font-weight: 600;
-      text-decoration: none; border: 1px solid var(--slate);
-      font-family: 'Montserrat', sans-serif;
-      transition: border-color 0.2s; display: inline-block;
-    }
-    .btn-outline:hover { border-color: var(--indigo); }
+    /* fade */
+    .fade-up { opacity:0; transform:translateY(28px); transition:opacity .6s ease, transform .6s ease; }
+    .fade-up.visible { opacity:1; transform:none; }
+    .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
 
-    /* HERO PHOTO */
-    .hero-photo { position: relative; }
-    .hero-photo img { width: 100%; border-radius: 20px; border: 1px solid var(--slate); display: block; }
-    .hero-badge {
-      position: absolute; bottom: 1.5rem; left: -1.5rem;
-      background: var(--indigo); border-radius: 12px; padding: 0.75rem 1.25rem;
-    }
-    .hero-badge-num { font-size: 1.6rem; font-weight: 900; line-height: 1; }
-    .hero-badge-label { font-size: 10px; color: rgba(255,255,255,0.75); margin-top: 2px; }
+    /* ===== HERO ===== */
+    .hero { position:relative; min-height:84vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:6rem 2rem 3.5rem; overflow:hidden; }
+    .hero-inner { max-width:640px; margin:0 auto; }
+    .code-win { width:100%; max-width:680px; margin:2.2rem auto 0; background:#0B0E14; border:1px solid var(--slate); border-radius:14px; overflow:hidden; box-shadow:0 24px 60px -24px rgba(0,0,0,.8); text-align:left; }
+    .cw-bar { display:flex; align-items:center; gap:.45rem; padding:.55rem .75rem; background:rgba(255,255,255,.05); }
+    .cw-bar i { width:9px; height:9px; border-radius:50%; }
+    .cw-bar i:nth-child(1){background:#ff5f57} .cw-bar i:nth-child(2){background:#febc2e} .cw-bar i:nth-child(3){background:#28c840}
+    .cw-bar span { margin-left:.4rem; font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--gray); }
+    .cw-body { font-family:'JetBrains Mono',monospace; font-size:13px; line-height:1.95; color:var(--light-gray); padding:1rem 1.1rem; height:200px; overflow:hidden; white-space:pre-wrap; margin:0; }
+    .cw-body .fun { color:var(--pink); } .cw-body .ok { color:var(--emerald); } .cw-body .cmd { color:var(--indigo-2); } .cw-body .str { color:var(--emerald); }
+    .cw-body .cur { display:inline-block; width:8px; background:var(--indigo-2); }
+    .hero-eyebrow { display:inline-block; font-size:12px; font-weight:800; letter-spacing:3px; color:var(--indigo-2); border:1px solid var(--indigo); padding:.45rem 1.1rem; border-radius:30px; margin-bottom:2rem; text-transform:uppercase; }
+    .hero h1 { font-size:clamp(2.7rem,7vw,5.2rem); font-weight:900; line-height:1.04; letter-spacing:-1.5px; }
+    .hero h1 .hl { background:linear-gradient(110deg,var(--indigo-2),var(--pink)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .hero .benefit { font-size:clamp(1.2rem,2.4vw,1.7rem); font-weight:600; color:var(--light-gray); margin:1.6rem auto 0; max-width:680px; }
+    .hero .benefit b { color:#fff; }
+    .hero-cta-group { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2.6rem; }
+    .hero-note { margin-top:1.4rem; font-size:14px; color:var(--gray); font-weight:600; letter-spacing:.5px; }
 
-    /* PROOF BAR */
-    .proof {
-      display: flex; align-items: center; justify-content: center;
-      gap: 2rem; padding: 1.75rem 4rem;
-      border-top: 1px solid var(--navy); border-bottom: 1px solid var(--navy);
-      flex-wrap: wrap;
-    }
-    .proof-item { display: flex; align-items: center; gap: 0.5rem; font-size: 13px; color: var(--gray); }
-    .proof-dot { width: 6px; height: 6px; background: var(--emerald); border-radius: 50%; flex-shrink: 0; }
+    /* ===== SECTION HEADERS ===== */
+    .sec { padding:4.25rem 2rem; }
+    .sec-eyebrow { font-size:12px; font-weight:800; letter-spacing:3px; color:var(--indigo-2); text-transform:uppercase; margin-bottom:1rem; text-align:center; }
+    .sec-title { font-size:clamp(2rem,4.6vw,3.3rem); font-weight:900; line-height:1.1; letter-spacing:-1px; text-align:center; margin-bottom:.8rem; }
+    .sec-title .hl { color:var(--indigo-2); }
+    .sec-sub { text-align:center; color:var(--light-gray); font-size:1.15rem; max-width:620px; margin:0 auto 2.5rem; }
 
-    /* VS STRIP */
-    .vs-strip {
-      padding: 5rem 4rem; max-width: 1000px; margin: 0 auto;
-    }
-    .vs-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem;
-    }
-    .vs-card {
-      border-radius: 12px; padding: 2rem;
-    }
-    .vs-card.them {
-      background: var(--navy); border: 1px solid var(--slate);
-      opacity: 0.65;
-    }
-    .vs-card.us {
-      background: var(--navy); border: 2px solid var(--indigo);
-    }
-    .vs-card-label {
-      font-size: 11px; font-weight: 700; letter-spacing: 2px;
-      margin-bottom: 1.25rem;
-    }
-    .vs-card.them .vs-card-label { color: var(--gray); }
-    .vs-card.us .vs-card-label { color: var(--indigo); }
-    .vs-item {
-      display: flex; align-items: flex-start; gap: 0.6rem;
-      font-size: 13px; padding: 0.4rem 0; line-height: 1.5;
-    }
-    .vs-item.bad { color: var(--gray); }
-    .vs-item.bad::before { content: '—'; color: var(--slate); flex-shrink: 0; margin-top: 1px; }
-    .vs-item.good { color: var(--white); }
-    .vs-item.good::before { content: '✓'; color: var(--emerald); flex-shrink: 0; margin-top: 1px; font-weight: 700; }
+    /* ===== ČO ZÍSKAŠ (colored band) ===== */
+    .gain { background:linear-gradient(165deg,#1b244a 0%, #141d36 60%, #0F1626 100%); border-top:1px solid rgba(99,102,241,.35); border-bottom:1px solid rgba(99,102,241,.35); box-shadow:inset 0 0 120px rgba(99,102,241,.12); }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
+    .card { background:rgba(15,22,38,.75); border:1px solid var(--slate); border-radius:16px; padding:2rem 1.7rem; cursor:pointer; transition:.2s; position:relative; }
+    .card:hover { border-color:var(--indigo); transform:translateY(-5px); box-shadow:0 18px 40px -16px rgba(99,102,241,.5); }
+    .card .ico { font-size:1.9rem; margin-bottom:1rem; }
+    .card h3 { font-size:1.3rem; font-weight:800; margin-bottom:.6rem; }
+    .card p { font-size:15.5px; color:var(--light-gray); line-height:1.6; }
+    .card .more { display:inline-block; margin-top:1.1rem; font-size:12px; font-weight:800; letter-spacing:1px; color:var(--indigo-2); }
+    .incl-strip { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-top:3rem; }
+    .incl-pill { background:rgba(15,22,38,.7); border:1px solid var(--slate); border-radius:30px; padding:.7rem 1.3rem; font-size:14px; font-weight:700; color:var(--light-gray); }
+    .incl-pill b { color:#fff; }
+    .incl-pill.hl { border-color:var(--indigo); color:var(--white); }
 
-    /* BOOK STRIP */
-    .book-strip {
-      background: var(--navy); border-top: 1px solid var(--slate); border-bottom: 1px solid var(--slate);
-      padding: 2rem 4rem; display: flex; align-items: center;
-      justify-content: space-between; gap: 2rem; flex-wrap: wrap;
-    }
-    .book-strip h3 { font-size: 1.1rem; font-weight: 900; margin-bottom: 0.2rem; }
-    .book-strip p { font-size: 13px; color: var(--gray); }
-    .btn-book {
-      background: var(--white); color: var(--indigo-dark);
-      padding: 0.85rem 2rem; border-radius: 8px; font-size: 14px; font-weight: 700;
-      text-decoration: none; white-space: nowrap;
-      transition: opacity 0.2s; display: inline-block; flex-shrink: 0;
-    }
-    .btn-book:hover { opacity: 0.9; }
+    /* ===== LEKTOR ===== */
+    .lektor-box { display:flex; gap:2.5rem; align-items:center; background:var(--navy); border:1px solid var(--slate); border-radius:20px; padding:2.5rem; max-width:880px; margin:0 auto; }
+    .lektor-photo { width:170px; height:170px; object-fit:cover; border-radius:18px; border:1px solid var(--slate); flex-shrink:0; }
+    .lektor-box .l-label { font-size:12px; font-weight:800; letter-spacing:2px; color:var(--indigo-2); text-transform:uppercase; margin-bottom:.7rem; }
+    .lektor-box h3 { font-size:1.7rem; font-weight:900; margin-bottom:.6rem; }
+    .lektor-box p { font-size:15.5px; color:var(--light-gray); line-height:1.75; }
+    .lektor-box a.more { display:inline-block; margin-top:1rem; color:var(--indigo-2); font-weight:800; text-decoration:none; }
 
-    /* HOW IT WORKS */
-    .how { padding: 6rem 4rem; max-width: 1000px; margin: 0 auto; }
-    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--indigo); margin-bottom: 1rem; }
-    .section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; margin-bottom: 3.5rem; line-height: 1.2; }
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
-    .step {
-      background: var(--navy); border: 1px solid var(--slate);
-      border-radius: 12px; padding: 2rem 1.5rem; position: relative;
-    }
-    .step-accent { position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--indigo); border-radius: 12px 0 0 12px; }
-    .step-num { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--indigo); margin-bottom: 1rem; }
-    .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 0.75rem; }
-    .step p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+    /* ===== REGISTRÁCIA + COUNTDOWN ===== */
+    .reg { text-align:center; }
+    .term-card { display:inline-flex; flex-direction:column; gap:.3rem; background:var(--navy); border:1px solid var(--indigo); border-radius:16px; padding:1.4rem 2.4rem; margin:0 auto 1.75rem; }
+    .term-card .t-tag { font-size:12px; font-weight:800; letter-spacing:2px; color:var(--indigo-2); text-transform:uppercase; }
+    .term-card .t-date { font-size:1.6rem; font-weight:900; }
+    .term-card .t-time { font-size:1rem; color:var(--light-gray); }
+    .countdown { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin:0 auto 2.25rem; }
+    .cd-unit { background:var(--navy); border:1px solid var(--slate); border-radius:16px; padding:1.4rem 1.2rem; min-width:110px; }
+    .cd-num { font-size:clamp(2.4rem,6vw,3.6rem); font-weight:900; line-height:1; background:linear-gradient(160deg,var(--indigo-2),var(--pink)); -webkit-background-clip:text; background-clip:text; color:transparent; font-variant-numeric:tabular-nums; }
+    .cd-lbl { display:block; font-size:12px; font-weight:700; letter-spacing:2px; color:var(--gray); text-transform:uppercase; margin-top:.5rem; }
+    .reg-form { max-width:640px; margin:0 auto; }
+    .reg-note { font-size:14px; color:var(--gray); margin-top:1.5rem; }
 
-    /* PRICING */
-    .pricing { padding: 6rem 4rem; max-width: 1100px; margin: 0 auto; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; align-items: start; }
-    .plan {
-      background: var(--navy); border: 1px solid var(--slate);
-      border-radius: 12px; padding: 2.5rem 2rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .plan:hover { border-color: var(--indigo); transform: translateY(-3px); }
-    .plan.featured { border: 2px solid var(--indigo); position: relative; }
-    .plan-badge {
-      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-      background: var(--indigo); color: var(--white);
-      font-size: 11px; font-weight: 700; letter-spacing: 1px;
-      padding: 0.25rem 1rem; border-radius: 20px; white-space: nowrap;
-    }
-    .plan-name { font-size: 13px; font-weight: 700; letter-spacing: 2px; color: var(--indigo); margin-bottom: 0.75rem; }
-    .plan-price { font-size: 3rem; font-weight: 900; line-height: 1; margin-bottom: 0.5rem; }
-    .plan-price sup { font-size: 1.4rem; vertical-align: super; font-weight: 700; }
-    .plan-desc { font-size: 13px; color: var(--gray); margin-bottom: 1.75rem; padding-bottom: 1.75rem; border-bottom: 1px solid var(--slate); }
-    .plan-features { list-style: none; margin-bottom: 2rem; }
-    .plan-features li {
-      font-size: 13px; color: var(--light-gray); padding: 0.45rem 0;
-      display: flex; align-items: flex-start; gap: 0.6rem;
-    }
-    .plan-features li::before { content: ''; width: 6px; height: 6px; background: var(--indigo); border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+    /* ===== FAQ ===== */
+    .faq-wrap { max-width:720px; margin:0 auto; }
+    details.faq { border:1px solid var(--navy); border-radius:14px; padding:1.2rem 1.5rem; margin-bottom:1rem; background:rgba(30,41,59,.35); }
+    details.faq summary { font-size:1.1rem; font-weight:800; cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:1rem; align-items:center; }
+    details.faq summary::-webkit-details-marker { display:none; }
+    details.faq summary::after { content:'+'; color:var(--indigo-2); font-size:1.6rem; font-weight:400; }
+    details.faq[open] summary::after { content:'−'; }
+    details.faq p { font-size:15px; color:var(--light-gray); line-height:1.7; margin-top:1rem; }
 
-    /* WORKED WITH */
-    .worked-with { padding: 3rem 4rem; text-align: center; border-top: 1px solid var(--navy); }
-    .worked-with-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--gray); margin-bottom: 1.5rem; }
-    .logos { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-    .logo-pill {
-      background: var(--navy); border: 1px solid var(--slate); border-radius: 8px;
-      padding: 0.5rem 1.25rem; font-size: 13px; font-weight: 700; color: var(--light-gray);
-    }
+    /* modal */
+    .modal { position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center; padding:1.5rem; background:rgba(5,8,14,.75); backdrop-filter:blur(4px); }
+    .modal.open { display:flex; }
+    .modal-box { background:#0F1626; border:1px solid var(--slate); border-radius:18px; max-width:560px; width:100%; padding:2.6rem; position:relative; box-shadow:0 30px 80px rgba(0,0,0,.6); animation:popin .25s ease; }
+    @keyframes popin { from{opacity:0; transform:translateY(16px) scale(.98);} to{opacity:1; transform:none;} }
+    .modal-box .m-label { font-size:11px; font-weight:800; letter-spacing:2px; color:var(--indigo-2); margin-bottom:.7rem; text-transform:uppercase; }
+    .modal-box h3 { font-size:1.7rem; font-weight:900; margin-bottom:1rem; line-height:1.15; }
+    .modal-box p { font-size:16px; color:var(--light-gray); line-height:1.8; }
+    .modal-close { position:absolute; top:1rem; right:1rem; width:42px; height:42px; border:none; border-radius:10px; background:var(--navy); color:#fff; font-size:1.2rem; cursor:pointer; }
+    .modal-close:hover { background:var(--slate); }
 
-    /* ABOUT */
-    .about {
-      padding: 6rem 4rem; max-width: 1000px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
-    }
-    .about-photo { background: var(--navy); border: 1px solid var(--slate); border-radius: 16px; overflow: hidden; }
-    .about-photo img { width: 100%; display: block; }
-    .about h2 { font-size: 2rem; font-weight: 900; margin-bottom: 1rem; line-height: 1.2; }
-    .about h2 span { color: var(--indigo); }
-    .about p { font-size: 14px; color: var(--gray); margin-bottom: 1rem; line-height: 1.7; }
-    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
-    .about-stat { background: var(--navy); border: 1px solid var(--slate); border-radius: 8px; padding: 1rem; }
-    .about-stat-num { font-size: 1.8rem; font-weight: 900; color: var(--indigo); line-height: 1; margin-bottom: 0.25rem; }
-    .about-stat-label { font-size: 11px; color: var(--gray); }
+    footer { padding:2.5rem; border-top:1px solid var(--navy); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; font-size:12px; color:var(--gray); }
+    footer a { color:var(--gray); text-decoration:none; } footer a:hover { color:var(--indigo-2); }
 
-    /* FAQ */
-    .faq { padding: 6rem 4rem; max-width: 700px; margin: 0 auto; }
-    .faq-item { border-bottom: 1px solid var(--navy); padding: 1.5rem 0; }
-    .faq-q { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-    .faq-q::after { content: '+'; color: var(--indigo); font-size: 20px; font-weight: 400; flex-shrink: 0; }
-    .faq-a { font-size: 13px; color: var(--gray); line-height: 1.7; }
-
-    /* CONTACT */
-    .contact { padding: 6rem 4rem; max-width: 700px; margin: 0 auto; }
-    .contact iframe { width: 100%; border: none; border-radius: 12px; min-height: 500px; }
-
-    /* CTA STRIP */
-    .cta-strip { background: var(--indigo); padding: 5rem 4rem; text-align: center; }
-    .cta-strip h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; margin-bottom: 1rem; line-height: 1.2; }
-    .cta-strip p { color: rgba(255,255,255,0.75); margin-bottom: 2rem; font-size: 15px; }
-    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn-white {
-      background: var(--white); color: var(--indigo-dark);
-      padding: 0.9rem 2.5rem; border-radius: 8px; font-size: 15px; font-weight: 700;
-      text-decoration: none; border: none; cursor: pointer;
-      font-family: 'Montserrat', sans-serif; transition: opacity 0.2s; display: inline-block;
-    }
-    .btn-white:hover { opacity: 0.9; }
-    .btn-white-outline {
-      background: transparent; color: var(--white);
-      padding: 0.9rem 2.5rem; border-radius: 8px; font-size: 15px; font-weight: 700;
-      text-decoration: none; border: 2px solid rgba(255,255,255,0.5);
-      transition: border-color 0.2s; display: inline-block;
-    }
-    .btn-white-outline:hover { border-color: var(--white); }
-
-    /* FOOTER */
-    footer {
-      padding: 2.5rem 4rem; border-top: 1px solid var(--navy);
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 1rem; font-size: 12px; color: var(--gray);
-    }
-    footer a { color: var(--gray); text-decoration: none; }
-    footer a:hover { color: var(--indigo); }
-
-    @media(max-width: 900px) {
-      .hero { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem 3rem; }
-      .hero-photo { max-width: 300px; margin: 0 auto; order: -1; }
-      .hero-badge { left: 0.5rem; bottom: 0.5rem; }
-      .vs-grid { grid-template-columns: 1fr; }
-    }
-    @media(max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .how, .pricing, .faq, .about, .worked-with, .vs-strip { padding: 4rem 1.5rem; }
-      .cta-strip { padding: 4rem 1.5rem; }
-      .book-strip { padding: 1.5rem; flex-direction: column; text-align: center; }
-      .about { grid-template-columns: 1fr; gap: 3rem; }
-      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
-      .proof { padding: 1.5rem; gap: 1rem; }
+    @media (max-width:820px) {
+      .cards { grid-template-columns:1fr; }
+      .lektor-box { flex-direction:column; text-align:center; }
+      nav { padding:1rem 1.25rem; } .nav-right { gap:1rem; }
+      .sec { padding:4.5rem 1.25rem; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="#" class="nav-logo">
-      <div class="nav-monogram">MF</div>
-      <span class="nav-name">Michal Farkas</span>
-    </a>
-    <a href="#pricing" class="nav-cta">See Packages</a>
+    <a href="/" class="nav-logo"><div class="nav-monogram">MF</div></a>
+    <div class="nav-right">
+      <a href="#registracia" class="nav-cta">Registrovať zdarma</a>
+    </div>
   </nav>
 
   <!-- HERO -->
-  <header>
-    <div class="hero">
-      <div class="fade-up">
-        <div class="hero-label">PERSONAL BRANDING WITH AI</div>
-        <h1>Your personal brand.<br/><span>Built with AI.</span><br/>Live in days.</h1>
-        <p>Whether you need a polished personal brand page or want to discover your brand voice, values, and positioning - I use AI to get you there faster, smarter, and without the agency price tag.</p>
-        <div class="hero-cta-group">
-          <a href="#pricing" class="btn-primary">See Packages</a>
-          <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" class="btn-outline">Book a Free Call</a>
-        </div>
+  <header class="hero">
+    <div class="hero-inner fade-up visible">
+      <span class="hero-eyebrow">Bezplatný online webinár</span>
+      <h1>Automatizuj e-shop a marketing <span class="hl">pomocou AI</span></h1>
+      <p class="benefit">Získaj späť <b>hodiny každý týždeň</b> - bez programátora a bez tímu.</p>
+      <div class="code-win" aria-hidden="true">
+        <div class="cw-bar"><i></i><i></i><i></i><span>webinar.js</span></div>
+        <pre class="cw-body" id="cwMain"></pre>
       </div>
-      <div class="hero-photo fade-up d2">
-        <img src="img/photo-06ab8efe.jpg" alt="Michal Farkas"/>
-        <div class="hero-badge">
-          <div class="hero-badge-num">2</div>
-          <div class="hero-badge-label">packages, from €99</div>
-        </div>
+      <div class="hero-cta-group">
+        <a href="#registracia" class="btn btn-primary">Zarezervovať miesto →</a>
+        <a href="#cozistkas" class="btn btn-ghost">Čo získam</a>
       </div>
+      <div class="hero-note">8. 7. 2026 · 18:30-20:00 · online · max 30 miest</div>
     </div>
   </header>
 
-  <!-- PROOF BAR -->
-  <div class="proof fade-up">
-    <div class="proof-item"><span class="proof-dot"></span>9+ years in marketing & e-commerce</div>
-    <div class="proof-item"><span class="proof-dot"></span>Shoptet - Filmzie - FeelAfterglow</div>
-    <div class="proof-item"><span class="proof-dot"></span>AI-powered since 2026</div>
-    <div class="proof-item"><span class="proof-dot"></span>Bratislava, Slovakia</div>
-  </div>
-
-  <!-- VS SECTION -->
-  <section class="vs-strip">
-    <div class="section-label fade-up">WHY THIS MATTERS</div>
-    <h2 class="section-title fade-up">Most people skip personal branding.<br/>Then wonder why nobody finds them.</h2>
-    <div class="vs-grid">
-      <div class="vs-card them fade-up d1">
-        <div class="vs-card-label">WITHOUT A PERSONAL BRAND</div>
-        <div class="vs-item bad">No online presence beyond a LinkedIn profile</div>
-        <div class="vs-item bad">People Google you and find nothing</div>
-        <div class="vs-item bad">Your expertise is invisible to potential clients</div>
-        <div class="vs-item bad">No clear brand voice - you blend in with everyone</div>
-        <div class="vs-item bad">Agencies charge €2,000+ just for brand strategy</div>
-        <div class="vs-item bad">DIY branding takes months of trial and error</div>
+  <!-- ČO ZÍSKAŠ (colored band) -->
+  <section class="sec gain" id="cozistkas">
+    <div class="wrap">
+      <div class="sec-eyebrow fade-up">Čo získaš na webinári</div>
+      <h2 class="sec-title fade-up">S čím ti vie AI <span class="hl">už dnes</span> pomôcť</h2>
+      <p class="sec-sub fade-up">Konkrétne veci, ktoré ti ušetria čas. Klikni na ktorúkoľvek pre detail.</p>
+      <div class="cards">
+        <div class="card fade-up d1" onclick="openModal(this)" data-title="Produktové popisy" data-detail="AI ti napíše desiatky produktových popisov a kategórií naraz - v tvojom tóne a štýle značky. Stačí jeden dobrý vzor a zoznam parametrov, zvyšok dotiahne za minúty. Ukážeme si, ako popisy nielen rýchlo vygenerovať, ale aj ako ich ladiť na SEO a konverziu a pripraviť si šablónu, ktorú použiješ stále dokola.">
+          <div class="ico">🛍</div><h3>Produktové popisy</h3><p>Desiatky popisov a kategórií za minúty namiesto hodín - v tvojom tóne.</p><span class="more">KLIK PRE DETAIL →</span>
+        </div>
+        <div class="card fade-up d1" onclick="openModal(this)" data-title="E-maily a newslettre" data-detail="Od nápadu po hotový e-mail: AI navrhne predmety, štruktúru aj text kampane či celej sekvencie (po objednávke, opustený košík). Ukážem, ako zadať brief, aby výstup sedel na tvoju značku, a ako rýchlo vyrobiť varianty na A/B testovanie - ty len finálne doladíš tón.">
+          <div class="ico">✉️</div><h3>E-maily a newslettre</h3><p>Prvý draft kampaní, predmetov a sekvencií napíše AI, ty len ladíš.</p><span class="more">KLIK PRE DETAIL →</span>
+        </div>
+        <div class="card fade-up d2" onclick="openModal(this)" data-title="Obsah na sociálne siete" data-detail="Prázdna hlava pri postoch končí. AI ti vygeneruje nápady, varianty a celý plán obsahu na týždne dopredu - vrátane textov, hashtagov a uhlov pohľadu. Ukážeme si aj, ako z jedného kusu obsahu spraviť viac formátov (post, story, newsletter).">
+          <div class="ico">📱</div><h3>Obsah na sociálne siete</h3><p>Posty, varianty a nápady na týždne dopredu - bez prázdnej hlavy.</p><span class="more">KLIK PRE DETAIL →</span>
+        </div>
+        <div class="card fade-up d1" onclick="openModal(this)" data-title="Zákaznícka podpora" data-detail="Rutinné otázky zaberajú čas, ktorý nemáš. Pripravíme si knižnicu šablón a konceptov odpovedí (doprava, vrátenie, dostupnosť), ktoré AI prispôsobí konkrétnej situácii. Výsledok: rýchlejšie, konzistentné a stále ľudské odpovede - s tebou ako finálnym schvaľovateľom.">
+          <div class="ico">💬</div><h3>Zákaznícka podpora</h3><p>Rýchle a konzistentné odpovede na rutinné otázky - šablóny, ktoré AI prispôsobí situácii.</p><span class="more">KLIK PRE DETAIL →</span>
+        </div>
+        <div class="card fade-up d2" onclick="openModal(this)" data-title="Reporty a podklady" data-detail="Z čísel do prehľadu, ktorému rozumieš. Ukážem, ako dať AI dáta (z e-shopu či kampaní) a nechať si spraviť zhrnutie, komentár a odporúčania - bez hodín v Exceli. Plus ako si nastaviť opakovateľný formát reportu, ktorý použiješ každý mesiac.">
+          <div class="ico">📊</div><h3>Reporty a podklady</h3><p>Z dát do zrozumiteľného prehľadu - rýchlo a bez Excel mučenia.</p><span class="more">KLIK PRE DETAIL →</span>
+        </div>
+        <div class="card fade-up d3" onclick="openModal(this)" data-title="Systém, nie triky" data-detail="Najdôležitejšia časť: ako z jednotlivých trikov spraviť systém. Pripravíš si štruktúru (kontext o značke, šablóny, postupy), ku ktorej sa AI vždy vráti - výsledky sú konzistentné a nezačínaš zakaždým od nuly. Toto je rozdiel medzi „hraním sa s AI" a „prácou s AI".">
+          <div class="ico">⚙️</div><h3>Systém, nie triky</h3><p>Ako z jednotlivých trikov spraviť opakovateľný systém, ku ktorému sa AI vždy vráti.</p><span class="more">KLIK PRE DETAIL →</span>
+        </div>
       </div>
-      <div class="vs-card us fade-up d2">
-        <div class="vs-card-label">WITH MICHAL + AI</div>
-        <div class="vs-item good">A professional brand page live in 2-3 days</div>
-        <div class="vs-item good">AI-powered brand discovery - voice, values, positioning</div>
-        <div class="vs-item good">People find you, trust you, reach out</div>
-        <div class="vs-item good">Clear, consistent brand identity across everything</div>
-        <div class="vs-item good">Transparent pricing from €99 - no surprises</div>
-        <div class="vs-item good">Static HTML - fast, secure, no maintenance headaches</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BOOK STRIP -->
-  <div class="book-strip fade-up">
-    <div>
-      <h3>Not sure which package fits?</h3>
-      <p>Book a free 30-minute call - we'll figure out together what makes sense for you.</p>
-    </div>
-    <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" class="btn-book">Book a Free Call</a>
-  </div>
-
-  <!-- HOW IT WORKS -->
-  <section class="how" id="how">
-    <div class="section-label fade-up">PROCESS</div>
-    <h2 class="section-title fade-up">Simple, fast, transparent.</h2>
-    <div class="steps">
-      <div class="step fade-up d1">
-        <div class="step-accent"></div>
-        <div class="step-num">01</div>
-        <h3>Discovery call</h3>
-        <p>We talk about who you are, what you need, and which package fits. Free, 30 minutes, no commitment.</p>
-      </div>
-      <div class="step fade-up d2">
-        <div class="step-accent"></div>
-        <div class="step-num">02</div>
-        <h3>AI-powered build</h3>
-        <p>I use AI tools to build your brand page or run your brand discovery. You get updates, give feedback, and stay in the loop.</p>
-      </div>
-      <div class="step fade-up d3">
-        <div class="step-accent"></div>
-        <div class="step-num">03</div>
-        <h3>Delivery & handover</h3>
-        <p>You get everything - your brand page goes live on GitHub + Vercel (free, secure hosting), or you receive your full brand strategy document.</p>
+      <div class="incl-strip fade-up">
+        <span class="incl-pill"><b>🎥 Live</b> ~90 min</span>
+        <span class="incl-pill"><b>⏪ Záznam</b> pre všetkých</span>
+        <span class="incl-pill hl"><b>📘 Playbook</b> so scriptami + FAQ</span>
+        <span class="incl-pill"><b>❓ Q&A</b> počas aj po</span>
       </div>
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section class="pricing" id="pricing">
-    <div class="section-label fade-up">PACKAGES</div>
-    <h2 class="section-title fade-up">Two packages. Two different goals.</h2>
-    <div class="pricing-grid">
-      <div class="plan fade-up d1">
-        <div class="plan-name">PERSONAL BRAND ONE-PAGER</div>
-        <div style="font-size:0.85rem;font-weight:600;color:var(--gray);margin-bottom:0.15rem;letter-spacing:1px;">FROM</div>
-        <div class="plan-price"><sup>€</sup>99</div>
-        <p class="plan-desc">A polished personal brand page that makes you look professional online - perfect for freelancers, consultants, and creators who need to be found.</p>
-        <ul class="plan-features">
-          <li>Custom one-page design in HTML</li>
-          <li>Responsive - works on every device</li>
-          <li>Personal brand copywriting</li>
-          <li>LinkedIn & social links integration</li>
-          <li>Contact form or call-to-action</li>
-          <li>Basic SEO setup</li>
-          <li>Deployed on GitHub + Vercel (free hosting)</li>
-          <li>Full handover with walkthrough</li>
-        </ul>
-        <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" class="btn-primary" style="display:block;width:100%;text-align:center;padding:0.9rem;font-size:14px;">Book a Free Call</a>
-      </div>
-      <div class="plan featured fade-up d2">
-        <div class="plan-badge">BRAND STRATEGY</div>
-        <div class="plan-name">BRANDXAI - BUILD YOUR BRAND</div>
-        <div style="font-size:0.85rem;font-weight:600;color:var(--gray);margin-bottom:0.15rem;letter-spacing:1px;">FROM</div>
-        <div class="plan-price"><sup>€</sup>139</div>
-        <p class="plan-desc">Discover your brand identity with AI. I guide you through a structured process to define your voice, values, positioning, and ideal audience - so everything you do online is clear and consistent.</p>
-        <ul class="plan-features">
-          <li>AI-guided brand discovery session</li>
-          <li>Brand voice & tone definition</li>
-          <li>Core values & brand story</li>
-          <li>Target audience & positioning</li>
-          <li>Visual identity direction (colors, fonts, mood)</li>
-          <li>Competitor landscape overview</li>
-          <li>Complete brand strategy document</li>
-          <li>Actionable next steps for your brand</li>
-        </ul>
-        <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" class="btn-primary" style="display:block;width:100%;text-align:center;padding:0.9rem;font-size:14px;">Book a Free Call</a>
+  <!-- LEKTOR -->
+  <section class="sec">
+    <div class="lektor-box fade-up">
+      <img class="lektor-photo" src="img/photo-06ab8efe.jpg" alt="Michal Farkaš"/>
+      <div>
+        <div class="l-label">Kto ťa prevedie webinárom</div>
+        <h3>Michal Farkaš</h3>
+        <p>10 rokov v marketingu a e-commerce. Co-founder &amp; CMO značky Afterglow, predtým marketing v Shoptete a Filmzie. Na Digitálnej univerzite som viedol 3 webináre - o značke, e-commerce a budovaní webov s AI. AI používam denne na reálnu prácu, nie na efekt.</p>
+        <a href="/about" class="more">Viac o mne →</a>
       </div>
     </div>
   </section>
 
-  <!-- WORKED WITH -->
-  <section class="worked-with fade-up">
-    <div class="worked-with-label">EXPERIENCE FROM</div>
-    <div class="logos">
-      <div class="logo-pill">Shoptet</div>
-      <div class="logo-pill">Filmzie</div>
-      <div class="logo-pill">FeelAfterglow</div>
-      <div class="logo-pill">Polystate.io</div>
-      <div class="logo-pill">E-commerce Day</div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="about-photo fade-up">
-      <img src="img/photo-06ab8efe.jpg" alt="Michal Farkas"/>
-    </div>
-    <div>
-      <div class="section-label fade-up">ABOUT</div>
-      <h2 class="fade-up">9 years in marketing.<br/><span>Now helping you stand out.</span></h2>
-      <p class="fade-up">I started my first e-shop in 2016. Since then I led marketing at Filmzie (movie streaming startup) and ran the Slovak marketing team at Shoptet - one of Central Europe's biggest e-commerce platforms.</p>
-      <p class="fade-up">Today I combine everything I've learned about marketing, storytelling, and AI to help professionals build their personal brand. Whether it's a page that represents you online or a full brand strategy that gives you clarity - I make the process fast, affordable, and personal.</p>
-      <div class="about-stats fade-up">
-        <div class="about-stat"><div class="about-stat-num">9+</div><div class="about-stat-label">Years in marketing</div></div>
-        <div class="about-stat"><div class="about-stat-num">AI</div><div class="about-stat-label">Powered delivery</div></div>
-        <div class="about-stat"><div class="about-stat-num">Days</div><div class="about-stat-label">Not months</div></div>
-        <div class="about-stat"><div class="about-stat-num">SK/CZ</div><div class="about-stat-label">Local market expertise</div></div>
+  <!-- REGISTRÁCIA -->
+  <section class="sec reg" id="registracia">
+    <div class="wrap">
+      <div class="sec-eyebrow fade-up">Registrácia · zdarma</div>
+      <h2 class="sec-title fade-up">Rezervuj si jedno z <span class="hl">30 miest</span></h2>
+      <div class="term-card fade-up">
+        <span class="t-tag">Termín</span>
+        <span class="t-date">Streda · 8. 7. 2026</span>
+        <span class="t-time">18:30 - 20:00 · online</span>
       </div>
+      <div class="countdown fade-up" id="countdown">
+        <div class="cd-unit"><span class="cd-num" id="cdD">00</span><span class="cd-lbl">dní</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cdH">00</span><span class="cd-lbl">hodín</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cdM">00</span><span class="cd-lbl">minút</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cdS">00</span><span class="cd-lbl">sekúnd</span></div>
+      </div>
+      <div class="reg-form fade-up">
+        <iframe data-tally-src="https://tally.so/embed/Y5eO15?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="500" title="Registrácia na webinár"></iframe>
+        <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}</script>
+      </div>
+      <p class="reg-note">Max 30 miest. Po naplnení registráciu zatváram. Vstup zdarma - žiadna platba.</p>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="faq" id="faq">
-    <div class="section-label fade-up">FAQ</div>
-    <h2 class="section-title fade-up">Common questions.</h2>
-    <div class="faq-item fade-up">
-      <div class="faq-q">What's the difference between the two packages?</div>
-      <div class="faq-a">The One-Pager is a tangible deliverable - a professional personal brand page that goes live on the internet. BrandxAI is a strategic process - together with AI, we discover your brand voice, values, positioning, and audience. One gives you a page, the other gives you clarity about your entire brand. Many people start with BrandxAI and then get the One-Pager built on top of it.</div>
-    </div>
-    <div class="faq-item fade-up">
-      <div class="faq-q">Do I need any technical knowledge?</div>
-      <div class="faq-a">None at all. I handle all the technical work. Your brand page is built in clean HTML - no complicated platforms, no plugins to update, no databases to manage. You get a walkthrough of everything so you understand how to make small edits yourself if you want to.</div>
-    </div>
-    <div class="faq-item fade-up">
-      <div class="faq-q">Is my page secure?</div>
-      <div class="faq-a">Yes. Your page is static HTML hosted on Vercel with free SSL (HTTPS). Because there's no server-side code, no database, and no login system, there's essentially nothing to hack. It's one of the most secure approaches to having a website. Your contact form runs through a secure third-party service, so no data is stored on the page itself.</div>
-    </div>
-    <div class="faq-item fade-up">
-      <div class="faq-q">Where is my page hosted?</div>
-      <div class="faq-a">Your code lives on GitHub (version-controlled, you own it) and the page is served by Vercel - both are free. Vercel provides automatic HTTPS, global CDN, and instant deploys. If you ever want to move it somewhere else, you can - it's just an HTML file.</div>
-    </div>
-    <div class="faq-item fade-up">
-      <div class="faq-q">How fast can I get my page live?</div>
-      <div class="faq-a">A personal brand one-pager is typically delivered in 2-3 days. The BrandxAI brand discovery process takes about a week, depending on your availability for the guided sessions.</div>
-    </div>
-    <div class="faq-item fade-up">
-      <div class="faq-q">Can I add a custom domain?</div>
-      <div class="faq-a">Yes. Vercel supports custom domains for free. I can help you set up yourname.com or any domain you own. Until then, your page is live on a clean .vercel.app URL that you can share right away.</div>
-    </div>
-    <div class="faq-item fade-up">
-      <div class="faq-q">What do I get with the BrandxAI package?</div>
-      <div class="faq-a">You get a complete brand strategy document that includes your brand voice and tone, core values, brand story, target audience profiles, market positioning, visual identity direction (colors, fonts, mood), and actionable next steps. Think of it as the blueprint for everything you do online - from social media to your website to how you introduce yourself.</div>
-    </div>
-    <div class="faq-item fade-up">
-      <div class="faq-q">Can I update my page after it's live?</div>
-      <div class="faq-a">Absolutely. Your page is on GitHub, so you can edit the HTML directly through the browser - no special software needed. When you save changes, Vercel automatically deploys the update within seconds. I walk you through this process during handover.</div>
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-eyebrow fade-up">Časté otázky</div>
+      <h2 class="sec-title fade-up" style="margin-bottom:2.25rem;">Než sa prihlásiš</h2>
+      <div class="faq-wrap">
+        <details class="faq fade-up"><summary>Pre koho je webinár?</summary><p>Pre ľudí, ktorí AI už skúsili alebo bežne používajú, no stále si nie sú istí v pojmoch, promptovaní a v budovaní automatizácie. Začneme od pevného základu - programovanie netreba.</p></details>
+        <details class="faq fade-up"><summary>Dostanem záznam, ak nestíham naživo?</summary><p>Áno. Všetci prihlásení dostanú nahrávku aj playbook, takže si to pozrieš kedykoľvek.</p></details>
+        <details class="faq fade-up"><summary>Potrebujem platené AI nástroje?</summary><p>Nie nutne. Ukážem, čo sa dá zadarmo a kde sa prípadne oplatí priplatiť. Nič si nemusíš kupovať vopred.</p></details>
+        <details class="faq fade-up"><summary>Je to o programovaní?</summary><p>Nie. Je to o tom, ako AI prakticky šetrí čas v e-shope a marketingu. Žiadny kód netreba.</p></details>
+        <details class="faq fade-up"><summary>Prečo je webinár zadarmo?</summary><p>Rozbieham sériu webinárov a chcem, aby si videl/a hodnotu naživo. Ďalšie webináre budú platené.</p></details>
+        <details class="faq fade-up"><summary>Koľko je miest?</summary><p>Max 30. Komorne - nech sa dostane na každú otázku.</p></details>
+      </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="section-label fade-up">CONTACT</div>
-    <h2 class="section-title fade-up">Get in touch.</h2>
-    <p class="fade-up" style="color:var(--gray);font-size:14px;margin-bottom:2rem;text-align:center;">Have a question or ready to start? Drop me a message and I'll get back to you within 24 hours. Or <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" style="color:var(--indigo);font-weight:700;">book a free call directly</a>.</p>
-    <div class="fade-up">
-      <iframe data-tally-src="https://tally.so/embed/RGJWlK?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="300" title="Contact form"></iframe>
-      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}</script>
+  <!-- DETAIL MODAL -->
+  <div class="modal" id="detailModal" onclick="if(event.target===this)closeModal()">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()" aria-label="Zavrieť">✕</button>
+      <div class="m-label">Čo získaš na webinári</div>
+      <h3 id="mTitle"></h3>
+      <p id="mDetail"></p>
     </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <section style="background:linear-gradient(135deg,var(--indigo),var(--indigo-dark));text-align:center;padding:4.5rem 2rem;">
+    <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-1px;margin-bottom:.8rem;">Webinár má len 30 miest.</h2>
+    <p style="color:rgba(255,255,255,.85);font-size:1.1rem;margin-bottom:1.8rem;">Zarezervuj sa zadarmo, kým sú voľné.</p>
+    <a href="#registracia" class="btn" style="background:#fff;color:var(--indigo-dark);padding:1.05rem 2.6rem;font-size:1.05rem;">Zarezervovať miesto zdarma →</a>
   </section>
 
-  <!-- CTA STRIP -->
-  <section class="cta-strip fade-up">
-    <h2>Your brand deserves to be seen.<br/>Let's make it happen.</h2>
-    <p>Book a free discovery call or pick a package - no commitment, just clarity.</p>
-    <div class="cta-btns">
-      <button class="btn-white" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">See Packages</button>
-      <a href="https://calendar.app.google/YjHNk64W4Wdr6eqL9" target="_blank" class="btn-white-outline">Book a Free Call</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
-    <span>&copy; 2026 Michal Farkas - <a href="https://michalfarkas.com">michalfarkas.com</a></span>
-    <span><a href="/about">About</a> &nbsp;&middot;&nbsp; <a href="/terms">Terms</a> &nbsp;&middot;&nbsp; <a href="/returns">Returns</a></span>
+    <span>&copy; 2026 Aesir Digital Labs LLC · <a href="https://michalfarkas.com">michalfarkas.com</a></span>
+    <span><a href="/about">O mne</a> &nbsp;·&nbsp; <a href="/terms">Podmienky</a> &nbsp;·&nbsp; <a href="/returns">Odstúpenie</a></span>
     <span><a href="mailto:hello@michalfarkas.com">hello@michalfarkas.com</a></span>
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    /* fix the scroll link target */
+    var sg=document.getElementById('scrollGain'); if(sg) sg.setAttribute('href','#cozistkas');
+
+    /* ---------- hero code windows (funny + what you'll learn) ---------- */
+    function heroTyper(elId, lines, speed){
+      var body=document.getElementById(elId); if(!body) return;
+      var MAX=9, done=[], li=0;
+      var cur=document.createElement('span'); cur.className='cur'; cur.textContent=' ';
+      function paint(part){
+        body.textContent='';
+        done.forEach(function(o){ var s=document.createElement('span'); if(o.c)s.className=o.c; s.textContent=o.t; body.appendChild(s); body.appendChild(document.createTextNode('\n')); });
+        var s=document.createElement('span'); if(part.c)s.className=part.c; s.textContent=part.t; body.appendChild(s); body.appendChild(cur);
+        body.scrollTop = body.scrollHeight;
+      }
+      (function typeLine(){
+        var item=lines[li%lines.length]; li++; var ci=0;
+        (function tc(){ paint({t:item.t.slice(0,ci),c:item.c}); ci++;
+          if(ci<=item.t.length) setTimeout(tc,speed);
+          else { done.push(item); if(done.length>MAX) done.shift(); setTimeout(typeLine,950); }
+        })();
+      })();
+    }
+    heroTyper('cwMain', [
+      {t:"$ ai --webinar", c:"cmd"},
+      {t:"// 8. 7. o 18:30, online, zdarma 👋", c:"fun"},
+      {t:"const naucim = ["},
+      {t:"  'produktové popisy',", c:"str"},
+      {t:"  'e-maily a obsah',", c:"str"},
+      {t:"  'podpora cez AI',", c:"str"},
+      {t:"  'reporty bez Excelu',", c:"str"},
+      {t:"  'systém, nie triky',", c:"str"},
+      {t:"];"},
+      {t:"// a hlavne: ako promptovať", c:"fun"},
+      {t:"// nie, netreba vedieť kódiť", c:"fun"},
+      {t:"register(ja);  // 30 miest"},
+      {t:"✓ Vidíme sa na webinári.", c:"ok"}
+    ], 40);
+
+    /* ---------- countdown ---------- */
+    (function(){
+      var target=new Date('2026-07-08T18:30:00+02:00').getTime();
+      function pad(n){return String(n).padStart(2,'0');}
+      function tick(){
+        var diff=target-Date.now(); if(diff<0)diff=0;
+        document.getElementById('cdD').textContent=pad(Math.floor(diff/864e5));
+        document.getElementById('cdH').textContent=pad(Math.floor(diff%864e5/36e5));
+        document.getElementById('cdM').textContent=pad(Math.floor(diff%36e5/6e4));
+        document.getElementById('cdS').textContent=pad(Math.floor(diff%6e4/1e3));
+      }
+      tick(); setInterval(tick,1000);
+    })();
+
+    /* ---------- modal ---------- */
+    function openModal(el){ document.getElementById('mTitle').textContent=el.dataset.title; document.getElementById('mDetail').textContent=el.dataset.detail; document.getElementById('detailModal').classList.add('open'); }
+    function closeModal(){ document.getElementById('detailModal').classList.remove('open'); }
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+
+    /* ---------- reveal ---------- */
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:.12});
+    document.querySelectorAll('.fade-up').forEach(function(el){ io.observe(el); });
   </script>
 </body>
 </html>
