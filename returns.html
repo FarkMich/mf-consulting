@@ -3,114 +3,100 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Odstúpenie a vrátenie platby — Michal Farkaš</title>
+  <title>Odstúpenie a vrátenie platby - Michal Farkaš</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --indigo: #6366F1; --indigo-dark: #4338CA; --dark: #0D1117; --navy: #1E293B; --slate: #334155; --gray: #64748B; --light-gray: #94A3B8; --white: #FFFFFF; --emerald: #10B981; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Montserrat', Arial, sans-serif; background: var(--dark); color: var(--white); line-height: 1.6; overflow-x: hidden; }
-    body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(var(--navy) 1px, transparent 1px), linear-gradient(90deg, var(--navy) 1px, transparent 1px); background-size: 120px 120px; opacity: 0.4; pointer-events: none; z-index: 0; }
-    body::after { content: ''; position: fixed; left: 0; top: 0; width: 5px; height: 100%; background: var(--indigo); z-index: 100; }
-    section, header, footer, main { position: relative; z-index: 1; }
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 4rem; border-bottom: 1px solid var(--navy); position: sticky; top: 0; z-index: 50; background: rgba(13,17,23,0.85); backdrop-filter: blur(10px); }
-    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-    .nav-monogram { width: 40px; height: 40px; background: var(--indigo); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; color: var(--dark); flex-shrink: 0; }
-    .nav-name { font-size: 14px; font-weight: 700; color: var(--white); }
-    .nav-cta { background: var(--indigo); color: var(--white); padding: 0.6rem 1.5rem; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
-    .nav-cta:hover { background: var(--indigo-dark); }
-    .page-hero { padding: 5rem 4rem 3rem; max-width: 800px; margin: 0 auto; }
-    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--indigo); margin-bottom: 1rem; }
-    .page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.15; margin-bottom: 1rem; }
-    .page-hero h1 span { color: var(--indigo); }
-    .page-hero p { font-size: 15px; color: var(--light-gray); max-width: 560px; }
-    .content { max-width: 800px; margin: 0 auto; padding: 0 4rem 5rem; }
-    h2.content-h { font-size: 1.2rem; font-weight: 700; color: var(--white); margin: 2.5rem 0 0.75rem; }
-    p.content-p { font-size: 14px; color: var(--gray); line-height: 1.8; margin-bottom: 0.75rem; }
-    ul.content-ul { padding-left: 1.25rem; margin-bottom: 0.75rem; }
-    ul.content-ul li { font-size: 14px; color: var(--gray); line-height: 1.8; margin-bottom: 0.25rem; }
-    .divider { height: 1px; background: var(--navy); margin: 2rem 0; }
-    footer { padding: 2.5rem 4rem; border-top: 1px solid var(--navy); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 12px; color: var(--gray); }
-    footer a { color: var(--gray); text-decoration: none; }
-    footer a:hover { color: var(--indigo); }
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .page-hero, .content { padding-left: 1.5rem; padding-right: 1.5rem; }
-      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
-    }
-</style>
+    :root{--bg:#0A0B14;--surface:#14152A;--surface2:#1B1D38;--ink:#F4F3FA;--dim:#A7A4C6;--violet:#7B6CF6;--violet-d:#6354E0;--pink:#E27BC2;--line:#2A2C4D;--disp:'Archivo',system-ui,sans-serif;--sans:'Inter',system-ui,sans-serif;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6}
+    a{color:inherit;text-decoration:none;cursor:pointer}
+    .wrap{max-width:820px;margin:0 auto;padding:0 26px}
+    h1,h2,h3,.disp{font-family:var(--disp);letter-spacing:-.03em;line-height:1.04}
+    .grad{background:linear-gradient(100deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+    header.nav{position:sticky;top:0;z-index:30;background:rgba(10,11,20,.82);backdrop-filter:blur(12px);border-bottom:2px solid var(--line)}
+    .navwrap{max-width:1180px;margin:0 auto;padding:0 26px;display:flex;align-items:center;justify-content:space-between;height:74px}
+    .brand{width:46px;height:46px;border-radius:14px;background:var(--violet);display:grid;place-items:center;font-family:var(--disp);font-weight:900;font-size:17px;color:#fff;box-shadow:0 0 0 2px rgba(123,108,246,.3)}
+    .navright{display:flex;align-items:center;gap:18px}
+    .navlink{font-weight:700;font-size:14px;color:var(--dim)}.navlink:hover{color:var(--ink)}
+    .cta{background:var(--violet);color:#fff!important;padding:11px 22px;border-radius:30px;font-weight:800;box-shadow:0 8px 24px -10px var(--violet)}.cta:hover{background:var(--violet-d)}
+    .page-hero{padding:54px 0 14px}
+    .eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--violet);border:2px solid var(--violet);padding:8px 16px;border-radius:30px;margin-bottom:20px}
+    .page-hero h1{font-size:44px;font-weight:900;margin-bottom:12px}
+    .page-hero p.lede{font-size:16px;color:var(--dim)}
+    .content{padding:22px 0 10px}
+    .content-h{font-family:var(--disp);font-size:21px;font-weight:900;margin:30px 0 10px}
+    .content p{font-size:15px;color:var(--dim);margin-bottom:10px;line-height:1.75}
+    .content strong{color:var(--ink)}
+    .content ul{list-style:none;margin:6px 0 10px}
+    .content ul li{position:relative;padding-left:24px;margin:7px 0;color:var(--dim);font-size:15px;line-height:1.7}
+    .content ul li::before{content:'›';position:absolute;left:0;color:var(--violet);font-weight:900}
+    .content a.inline{color:var(--violet);font-weight:700}
+    .divider{height:2px;background:var(--line);border:0;margin:26px 0}
+    footer{margin-top:50px;border-top:2px solid var(--line);padding:34px 0 50px}
+    .fwrap{max-width:1180px;margin:0 auto;padding:0 26px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--dim)}
+    footer a:hover{color:var(--violet)}
+    @media(max-width:760px){.page-hero h1{font-size:34px}.navlink{display:none}}
+  </style>
 </head>
 <body>
-  <nav>
-    <a href="/" class="nav-logo">
-      <div class="nav-monogram">MF</div>
-      <span class="nav-name">Michal Farkaš</span>
-    </a>
-    <a href="/" class="nav-cta">← Späť</a>
-  </nav>
+  <header class="nav"><div class="navwrap">
+    <a class="brand" href="/">MF</a>
+    <div class="navright"><a class="navlink" href="/">Domov</a><a class="cta" href="/#registracia">Registrovať zdarma</a></div>
+  </div></header>
 
-  <header class="page-hero">
-    <div class="section-label">PRÁVNE INFORMÁCIE</div>
-    <h1>Odstúpenie a<br/><span>vrátenie platby</span></h1>
-    <p>Naposledy aktualizované: jún 2026. Snažíme sa o férové a prehľadné riešenie každej žiadosti.</p>
-  </header>
+  <header class="page-hero"><div class="wrap">
+    <span class="eyebrow">Právne informácie</span>
+    <h1>Odstúpenie a <span class="grad">vrátenie platby</span></h1>
+    <p class="lede">Naposledy aktualizované: jún 2026. Snažíme sa o férové a prehľadné riešenie každej žiadosti.</p>
+  </div></header>
 
-  <main class="content">
+  <main class="content"><div class="wrap">
 
     <h2 class="content-h">Prehľad</h2>
-    <p class="content-p">Poskytovateľom služby je <strong style="color:#fff;">Aesir Digital Labs LLC</strong>, 30 North Gould Street, Ste R, Sheridan, WY 82801, USA. Keďže ide o online vzdelávacie webináre (digitálnu službu), možnosť vrátenia platby závisí od typu webinára a fázy poskytnutia služby.</p>
+    <p>Poskytovateľom služby je <strong>Aesir Digital Labs LLC</strong>, 30 North Gould Street, Ste R, Sheridan, WY 82801, USA. Keďže ide o online vzdelávacie webináre (digitálnu službu), možnosť vrátenia platby závisí od typu webinára a fázy poskytnutia služby.</p>
 
-    <div class="divider"></div>
+    <hr class="divider"/>
+    <h2 class="content-h">Bezplatný webinár</h2>
+    <p>Za bezplatný webinár sa neplatí, preto sa naň vrátenie platby nevzťahuje. Účasť môžeš kedykoľvek bez udania dôvodu zrušiť - stačí napísať na <a class="inline" href="mailto:hello@michalfarkas.com">hello@michalfarkas.com</a> a tvoje miesto uvoľníme pre ďalšieho záujemcu.</p>
 
-    <h2 class="content-h">Bezplatný (premiérový) webinár</h2>
-    <p class="content-p">Za bezplatný webinár sa neplatí, preto sa naň vrátenie platby nevzťahuje. Účasť môžeš kedykoľvek bez udania dôvodu zrušiť — stačí napísať na <a href="mailto:hello@michalfarkas.com" style="color:#6366F1;">hello@michalfarkas.com</a> a tvoje miesto uvoľníme pre ďalšieho záujemcu.</p>
-
-    <div class="divider"></div>
-
+    <hr class="divider"/>
     <h2 class="content-h">Platené webináre</h2>
-    <p class="content-p"><strong style="color:#fff;">Viac ako 48 hodín pred začiatkom:</strong> plné vrátenie platby, ak zrušíš účasť aspoň 48 hodín pred začiatkom webinára.</p>
-    <p class="content-p"><strong style="color:#fff;">Menej ako 48 hodín pred začiatkom:</strong> ponúkneme ti náhradný termín alebo prístup k záznamu. Vrátenie platby v tomto prípade nie je nárokovateľné.</p>
-    <p class="content-p"><strong style="color:#fff;">Po konaní webinára alebo po sprístupnení záznamu/playbooku:</strong> platbu už nie je možné vrátiť, keďže digitálny obsah bol poskytnutý.</p>
-    <p class="content-p"><strong style="color:#fff;">Nemôžeš sa zúčastniť?</strong> Aj tak ti pošleme záznam, takže o obsah neprídeš.</p>
+    <p><strong>Viac ako 48 hodín pred začiatkom:</strong> plné vrátenie platby, ak zrušíš účasť aspoň 48 hodín pred začiatkom webinára.</p>
+    <p><strong>Menej ako 48 hodín pred začiatkom:</strong> ponúkneme ti náhradný termín alebo prístup k záznamu. Vrátenie platby v tomto prípade nie je nárokovateľné.</p>
+    <p><strong>Po konaní webinára alebo po sprístupnení záznamu/playbooku:</strong> platbu už nie je možné vrátiť, keďže digitálny obsah bol poskytnutý.</p>
+    <p><strong>Nemôžeš sa zúčastniť?</strong> Aj tak ti pošleme záznam, takže o obsah neprídeš.</p>
 
-    <div class="divider"></div>
-
+    <hr class="divider"/>
     <h2 class="content-h">Zákonné právo na odstúpenie (spotrebitelia z EÚ)</h2>
-    <p class="content-p">Podľa smernice EÚ 2011/83/EÚ majú spotrebitelia spravidla právo odstúpiť od zmluvy uzavretej na diaľku do 14 dní bez udania dôvodu. Pri webinároch sa však uplatňujú dve bežné výnimky:</p>
-    <ul class="content-ul">
-      <li><strong style="color:#fff;">Služby viazané na konkrétny dátum.</strong> Webinár sa koná v presne určený deň a čas, preto sa naň vzťahuje výnimka pre voľnočasové a vzdelávacie podujatia (čl. 16 písm. l smernice) — právo na 14-dňové odstúpenie sa nemusí uplatniť.</li>
-      <li><strong style="color:#fff;">Digitálny obsah/služba začatá s tvojím súhlasom.</strong> Ak sa poskytovanie (vrátane sprístupnenia materiálov alebo záznamu) začne pred uplynutím 14 dní s tvojím výslovným súhlasom, právo na odstúpenie zaniká začatím poskytovania.</li>
+    <p>Podľa smernice EÚ 2011/83/EÚ majú spotrebitelia spravidla právo odstúpiť od zmluvy uzavretej na diaľku do 14 dní bez udania dôvodu. Pri webinároch sa však uplatňujú dve bežné výnimky:</p>
+    <ul>
+      <li><strong>Služby viazané na konkrétny dátum.</strong> Webinár sa koná v presne určený deň a čas, preto sa naň vzťahuje výnimka pre voľnočasové a vzdelávacie podujatia (čl. 16 písm. l smernice) - právo na 14-dňové odstúpenie sa nemusí uplatniť.</li>
+      <li><strong>Digitálny obsah/služba začatá s tvojím súhlasom.</strong> Ak sa poskytovanie (vrátane sprístupnenia materiálov alebo záznamu) začne pred uplynutím 14 dní s tvojím výslovným súhlasom, právo na odstúpenie zaniká začatím poskytovania.</li>
     </ul>
-    <p class="content-p">Registráciou a výberom termínu vyjadruješ súhlas s konaním webinára v zvolenom termíne a berieš na vedomie, že právo na odstúpenie môže po začatí služby zaniknúť. Nad rámec zákona ti vždy ponúkame férové riešenie (náhradný termín alebo záznam).</p>
+    <p>Registráciou a výberom termínu vyjadruješ súhlas s konaním webinára v zvolenom termíne a berieš na vedomie, že právo na odstúpenie môže po začatí služby zaniknúť. Nad rámec zákona ti vždy ponúkame férové riešenie (náhradný termín alebo záznam).</p>
 
-    <div class="divider"></div>
-
+    <hr class="divider"/>
     <h2 class="content-h">Ako požiadať o vrátenie platby</h2>
-    <p class="content-p">Napíš na <a href="mailto:return@michalfarkas.com" style="color:#6366F1;">return@michalfarkas.com</a> a uveď:</p>
-    <ul class="content-ul">
+    <p>Napíš na <a class="inline" href="mailto:return@michalfarkas.com">return@michalfarkas.com</a> a uveď:</p>
+    <ul>
       <li>Meno a e-mail použitý pri registrácii</li>
       <li>Termín webinára, ktorého sa žiadosť týka</li>
       <li>Dôvod žiadosti (nepovinné)</li>
     </ul>
-    <p class="content-p">Odpovieme do 2 pracovných dní. Schválené vrátenie platby spracúvame cez Stripe; suma sa zvyčajne objaví do 5–10 pracovných dní podľa tvojej banky.</p>
+    <p>Odpovieme do 2 pracovných dní. Schválené vrátenie platby spracúvame cez Stripe; suma sa zvyčajne objaví do 5-10 pracovných dní podľa tvojej banky.</p>
 
-    <div class="divider"></div>
-
+    <hr class="divider"/>
     <h2 class="content-h">Otázky?</h2>
-    <p class="content-p">Ozvi sa kedykoľvek na <a href="mailto:hello@michalfarkas.com" style="color:#6366F1;">hello@michalfarkas.com</a> — radi pomôžeme.</p>
+    <p>Ozvi sa kedykoľvek na <a class="inline" href="mailto:hello@michalfarkas.com">hello@michalfarkas.com</a> - radi pomôžeme.</p>
 
-  </main>
+  </div></main>
 
-  <footer>
+  <footer><div class="fwrap">
     <span>© 2026 Aesir Digital Labs LLC · <a href="https://michalfarkas.com">michalfarkas.com</a></span>
-    <span>
-      <a href="/about">O mne</a> &nbsp;·&nbsp;
-      <a href="/terms">Podmienky</a> &nbsp;·&nbsp;
-      <a href="/returns">Odstúpenie</a>
-    </span>
-    <span><a href="mailto:hello@michalfarkas.com">hello@michalfarkas.com</a></span>
-  </footer>
-
+    <span><a href="/about">O mne</a> · <a href="/terms">Podmienky</a> · <a href="/returns">Odstúpenie</a> · <a href="mailto:hello@michalfarkas.com">hello@michalfarkas.com</a></span>
+  </div></footer>
 </body>
 </html>
