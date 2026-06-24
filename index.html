@@ -23,7 +23,7 @@
 <meta name="twitter:image" content="https://consulting.michalfarkas.com/og-webinar.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0A0B14; --surface:#14152A; --surface2:#1B1D38; --ink:#F4F3FA; --dim:#A7A4C6;
@@ -99,7 +99,7 @@
   .tile .more{margin-top:12px;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--violet)}
 
   /* about */
-  .about{background:var(--surface);border:3px solid var(--line);border-radius:22px;padding:30px;display:grid;grid-template-columns:200px 1fr;gap:30px;align-items:center}
+  .about{background:linear-gradient(150deg,rgba(123,108,246,.16),rgba(226,123,194,.07) 60%,var(--surface));border:3px solid var(--violet);border-radius:22px;padding:30px;display:grid;grid-template-columns:200px 1fr;gap:30px;align-items:center;box-shadow:0 26px 60px -34px var(--violet)}
   .about img{width:200px;height:200px;object-fit:cover;border-radius:18px;border:3px solid var(--violet)}
   .about .kh{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:8px}
   .about h3{font-size:30px;font-weight:900;margin-bottom:12px}
@@ -133,6 +133,19 @@
   .modal-x{position:absolute;top:14px;right:14px;width:42px;height:42px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font-size:18px;cursor:pointer}
   .modal-x:hover{border-color:var(--violet)}
 
+  /* slider */
+  .slider{position:relative;overflow:hidden;margin-top:6px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .track{display:flex;gap:18px;width:max-content;animation:slideL 34s linear infinite;will-change:transform}
+  .slider:hover .track{animation-play-state:paused}
+  @keyframes slideL{to{transform:translateX(-1908px)}}
+  .scard{flex:0 0 300px;width:300px;background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:24px;cursor:pointer;transition:border-color .2s,transform .2s;text-decoration:none}
+  .scard:hover{border-color:var(--violet);transform:translateY(-4px)}
+  .scard .ic{width:52px;height:52px;border-radius:14px;background:rgba(123,108,246,.13);display:grid;place-items:center;color:var(--violet);margin-bottom:16px}
+  .scard .ic svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .scard h3{font-size:19px;font-weight:800;margin-bottom:6px;color:var(--ink)}
+  .scard p{font-size:14px;color:var(--dim);line-height:1.55}
+  .scard .more{margin-top:14px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--violet);display:block}
+  @media(max-width:680px){.slider{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;-webkit-mask-image:none;mask-image:none}.track{animation:none;gap:14px}.scard{scroll-snap-align:start;flex-basis:80%;width:80%}}
   /* agenda */
   .agenda{display:grid;gap:12px}
   .ag{display:grid;grid-template-columns:92px 1fr;gap:18px;align-items:start;background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:16px 20px}
@@ -179,15 +192,6 @@
   <a class="cta" href="#registracia">Registrovať zdarma</a>
 </div></header>
 
-<div class="band"><div class="wrap">
-  <span class="lbl">Formát</span>
-  <span class="pill">🎥 Live ~90 min</span>
-  <span class="pill">⏪ Záznam pre všetkých</span>
-  <span class="pill">📘 Playbook + scripty</span>
-  <span class="pill">❓ Q&amp;A naživo</span>
-  <span class="pill hot">🔥 Max 30 miest</span>
-</div></div>
-
 <section class="cover" id="top"><div class="wrap"><div class="cover-grid">
   <div class="hero">
     <span class="eyebrow">Bezplatný online webinár</span>
@@ -213,15 +217,21 @@
 <section class="sec" id="cozistkas"><div class="wrap">
   <div class="kh">Čo získaš na webinári</div>
   <h2 class="title">S čím ti vie AI už dnes pomôcť</h2>
-  <div class="sub">Konkrétne veci, ktoré ti ušetria čas. Klikni na ktorúkoľvek pre detail.</div>
-  <div class="grid">
-    <a class="tile" onclick="openModal(this)" data-title="Produktové popisy" data-detail="AI ti napíše desiatky produktových popisov a kategórií naraz - v tvojom tóne a štýle značky. Stačí jeden dobrý vzor a zoznam parametrov, zvyšok dotiahne za minúty. Ukážeme si, ako popisy nielen rýchlo vygenerovať, ale aj ako ich ladiť na SEO a konverziu a pripraviť si šablónu, ktorú použiješ stále dokola."><div class="art a1">🛍️</div><div class="body"><h3>Produktové popisy</h3><p>Desiatky popisov a kategórií za minúty namiesto hodín - v tvojom tóne.</p><div class="more">Klik pre detail →</div></div></a>
-    <a class="tile" onclick="openModal(this)" data-title="E-maily a newslettre" data-detail="Od nápadu po hotový e-mail: AI navrhne predmety, štruktúru aj text kampane či celej sekvencie (po objednávke, opustený košík). Ukážem, ako zadať brief, aby výstup sedel na tvoju značku, a ako rýchlo vyrobiť varianty na A/B testovanie - ty len finálne doladíš tón."><div class="art a2">✉️</div><div class="body"><h3>E-maily a newslettre</h3><p>Prvý draft kampaní, predmetov a sekvencií napíše AI, ty len ladíš.</p><div class="more">Klik pre detail →</div></div></a>
-    <a class="tile" onclick="openModal(this)" data-title="Obsah na sociálne siete" data-detail="Prázdna hlava pri postoch končí. AI ti vygeneruje nápady, varianty a celý plán obsahu na týždne dopredu - vrátane textov, hashtagov a uhlov pohľadu. Ukážeme si aj, ako z jedného kusu obsahu spraviť viac formátov (post, story, newsletter)."><div class="art a3">📱</div><div class="body"><h3>Obsah na sociálne siete</h3><p>Posty, varianty a nápady na týždne dopredu - bez prázdnej hlavy.</p><div class="more">Klik pre detail →</div></div></a>
-    <a class="tile" onclick="openModal(this)" data-title="Zákaznícka podpora" data-detail="Rutinné otázky zaberajú čas, ktorý nemáš. Pripravíme si knižnicu šablón a konceptov odpovedí (doprava, vrátenie, dostupnosť), ktoré AI prispôsobí konkrétnej situácii. Výsledok: rýchlejšie, konzistentné a stále ľudské odpovede - s tebou ako finálnym schvaľovateľom."><div class="art a4">💬</div><div class="body"><h3>Zákaznícka podpora</h3><p>Rýchle a konzistentné odpovede na rutinné otázky - šablóny, ktoré AI prispôsobí.</p><div class="more">Klik pre detail →</div></div></a>
-    <a class="tile" onclick="openModal(this)" data-title="Reporty a podklady" data-detail="Z čísel do prehľadu, ktorému rozumieš. Ukážem, ako dať AI dáta (z e-shopu či kampaní) a nechať si spraviť zhrnutie, komentár a odporúčania - bez hodín v Exceli. Plus ako si nastaviť opakovateľný formát reportu, ktorý použiješ každý mesiac."><div class="art a5">📊</div><div class="body"><h3>Reporty a podklady</h3><p>Z dát do zrozumiteľného prehľadu - rýchlo a bez Excel mučenia.</p><div class="more">Klik pre detail →</div></div></a>
-    <a class="tile" onclick="openModal(this)" data-title="Systém, nie triky" data-detail="Najdôležitejšia časť: ako z jednotlivých trikov spraviť systém. Pripravíš si štruktúru (kontext o značke, šablóny, postupy), ku ktorej sa AI vždy vráti - výsledky sú konzistentné a nezačínaš zakaždým od nuly. Toto je rozdiel medzi „hraním sa s AI" a „prácou s AI"."><div class="art a6">⚙️</div><div class="body"><h3>Systém, nie triky</h3><p>Ako z jednotlivých trikov spraviť opakovateľný systém, ku ktorému sa AI vždy vráti.</p><div class="more">Klik pre detail →</div></div></a>
-  </div>
+  <div class="sub">Pohni myšou nad slider, aby sa zastavil. Klikni na box pre detail.</div>
+  <div class="slider"><div class="track">
+      <a class="scard" onclick="openModal(this)" data-title="Produktové popisy" data-detail="AI ti napíše desiatky produktových popisov a kategórií naraz - v tvojom tóne a štýle značky. Stačí jeden dobrý vzor a zoznam parametrov, zvyšok dotiahne za minúty. Ukážeme si, ako popisy nielen rýchlo vygenerovať, ale aj ako ich ladiť na SEO a konverziu a pripraviť si šablónu, ktorú použiješ stále dokola."><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.6 13.4 11.6 4.4A2 2 0 0 0 10.2 4H5a1 1 0 0 0-1 1v5.2a2 2 0 0 0 .6 1.4l9 9a2 2 0 0 0 2.8 0l4.2-4.2a2 2 0 0 0 0-2.8Z"/><circle cx="8" cy="8" r="1.2"/></svg></span><h3>Produktové popisy</h3><p>Desiatky popisov a kategórií za minúty, v tvojom tóne.</p><span class="more">Klik pre detail &#8594;</span></a>
+      <a class="scard" onclick="openModal(this)" data-title="E-maily a newslettre" data-detail="Od nápadu po hotový e-mail: AI navrhne predmety, štruktúru aj text kampane či celej sekvencie (po objednávke, opustený košík). Ukážem, ako zadať brief, aby výstup sedel na tvoju značku, a ako rýchlo vyrobiť varianty na A/B testovanie - ty len finálne doladíš tón."><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><h3>E-maily a newslettre</h3><p>Prvý draft kampaní, predmetov a sekvencií napíše AI.</p><span class="more">Klik pre detail &#8594;</span></a>
+      <a class="scard" onclick="openModal(this)" data-title="Obsah na sociálne siete" data-detail="Prázdna hlava pri postoch končí. AI ti vygeneruje nápady, varianty a celý plán obsahu na týždne dopredu - vrátane textov, hashtagov a uhlov pohľadu. Ukážeme si aj, ako z jedného kusu obsahu spraviť viac formátov (post, story, newsletter)."><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.2 7.6L3 21l1.9-5.8A8.5 8.5 0 1 1 21 11.5Z"/></svg></span><h3>Obsah na sociálne siete</h3><p>Posty, varianty a nápady na týždne dopredu.</p><span class="more">Klik pre detail &#8594;</span></a>
+      <a class="scard" onclick="openModal(this)" data-title="Zákaznícka podpora" data-detail="Rutinné otázky zaberajú čas, ktorý nemáš. Pripravíme si knižnicu šablón a konceptov odpovedí (doprava, vrátenie, dostupnosť), ktoré AI prispôsobí konkrétnej situácii. Výsledok: rýchlejšie, konzistentné a stále ľudské odpovede - s tebou ako finálnym schvaľovateľom."><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><path d="M20 14v3a3 3 0 0 1-3 3h-2"/><rect x="2.5" y="13" width="3.5" height="6" rx="1.5"/><rect x="18" y="13" width="3.5" height="6" rx="1.5"/></svg></span><h3>Zákaznícka podpora</h3><p>Rýchle a konzistentné odpovede na rutinné otázky.</p><span class="more">Klik pre detail &#8594;</span></a>
+      <a class="scard" onclick="openModal(this)" data-title="Reporty a podklady" data-detail="Z čísel do prehľadu, ktorému rozumieš. Ukážem, ako dať AI dáta (z e-shopu či kampaní) a nechať si spraviť zhrnutie, komentár a odporúčania - bez hodín v Exceli. Plus ako si nastaviť opakovateľný formát reportu, ktorý použiješ každý mesiac."><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><rect x="5" y="11" width="3.2" height="7"/><rect x="10.4" y="6" width="3.2" height="12"/><rect x="15.8" y="14" width="3.2" height="4"/></svg></span><h3>Reporty a podklady</h3><p>Z dát do prehľadu, bez Excel mučenia.</p><span class="more">Klik pre detail &#8594;</span></a>
+      <a class="scard" onclick="openModal(this)" data-title="Systém, nie triky" data-detail="Najdôležitejšia časť: ako z jednotlivých trikov spraviť systém. Pripravíš si štruktúru (kontext o značke, šablóny, postupy), ku ktorej sa AI vždy vráti - výsledky sú konzistentné a nezačínaš zakaždým od nuly. Toto je rozdiel medzi „hraním sa s AI" a „prácou s AI"."><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></span><h3>Systém, nie triky</h3><p>Opakovateľný systém, ku ktorému sa AI vždy vráti.</p><span class="more">Klik pre detail &#8594;</span></a>
+      <a class="scard" onclick="openModal(this)" data-title="Produktové popisy" data-detail="AI ti napíše desiatky produktových popisov a kategórií naraz - v tvojom tóne a štýle značky. Stačí jeden dobrý vzor a zoznam parametrov, zvyšok dotiahne za minúty. Ukážeme si, ako popisy nielen rýchlo vygenerovať, ale aj ako ich ladiť na SEO a konverziu a pripraviť si šablónu, ktorú použiješ stále dokola."><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.6 13.4 11.6 4.4A2 2 0 0 0 10.2 4H5a1 1 0 0 0-1 1v5.2a2 2 0 0 0 .6 1.4l9 9a2 2 0 0 0 2.8 0l4.2-4.2a2 2 0 0 0 0-2.8Z"/><circle cx="8" cy="8" r="1.2"/></svg></span><h3>Produktové popisy</h3><p>Desiatky popisov a kategórií za minúty, v tvojom tóne.</p><span class="more">Klik pre detail &#8594;</span></a>
+      <a class="scard" onclick="openModal(this)" data-title="E-maily a newslettre" data-detail="Od nápadu po hotový e-mail: AI navrhne predmety, štruktúru aj text kampane či celej sekvencie (po objednávke, opustený košík). Ukážem, ako zadať brief, aby výstup sedel na tvoju značku, a ako rýchlo vyrobiť varianty na A/B testovanie - ty len finálne doladíš tón."><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><h3>E-maily a newslettre</h3><p>Prvý draft kampaní, predmetov a sekvencií napíše AI.</p><span class="more">Klik pre detail &#8594;</span></a>
+      <a class="scard" onclick="openModal(this)" data-title="Obsah na sociálne siete" data-detail="Prázdna hlava pri postoch končí. AI ti vygeneruje nápady, varianty a celý plán obsahu na týždne dopredu - vrátane textov, hashtagov a uhlov pohľadu. Ukážeme si aj, ako z jedného kusu obsahu spraviť viac formátov (post, story, newsletter)."><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.2 7.6L3 21l1.9-5.8A8.5 8.5 0 1 1 21 11.5Z"/></svg></span><h3>Obsah na sociálne siete</h3><p>Posty, varianty a nápady na týždne dopredu.</p><span class="more">Klik pre detail &#8594;</span></a>
+      <a class="scard" onclick="openModal(this)" data-title="Zákaznícka podpora" data-detail="Rutinné otázky zaberajú čas, ktorý nemáš. Pripravíme si knižnicu šablón a konceptov odpovedí (doprava, vrátenie, dostupnosť), ktoré AI prispôsobí konkrétnej situácii. Výsledok: rýchlejšie, konzistentné a stále ľudské odpovede - s tebou ako finálnym schvaľovateľom."><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><path d="M20 14v3a3 3 0 0 1-3 3h-2"/><rect x="2.5" y="13" width="3.5" height="6" rx="1.5"/><rect x="18" y="13" width="3.5" height="6" rx="1.5"/></svg></span><h3>Zákaznícka podpora</h3><p>Rýchle a konzistentné odpovede na rutinné otázky.</p><span class="more">Klik pre detail &#8594;</span></a>
+      <a class="scard" onclick="openModal(this)" data-title="Reporty a podklady" data-detail="Z čísel do prehľadu, ktorému rozumieš. Ukážem, ako dať AI dáta (z e-shopu či kampaní) a nechať si spraviť zhrnutie, komentár a odporúčania - bez hodín v Exceli. Plus ako si nastaviť opakovateľný formát reportu, ktorý použiješ každý mesiac."><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><rect x="5" y="11" width="3.2" height="7"/><rect x="10.4" y="6" width="3.2" height="12"/><rect x="15.8" y="14" width="3.2" height="4"/></svg></span><h3>Reporty a podklady</h3><p>Z dát do prehľadu, bez Excel mučenia.</p><span class="more">Klik pre detail &#8594;</span></a>
+      <a class="scard" onclick="openModal(this)" data-title="Systém, nie triky" data-detail="Najdôležitejšia časť: ako z jednotlivých trikov spraviť systém. Pripravíš si štruktúru (kontext o značke, šablóny, postupy), ku ktorej sa AI vždy vráti - výsledky sú konzistentné a nezačínaš zakaždým od nuly. Toto je rozdiel medzi „hraním sa s AI" a „prácou s AI"."><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></span><h3>Systém, nie triky</h3><p>Opakovateľný systém, ku ktorému sa AI vždy vráti.</p><span class="more">Klik pre detail &#8594;</span></a>
+    </div></div>
 </div></section>
 
 <section class="sec" id="program"><div class="wrap">
@@ -239,7 +249,7 @@
 
 <section class="sec"><div class="wrap">
   <div class="about">
-    <img src="img/photo-06ab8efe.jpg" alt="Michal Farkaš">
+    <img src="img/photo-06ab8efe.jpg" alt="Michal Farkaš" loading="lazy" width="200" height="200">
     <div>
       <div class="kh">Kto ťa prevedie webinárom</div>
       <h3>Michal Farkaš</h3>
@@ -261,7 +271,7 @@
       <div class="c"><div class="n" id="s">00</div><div class="l">sekúnd</div></div>
     </div>
     <div class="brevo">
-      <iframe src="https://285540ba.sibforms.com/v2/serve/MUIFAAuU8eY8zX3-aYz1cVJFRHPkC0A6rJNgqsWY56Rhu8oqkqVOk1VfWgNGhaXf-y73-ZMMPst5L0ShobKRktMEypLTM2ZewtqmITgZMsRz2D_5vUzycCoRLE_dJuGHWyFmLcliZ2eWkePNY30LI7mDMLA2SkwwPXc_7M_0EvEx0AAOAJkOFykymG_JGCr0tOdDIXP96t0Dh2fo0g==" width="100%" height="480" frameborder="0" scrolling="auto" allowfullscreen title="Registrácia na webinár"></iframe>
+      <iframe src="https://285540ba.sibforms.com/v2/serve/MUIFAAuU8eY8zX3-aYz1cVJFRHPkC0A6rJNgqsWY56Rhu8oqkqVOk1VfWgNGhaXf-y73-ZMMPst5L0ShobKRktMEypLTM2ZewtqmITgZMsRz2D_5vUzycCoRLE_dJuGHWyFmLcliZ2eWkePNY30LI7mDMLA2SkwwPXc_7M_0EvEx0AAOAJkOFykymG_JGCr0tOdDIXP96t0Dh2fo0g==" width="100%" height="480" frameborder="0" scrolling="auto" allowfullscreen loading="lazy" title="Registrácia na webinár"></iframe>
     </div>
     <div class="note">Max 30 miest. Po naplnení registráciu zatváram. Vstup zdarma - žiadna platba.</div>
   </div>
