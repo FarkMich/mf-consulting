@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://consulting.michalfarkas.com/sitemap.xml
+Sitemap: https://ai.michalfarkas.com/sitemap.xml
