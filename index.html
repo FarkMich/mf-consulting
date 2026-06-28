@@ -147,7 +147,7 @@
   .scard h3{font-size:19px;font-weight:800;margin-bottom:6px;color:var(--ink)}
   .scard p{font-size:14px;color:var(--dim);line-height:1.55}
   .scard .more{margin-top:14px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--violet);display:block}
-  @media(max-width:680px){.slider{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;-webkit-mask-image:none;mask-image:none}.track{animation:none;gap:14px}.scard{scroll-snap-align:start;flex-basis:80%;width:80%}}
+  @media(max-width:680px){.slider{overflow:visible;-webkit-mask-image:none;mask-image:none}.track{display:grid;grid-template-columns:1fr;gap:12px;width:auto;animation:none}.scard{width:auto;flex:0 0 auto}.scard:nth-child(n+7){display:none}}
   /* agenda */
   .agenda{display:grid;gap:12px}
   .ag{display:grid;grid-template-columns:92px 1fr;gap:18px;align-items:start;background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:16px 20px}
@@ -206,7 +206,7 @@
 
 <header class="nav"><div class="wrap">
   <a class="brand" href="/">MF</a>
-  <nav class="links"><a href="#top">Webinár</a><a href="#cozistkas">Čo získaš</a><a href="/about">O mne</a><a href="#faq">FAQ</a><a href="/workshop">Workshop</a></nav>
+  <nav class="links"><a href="#top" style="color:var(--violet)">Webinár</a><a href="#cozistkas" style="color:var(--violet)">Čo získaš</a><a href="/about" style="color:var(--violet)">O mne</a><a href="#faq" style="color:var(--violet)">FAQ</a><a href="/workshop" style="color:var(--pink)">Workshop</a></nav>
   <a class="cta" href="#registracia">Registrovať zdarma</a>
 </div></header>
 
