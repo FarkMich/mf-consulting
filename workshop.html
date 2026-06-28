@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshop: Optimalizuj e-shop a marketing pomocou AI - Michal Farkaš</title>
+<meta name="description" content="Platený online workshop pre e-shopárov a marketérov. Praktický systém, šablóny a prompty na AI v e-shope a marketingu. 39 €, obmedzený počet miest.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://ai.michalfarkas.com/workshop">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='26' fill='%237B6CF6'/%3E%3Ctext x='50' y='68' font-family='Arial' font-size='46' font-weight='900' fill='white' text-anchor='middle'%3EMF%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sk_SK">
+<meta property="og:url" content="https://ai.michalfarkas.com/workshop">
+<meta property="og:title" content="Workshop: Optimalizuj e-shop a marketing pomocou AI">
+<meta property="og:description" content="Praktický platený workshop - systém, šablóny a prompty na AI v e-shope a marketingu. 39 €, obmedzený počet miest.">
+<meta property="og:image" content="https://ai.michalfarkas.com/og-webinar.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0B14; --surface:#14152A; --surface2:#1B1D38; --ink:#F4F3FA; --dim:#A7A4C6;
+    --violet:#7B6CF6; --violet-d:#6354E0; --pink:#E27BC2; --indigo:#4F46B8; --line:#2A2C4D;
+    --disp:'Archivo',system-ui,sans-serif; --sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55}
+  a{color:inherit;text-decoration:none;cursor:pointer}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+  h1,h2,h3,.disp{font-family:var(--disp);letter-spacing:-.03em;line-height:.98}
+  .grad{background:linear-gradient(100deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  header.nav{position:sticky;top:0;z-index:30;background:rgba(10,11,20,.82);backdrop-filter:blur(12px);border-bottom:2px solid var(--line)}
+  header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{width:46px;height:46px;border-radius:14px;background:var(--violet);display:grid;place-items:center;font-family:var(--disp);font-weight:900;font-size:17px;color:#fff;box-shadow:0 0 0 2px rgba(123,108,246,.3)}
+  nav.links{display:flex;gap:4px}
+  nav.links a{font-weight:700;font-size:14px;padding:9px 14px;border-radius:30px;color:var(--dim)}
+  nav.links a:hover{background:var(--surface);color:var(--ink)}
+  .cta{background:var(--violet);color:#fff!important;padding:11px 22px;border-radius:30px;font-weight:800;box-shadow:0 8px 24px -10px var(--violet)}
+  .cta:hover{background:var(--violet-d)}
+
+  .cover{padding:50px 0 30px}
+  .cover-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:26px;align-items:stretch}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);border:2px solid var(--pink);padding:8px 16px;border-radius:30px;margin-bottom:22px}
+  .hero h1{font-size:56px;font-weight:900;margin-bottom:18px}
+  .hero p.lede{font-size:19px;color:var(--dim);max-width:34ch;margin-bottom:26px;font-weight:500}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+  .btn{font-family:var(--sans);font-weight:800;font-size:15px;padding:14px 26px;border-radius:30px;border:2px solid var(--line);cursor:pointer;display:inline-block}
+  .btn-primary{background:var(--violet);border-color:var(--violet);color:#fff;box-shadow:0 10px 28px -12px var(--violet)}
+  .btn-primary:hover{background:var(--violet-d)}
+  .btn-ghost:hover{border-color:var(--violet);color:#fff}
+  .hero .when{font-size:14px;color:var(--dim);font-weight:600}
+
+  .ticket{background:linear-gradient(160deg,var(--surface2),var(--surface));border:3px solid var(--violet);border-radius:22px;padding:28px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 30px 60px -34px var(--violet)}
+  .ticket .tag{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+  .ticket .big{font-family:var(--disp);font-weight:900;font-size:46px;margin:8px 0 4px}
+  .ticket .row{display:flex;justify-content:space-between;padding:11px 0;border-top:2px solid var(--line);font-size:14px}
+  .ticket .row b{font-weight:700}
+  .ticket .seats{font-size:13px;color:var(--dim);margin-top:10px}
+
+  .sec{padding:46px 0 8px}
+  .sec .kh{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--violet);margin-bottom:8px}
+  .sec h2.title{font-size:40px;font-weight:900;margin-bottom:8px}
+  .sec .sub{font-size:16px;color:var(--dim);margin-bottom:26px;max-width:52ch}
+
+  .notintro{background:var(--surface);border:3px solid var(--line);border-radius:20px;padding:28px 30px}
+  .notintro h3{font-size:24px;font-weight:900;margin-bottom:10px}
+  .notintro p{font-size:15.5px;color:var(--dim);max-width:70ch}
+  .notintro b{color:var(--ink)}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:22px}
+  .card .ic{width:46px;height:46px;border-radius:12px;background:rgba(123,108,246,.13);display:grid;place-items:center;color:var(--violet);margin-bottom:14px}
+  .card .ic svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .card h3{font-size:17px;font-weight:800;margin-bottom:6px}
+  .card p{font-size:13.5px;color:var(--dim)}
+
+  .agenda{display:grid;gap:12px}
+  .ag{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start;background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:16px 20px}
+  .ag .t{font-family:var(--disp);font-weight:900;font-size:15px;color:var(--violet);letter-spacing:.04em}
+  .ag .d h4{font-size:16px;font-weight:800;margin-bottom:3px}
+  .ag .d p{font-size:13.5px;color:var(--dim);margin:0}
+
+  .inc{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;background:var(--surface);border:3px solid var(--line);border-radius:18px;padding:26px 30px}
+  .inc div{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:var(--dim)}
+  .inc .ck{color:var(--violet);font-weight:900;flex-shrink:0}
+  .inc b{color:var(--ink);font-weight:700}
+
+  .price{background:linear-gradient(160deg,var(--surface2),var(--bg));border:3px solid var(--violet);border-radius:24px;padding:44px;text-align:center;box-shadow:0 30px 70px -40px var(--violet);max-width:640px;margin:0 auto}
+  .price .amount{font-family:var(--disp);font-weight:900;font-size:64px;line-height:1}
+  .price .amount span{font-size:26px;color:var(--dim)}
+  .price .meta{color:var(--dim);font-weight:600;margin:8px 0 22px}
+  .price .note{font-size:13px;color:var(--dim);margin-top:16px}
+  .price .guarantee{font-size:13px;color:var(--dim);margin-top:8px}
+
+  .about{background:linear-gradient(150deg,rgba(123,108,246,.16),rgba(226,123,194,.07) 60%,var(--surface));border:3px solid var(--violet);border-radius:22px;padding:30px;display:grid;grid-template-columns:200px 1fr;gap:30px;align-items:center;box-shadow:0 26px 60px -34px var(--violet)}
+  .about img{width:200px;height:200px;object-fit:cover;border-radius:18px;border:3px solid var(--violet)}
+  .about .kh{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:8px}
+  .about h3{font-size:30px;font-weight:900;margin-bottom:12px}
+  .about p{font-size:15.5px;color:var(--dim)}
+
+  .faq{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .qa{background:var(--surface);border:3px solid var(--line);border-radius:16px;padding:22px 24px}
+  .qa h4{font-size:17px;font-weight:800;margin-bottom:8px}
+  .qa p{font-size:14px;color:var(--dim)}
+
+  /* slider */
+  .slider{position:relative;overflow:hidden;margin-top:6px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .track{display:flex;gap:18px;width:max-content;animation:slideL 36s linear infinite;will-change:transform}
+  .slider:hover .track{animation-play-state:paused}
+  @keyframes slideL{to{transform:translateX(-1908px)}}
+  .scard{flex:0 0 300px;width:300px;background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:24px;transition:border-color .2s,transform .2s}
+  .scard:hover{border-color:var(--violet);transform:translateY(-4px)}
+  .scard .ic{width:52px;height:52px;border-radius:14px;background:rgba(123,108,246,.13);display:grid;place-items:center;color:var(--violet);margin-bottom:16px}
+  .scard .ic svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .scard h3{font-size:18px;font-weight:800;margin-bottom:6px;color:var(--ink)}
+  .scard p{font-size:14px;color:var(--dim);line-height:1.55}
+  @media(max-width:680px){.slider{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;-webkit-mask-image:none;mask-image:none}.track{animation:none;gap:14px}.scard{scroll-snap-align:start;flex-basis:80%;width:80%}}
+  /* comparison table */
+  .ctable{border:2px solid var(--line);border-radius:18px;overflow:hidden;max-width:840px}
+  .ct-head,.ct-row{display:grid;grid-template-columns:1.7fr 1fr 1fr;align-items:center}
+  .ct-head>div,.ct-row>div{padding:14px 18px}
+  .ct-head{background:var(--surface2);font-weight:800;font-size:13.5px;color:var(--ink)}
+  .ct-row{border-top:1px solid var(--line);font-size:14px;color:var(--dim)}
+  .ct-row>div:first-child{color:var(--ink);font-weight:600}
+  .ct-c{text-align:center}
+  .ct-hl{background:rgba(123,108,246,.09)}
+  .ct-head .ct-hl{color:var(--violet)}
+  .y{color:var(--violet);font-weight:900}
+  .n{color:var(--dim);opacity:.45;font-weight:900}
+  @media(max-width:680px){.ct-head,.ct-row{grid-template-columns:1.5fr .8fr .8fr}.ct-head>div,.ct-row>div{padding:11px 9px;font-size:12px}}
+  #ckb a{color:var(--violet);font-weight:700}
+  footer{margin-top:54px;border-top:2px solid var(--line);padding:34px 0 50px}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--dim)}
+  footer a:hover{color:var(--violet)}
+
+  @media(max-width:900px){
+    .cover-grid{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.faq{grid-template-columns:1fr}.inc{grid-template-columns:1fr}
+    .about{grid-template-columns:1fr;text-align:center}.about img{margin:0 auto}
+    nav.links{display:none}.hero h1{font-size:40px}.sec h2.title{font-size:30px}.ag{grid-template-columns:74px 1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="/">MF</a>
+  <nav class="links"><a href="/">Webinár zdarma</a><a href="#co">Čo dostaneš</a><a href="#program">Program</a><a href="#faq">FAQ</a></nav>
+  <a class="cta" href="#cena">Kúpiť miesto</a>
+</div></header>
+
+<section class="cover"><div class="wrap"><div class="cover-grid">
+  <div class="hero">
+    <span class="eyebrow">Platený online workshop</span>
+    <h1>Optimalizuj e-shop a marketing <span class="grad">pomocou AI</span></h1>
+    <p class="lede">Žiadny ďalší úvod do AI. Praktický systém, hotové šablóny a prompty, ktoré nasadíš hneď po workshope.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#cena">Kúpiť miesto</a>
+      <a class="btn btn-ghost" href="#co">Čo si odnesieš</a>
+    </div>
+    <div class="when">Online · 2 hodiny · obmedzený počet miest · záznam + materiály pre všetkých</div>
+  </div>
+  <div class="ticket">
+    <span class="tag">Tvoje miesto</span>
+    <div class="big">39 €</div>
+    <div class="row"><span>Formát</span><b>Online, naživo</b></div>
+    <div class="row"><span>Trvanie</span><b>2 hodiny</b></div>
+    <div class="row"><span>Termín</span><b>Čoskoro</b></div>
+    <div class="row"><span>Miesta</span><b>20 - 30</b></div>
+    <div class="seats">Komorný formát, nech sa dostane na každú otázku.</div>
+  </div>
+</div></div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="notintro">
+    <h3>Toto nie je ďalší „úvod do AI"</h3>
+    <p>Bezplatný webinár ti ukáže, <b>čo AI zvládne a kde začať</b>. Tento workshop ide ďalej: <b>spolu postavíme systém</b> - konkrétne postupy, šablóny a prompty pre tvoj e-shop a marketing, ktoré po workshope používaš dookola. Z „hrania sa s AI" spravíme „prácu s AI".</p>
+  </div>
+</div></section>
+
+<section class="sec" id="co"><div class="wrap">
+  <div class="kh">Výsledok</div>
+  <h2 class="title">Čo si odnesieš</h2>
+  <div class="sub">Nie poznámky, ale hotové veci, ktoré hneď nasadíš. (Prejdi myšou pre pauzu.)</div>
+  <div class="slider"><div class="track">
+    <div class="scard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20.6 13.4 11.6 4.4A2 2 0 0 0 10.2 4H5a1 1 0 0 0-1 1v5.2a2 2 0 0 0 .6 1.4l9 9a2 2 0 0 0 2.8 0l4.2-4.2a2 2 0 0 0 0-2.8Z"/><circle cx="8" cy="8" r="1.2"/></svg></span><h3>Šablóny na produktové popisy</h3><p>Hotové prompty, ktoré píšu popisy v tóne tvojej značky a na SEO.</p></div>
+    <div class="scard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><h3>E-mailové sekvencie</h3><p>Kampane, predmety a automatizácie (košík, po objednávke) na pár klikov.</p></div>
+    <div class="scard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.2 7.6L3 21l1.9-5.8A8.5 8.5 0 1 1 21 11.5Z"/></svg></span><h3>Plán obsahu na týždne</h3><p>Posty, varianty a nápady na sociálne dopredu, bez prázdnej hlavy.</p></div>
+    <div class="scard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><path d="M20 14v3a3 3 0 0 1-3 3h-2"/><rect x="2.5" y="13" width="3.5" height="6" rx="1.5"/><rect x="18" y="13" width="3.5" height="6" rx="1.5"/></svg></span><h3>Knižnica odpovedí pre podporu</h3><p>Rýchle a konzistentné odpovede na rutinné otázky zákazníkov.</p></div>
+    <div class="scard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><rect x="5" y="11" width="3.2" height="7"/><rect x="10.4" y="6" width="3.2" height="12"/><rect x="15.8" y="14" width="3.2" height="4"/></svg></span><h3>Opakovateľný report</h3><p>Z dát do prehľadu s komentárom, bez hodín v Exceli.</p></div>
+    <div class="scard"><span class="ic"><svg viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></span><h3>Vlastný AI systém (playbook)</h3><p>Štruktúra a kontext o značke, ku ktorej sa AI vždy vráti - konzistentné výsledky.</p></div>
+    <div class="scard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20.6 13.4 11.6 4.4A2 2 0 0 0 10.2 4H5a1 1 0 0 0-1 1v5.2a2 2 0 0 0 .6 1.4l9 9a2 2 0 0 0 2.8 0l4.2-4.2a2 2 0 0 0 0-2.8Z"/><circle cx="8" cy="8" r="1.2"/></svg></span><h3>Šablóny na produktové popisy</h3><p>Hotové prompty, ktoré píšu popisy v tóne tvojej značky a na SEO.</p></div>
+    <div class="scard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><h3>E-mailové sekvencie</h3><p>Kampane, predmety a automatizácie (košík, po objednávke) na pár klikov.</p></div>
+    <div class="scard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.2 7.6L3 21l1.9-5.8A8.5 8.5 0 1 1 21 11.5Z"/></svg></span><h3>Plán obsahu na týždne</h3><p>Posty, varianty a nápady na sociálne dopredu, bez prázdnej hlavy.</p></div>
+    <div class="scard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><path d="M20 14v3a3 3 0 0 1-3 3h-2"/><rect x="2.5" y="13" width="3.5" height="6" rx="1.5"/><rect x="18" y="13" width="3.5" height="6" rx="1.5"/></svg></span><h3>Knižnica odpovedí pre podporu</h3><p>Rýchle a konzistentné odpovede na rutinné otázky zákazníkov.</p></div>
+    <div class="scard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><rect x="5" y="11" width="3.2" height="7"/><rect x="10.4" y="6" width="3.2" height="12"/><rect x="15.8" y="14" width="3.2" height="4"/></svg></span><h3>Opakovateľný report</h3><p>Z dát do prehľadu s komentárom, bez hodín v Exceli.</p></div>
+    <div class="scard"><span class="ic"><svg viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></span><h3>Vlastný AI systém (playbook)</h3><p>Štruktúra a kontext o značke, ku ktorej sa AI vždy vráti - konzistentné výsledky.</p></div>
+  </div></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="kh">Porovnanie</div>
+  <h2 class="title">Zdarma webinár vs. platený workshop</h2>
+  <div class="sub">Zdarma ti ukáže smer a základy. Platený ti dá hotové veci a systém.</div>
+  <div class="ctable">
+    <div class="ct-head"><div>Čo dostaneš</div><div class="ct-c">Webinár zdarma</div><div class="ct-c ct-hl">Workshop 39 €</div></div>
+    <div class="ct-row"><div>Úvod do AI pre e-shop a marketing</div><div class="ct-c"><span class="y">&#10003;</span></div><div class="ct-c ct-hl"><span class="y">&#10003;</span></div></div>
+    <div class="ct-row"><div>Live Q&amp;A na tvoje otázky</div><div class="ct-c"><span class="y">&#10003;</span></div><div class="ct-c ct-hl"><span class="y">&#10003;</span></div></div>
+    <div class="ct-row"><div>Praktické ukážky naživo</div><div class="ct-c">pár</div><div class="ct-c ct-hl">veľa (2 h)</div></div>
+    <div class="ct-row"><div>Hotové prompty na kopírovanie</div><div class="ct-c"><span class="n">&#10007;</span></div><div class="ct-c ct-hl"><span class="y">&#10003;</span></div></div>
+    <div class="ct-row"><div>Šablóny: popisy, e-maily, obsah</div><div class="ct-c"><span class="n">&#10007;</span></div><div class="ct-c ct-hl"><span class="y">&#10003;</span></div></div>
+    <div class="ct-row"><div>Plán obsahu na týždne dopredu</div><div class="ct-c"><span class="n">&#10007;</span></div><div class="ct-c ct-hl"><span class="y">&#10003;</span></div></div>
+    <div class="ct-row"><div>Vlastný AI systém (playbook)</div><div class="ct-c"><span class="n">&#10007;</span></div><div class="ct-c ct-hl"><span class="y">&#10003;</span></div></div>
+    <div class="ct-row"><div>Záznam + materiály po podujatí</div><div class="ct-c"><span class="n">&#10007;</span></div><div class="ct-c ct-hl"><span class="y">&#10003;</span></div></div>
+    <div class="ct-row"><div>Cena</div><div class="ct-c"><b style="color:var(--pink)">Zdarma</b></div><div class="ct-c ct-hl"><b style="color:var(--ink)">39 €</b></div></div>
+  </div>
+</div></section>
+
+<section class="sec" id="program"><div class="wrap">
+  <div class="kh">Program</div>
+  <h2 class="title">Ako bude workshop prebiehať</h2>
+  <div class="sub">Prakticky, krok za krokom - veľa ukážok a priestor na tvoje veci.</div>
+  <div class="agenda">
+    <div class="ag"><div class="t">Modul 1</div><div class="d"><h4>Základ systému</h4><p>Ako pripraviť kontext o značke a šablóny, ku ktorým sa AI vždy vráti.</p></div></div>
+    <div class="ag"><div class="t">Modul 2</div><div class="d"><h4>Produkty a obsah</h4><p>Popisy, kategórie, posty a varianty naživo - od zlého po skvelý prompt.</p></div></div>
+    <div class="ag"><div class="t">Modul 3</div><div class="d"><h4>E-maily a podpora</h4><p>Kampane, sekvencie a knižnica odpovedí, ktoré len doladíš.</p></div></div>
+    <div class="ag"><div class="t">Modul 4</div><div class="d"><h4>Reporty a automatizácia</h4><p>Z dát do prehľadu a ako z trikov spraviť opakovateľný proces.</p></div></div>
+    <div class="ag"><div class="t">Q&amp;A</div><div class="d"><h4>Tvoje konkrétne veci</h4><p>Prejdeme tvoj e-shop a otázky - srdce celého workshopu.</p></div></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="kh">V cene</div>
+  <h2 class="title">Čo všetko dostaneš</h2>
+  <div class="inc">
+    <div><span class="ck">&#10003;</span><span><b>Živý workshop online</b> s priestorom na otázky</span></div>
+    <div><span class="ck">&#10003;</span><span><b>Záznam</b> - pozrieš si to kedykoľvek znova</span></div>
+    <div><span class="ck">&#10003;</span><span><b>Playbook</b> s postupmi krok za krokom</span></div>
+    <div><span class="ck">&#10003;</span><span><b>Knižnica promptov a šablón</b> na kopírovanie</span></div>
+    <div><span class="ck">&#10003;</span><span><b>Q&amp;A naživo</b> na tvoje konkrétne situácie</span></div>
+    <div><span class="ck">&#10003;</span><span><b>Faktúra</b> na firmu (aj pre podnikateľov)</span></div>
+  </div>
+</div></section>
+
+<section class="sec" id="cena"><div class="wrap">
+  <div class="price">
+    <div class="kh" style="color:var(--pink)">Cena workshopu</div>
+    <div class="amount">39 <span>€</span></div>
+    <div class="meta">jednorazovo · online · 20 - 30 miest · termín čoskoro</div>
+    <a class="btn btn-primary" style="font-size:17px;padding:16px 34px" href="https://buy.stripe.com/eVq8wQ5Z68Rn2DJ3CR1Nu00" target="_blank" rel="noopener">Kúpiť miesto - 39 €</a>
+    <div class="note">Platba cez Stripe (karta). Po platbe dostaneš potvrdenie a prístup.</div>
+    <div class="guarantee">Nemôžeš sa zúčastniť naživo? Aj tak ti pošlem záznam aj materiály.</div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="about">
+    <img src="img/photo-06ab8efe.jpg" alt="Michal Farkaš" loading="lazy" width="200" height="200">
+    <div>
+      <div class="kh">Kto ťa workshopom prevedie</div>
+      <h3>Michal Farkaš</h3>
+      <p>10 rokov v marketingu a e-commerce. Co-founder &amp; CMO značky Afterglow, predtým marketing v Shoptete a Filmzie. AI používam denne na reálnu prácu, nie na efekt - a presne to ti odovzdám.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="faq"><div class="wrap">
+  <div class="kh">Časté otázky</div>
+  <h2 class="title">Než si kúpiš miesto</h2>
+  <div style="height:8px"></div>
+  <div class="faq">
+    <div class="qa"><h4>Pre koho je workshop?</h4><p>Pre e-shopárov, marketérov a majiteľov firiem, ktorí chcú AI reálne používať na prácu - nie len skúšať. Programovanie netreba.</p></div>
+    <div class="qa"><h4>Je to to isté ako bezplatný webinár?</h4><p>Nie. Webinár je úvod a ochutnávka. Workshop je hĺbkový, praktický a dostaneš v ňom hotové šablóny, prompty a systém.</p></div>
+    <div class="qa"><h4>Kedy sa workshop koná a ako dlho trvá?</h4><p>Termín oznámim čoskoro - po kúpe ti dám vedieť presný dátum s predstihom. Workshop trvá <b style="color:var(--ink)">2 hodiny</b> naživo, plný ukážok a promptov, plus Q&amp;A.</p></div>
+    <div class="qa"><h4>Dostanem doklad / faktúru?</h4><p>Po platbe dostaneš doklad o úhrade e-mailom (Stripe). Ak potrebuješ faktúru na firmu, napíš mi a vystavím ju.</p></div>
+    <div class="qa"><h4>Nestíham naživo?</h4><p>Nevadí. Všetci dostanú záznam aj materiály, takže o nič neprídeš.</p></div>
+    <div class="qa"><h4>Aké sú storno podmienky?</h4><p>Férové - detaily nájdeš v <a style="color:var(--violet);font-weight:700" href="/returns">storno podmienkach</a>.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>© 2026 Aesir Digital Labs LLC · <a href="https://michalfarkas.com">michalfarkas.com</a></span>
+  <span><a href="/">Webinár zdarma</a> · <a href="/about">O mne</a> · <a href="/terms">Podmienky</a> · <a href="/returns">Storno podmienky</a> · <a href="/privacy">Súkromie</a></span>
+</div></footer>
+
+<div id="ckb" style="display:none;position:fixed;left:16px;right:16px;bottom:16px;z-index:200;max-width:560px;margin:0 auto;background:#14152A;border:2px solid #2A2C4D;border-radius:16px;padding:18px 20px;font-family:'Inter',system-ui,sans-serif;box-shadow:0 20px 50px -20px rgba(0,0,0,.7)">
+  <p style="color:#A7A4C6;font-size:13.5px;line-height:1.6;margin:0 0 12px">Používame cookies na anonymnú analytiku (Google Analytics). Viac v <a href="/privacy" style="color:#7B6CF6;font-weight:700">zásadách ochrany údajov</a>.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <button onclick="ckSet(true)" style="background:#7B6CF6;color:#fff;border:0;border-radius:30px;padding:10px 22px;font-weight:800;font-size:13px;cursor:pointer">Prijať</button>
+    <button onclick="ckSet(false)" style="background:transparent;color:#A7A4C6;border:2px solid #2A2C4D;border-radius:30px;padding:10px 22px;font-weight:700;font-size:13px;cursor:pointer">Odmietnuť</button>
+  </div>
+</div>
+<script>
+  function loadGA(){if(window.__ga)return;window.__ga=1;var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id=G-F3B3XEBRGL';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function g(){dataLayer.push(arguments);}window.gtag=g;g('js',new Date());g('config','G-F3B3XEBRGL',{anonymize_ip:true});}
+  function ckSet(ok){try{localStorage.setItem('cookieConsent',ok?'accepted':'declined');}catch(e){}var b=document.getElementById('ckb');if(b)b.style.display='none';if(ok)loadGA();}
+  (function(){var c;try{c=localStorage.getItem('cookieConsent');}catch(e){}if(c==='accepted'){loadGA();}else if(c!=='declined'){var b=document.getElementById('ckb');if(b)b.style.display='block';}})();
+</script>
+</body>
+</html>
