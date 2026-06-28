@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Webinár: Automatizuj e-shop a marketing pomocou AI - Michal Farkaš</title>
-<meta name="description" content="Bezplatný online webinár pre e-shopárov, marketérov a majiteľov firiem. Ušetri hodiny týždenne s AI. 8. 7. 2026, max 30 miest.">
+<title>Bezplatný webinár: Začni s AI v e-shope a marketingu - Michal Farkaš</title>
+<meta name="description" content="Bezplatný online webinár pre e-shopárov a marketérov. Ukážem ti, čo AI reálne zvládne a kde začať - bez programovania. 8. 7. 2026, miesta obmedzené.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://ai.michalfarkas.com/">
 <meta name="google-site-verification" content="JfYT2GohcjATrYoihQZMTvwJuR-3rUVfhmOgYSEpHao" />
@@ -13,14 +13,14 @@
 <meta property="og:locale" content="sk_SK">
 <meta property="og:site_name" content="Michal Farkaš - AI webináre">
 <meta property="og:url" content="https://ai.michalfarkas.com/">
-<meta property="og:title" content="Webinár: Automatizuj e-shop a marketing pomocou AI">
-<meta property="og:description" content="Bezplatný online webinár pre e-shopárov, marketérov a majiteľov firiem. 8. 7. 2026 o 18:30, max 30 miest.">
+<meta property="og:title" content="Bezplatný webinár: Začni s AI v e-shope a marketingu">
+<meta property="og:description" content="Čo AI reálne zvládne v e-shope a marketingu a kde začať. Bezplatný online webinár 8. 7. 2026 o 18:30.">
 <meta property="og:image" content="https://ai.michalfarkas.com/og-webinar.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Webinár: Automatizuj e-shop a marketing pomocou AI">
-<meta name="twitter:description" content="Bezplatný online webinár. 8. 7. 2026 o 18:30, max 30 miest.">
+<meta name="twitter:title" content="Bezplatný webinár: Začni s AI v e-shope a marketingu">
+<meta name="twitter:description" content="Bezplatný online webinár. 8. 7. 2026 o 18:30.">
 <meta name="twitter:image" content="https://ai.michalfarkas.com/og-webinar.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -155,6 +155,22 @@
   .ag .d h4{font-size:16px;font-weight:800;margin-bottom:3px}
   .ag .d p{font-size:13.5px;color:var(--dim);margin:0}
   @media(max-width:600px){.ag{grid-template-columns:64px 1fr;gap:12px}.ag .t{font-size:18px}}
+  /* bridge to paid workshop */
+  .bridge{background:linear-gradient(150deg,rgba(226,123,194,.15),rgba(123,108,246,.10) 60%,var(--surface));border:3px solid var(--pink);border-radius:22px;padding:34px 36px;box-shadow:0 26px 60px -34px var(--pink)}
+  .bridge .kh{color:var(--pink)}
+  .bridge h2{font-size:30px;font-weight:900;margin:6px 0 10px}
+  .bridge p{font-size:16px;color:var(--dim);max-width:62ch;margin-bottom:20px}
+  /* subscribe */
+  .subscribe{background:var(--surface);border:3px solid var(--line);border-radius:22px;padding:32px 34px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center}
+  .subscribe .kh{color:var(--violet)}
+  .subscribe h2{font-size:26px;font-weight:900;margin:6px 0 8px}
+  .subscribe p{font-size:14.5px;color:var(--dim);max-width:46ch}
+  .subform{display:flex;gap:10px;flex-wrap:wrap}
+  .subform input{flex:1;min-width:180px;background:var(--bg);border:2px solid var(--line);border-radius:30px;padding:13px 20px;color:var(--ink);font-family:var(--sans);font-size:15px}
+  .subform input:focus{outline:none;border-color:var(--violet)}
+  .subform .btn{flex-shrink:0}
+  .subnote{font-size:12px;color:var(--dim);margin-top:10px}
+  @media(max-width:760px){.subscribe{grid-template-columns:1fr}}
   /* cookie banner */
   #ckb a{color:var(--violet);font-weight:700}
   footer{margin-top:54px;border-top:2px solid var(--line);padding:34px 0 50px}
@@ -171,8 +187,8 @@
 {
   "@context":"https://schema.org",
   "@type":"Event",
-  "name":"Webinár: Automatizuj e-shop a marketing pomocou AI",
-  "description":"Bezplatný online webinár pre e-shopárov, marketérov a majiteľov firiem - ako AI ušetrí hodiny na popisoch, e-mailoch, obsahu a podpore.",
+  "name":"Bezplatný webinár: Začni s AI v e-shope a marketingu",
+  "description":"Bezplatný online webinár pre e-shopárov a marketérov - čo AI reálne zvládne a kde začať, bez programovania.",
   "startDate":"2026-07-08T18:30:00+02:00",
   "endDate":"2026-07-08T20:00:00+02:00",
   "eventAttendanceMode":"https://schema.org/OnlineEventAttendanceMode",
@@ -190,15 +206,15 @@
 
 <header class="nav"><div class="wrap">
   <a class="brand" href="/">MF</a>
-  <nav class="links"><a href="#top">Webinár</a><a href="#cozistkas">Čo získaš</a><a href="/about">O mne</a><a href="#faq">FAQ</a></nav>
+  <nav class="links"><a href="#top">Webinár</a><a href="#cozistkas">Čo získaš</a><a href="/about">O mne</a><a href="#faq">FAQ</a><a href="/workshop">Workshop</a></nav>
   <a class="cta" href="#registracia">Registrovať zdarma</a>
 </div></header>
 
 <section class="cover" id="top"><div class="wrap"><div class="cover-grid">
   <div class="hero">
-    <span class="eyebrow">Bezplatný online webinár</span>
-    <h1>Automatizuj e-shop a marketing <span class="grad">pomocou AI</span></h1>
-    <p class="lede">Získaj späť <b style="color:var(--ink)">hodiny každý týždeň</b> - bez programátora a bez tímu.</p>
+    <span class="eyebrow">Bezplatný online webinár · základy</span>
+    <h1>Začni s AI <span class="grad">v e-shope a marketingu</span></h1>
+    <p class="lede">Ukážem ti, čo AI reálne zvládne a <b style="color:var(--ink)">kde začať</b> - bez programovania a bez chaosu.</p>
     <div class="actions">
       <a class="btn btn-primary" href="#registracia">Zarezervovať miesto →</a>
       <a class="btn btn-ghost" href="#cozistkas">Čo získam</a>
@@ -279,16 +295,26 @@
   </div>
 </div></section>
 
+<section class="sec"><div class="wrap">
+  <div class="bridge">
+    <div class="kh">Ďalší krok</div>
+    <h2>Toto sú základy. Chceš celý systém?</h2>
+    <p>Na webinári ukážem, čo je možné a kde začať. Ak chceš ísť do hĺbky - hotové šablóny, prompty a opakovateľný systém pre tvoj e-shop a marketing - pripravil som platený workshop.</p>
+    <a class="btn btn-primary" href="/workshop">Pozrieť workshop →</a>
+  </div>
+</div></section>
+
 <section class="sec" id="faq"><div class="wrap">
   <div class="kh">Časté otázky</div>
   <h2 class="title">Než sa prihlásiš</h2>
   <div style="height:8px"></div>
   <div class="faq">
     <div class="qa"><h4>Pre koho je webinár?</h4><p>Pre ľudí, ktorí AI už skúsili alebo bežne používajú, no stále si nie sú istí v pojmoch, promptovaní a v budovaní automatizácie. Začneme od pevného základu - programovanie netreba.</p></div>
-    <div class="qa"><h4>Dostanem záznam, ak nestíham naživo?</h4><p>Áno. Všetci prihlásení dostanú nahrávku aj playbook, takže si to pozrieš kedykoľvek.</p></div>
+    <div class="qa"><h4>Bude zo zadarmo webinára záznam?</h4><p>Nie. Webinár je naživo a zdarma - záznam ani materiály k nemu neposielam, tak si rezervuj čas a príď naživo. Záznam, šablóny a systém sú súčasťou <a style="color:var(--violet);font-weight:700" href="/workshop">plateného workshopu</a>.</p></div>
+    <div class="qa"><h4>Je toto ten platený workshop?</h4><p>Nie. Toto je bezplatný úvod. Hĺbkový platený workshop „Optimalizuj e-shop a marketing pomocou AI" (39 €) nájdeš <a style="color:var(--violet);font-weight:700" href="/workshop">tu</a>.</p></div>
     <div class="qa"><h4>Potrebujem platené AI nástroje?</h4><p>Nie nutne. Ukážem, čo sa dá zadarmo a kde sa prípadne oplatí priplatiť. Nič si nemusíš kupovať vopred.</p></div>
     <div class="qa"><h4>Je to o programovaní?</h4><p>Nie. Je to o tom, ako AI prakticky šetrí čas v e-shope a marketingu. Žiadny kód netreba.</p></div>
-    <div class="qa"><h4>Prečo je webinár zadarmo?</h4><p>Rozbieham sériu webinárov a chcem, aby si videl/a hodnotu naživo. Ďalšie webináre budú platené.</p></div>
+    <div class="qa"><h4>Prečo je webinár zadarmo?</h4><p>Chcem, aby si videl/a hodnotu naživo. Toto je úvod - kto to chce rozbehnúť naostro, môže pokračovať na platenom workshope.</p></div>
     <div class="qa"><h4>Koľko je miest?</h4><p>Max 30. Komorne - nech sa dostane na každú otázku.</p></div>
   </div>
 </div></section>
@@ -302,9 +328,26 @@
   </div>
 </div>
 
+<section class="sec"><div class="wrap">
+  <div class="subscribe">
+    <div>
+      <div class="kh">Newsletter</div>
+      <h2>Prihlás sa na odber noviniek</h2>
+      <p>Praktické tipy na AI v e-shope a marketingu + info o ďalších webinároch a workshopoch. Žiadny spam, odhlásiš sa jedným klikom.</p>
+    </div>
+    <div>
+      <form class="subform" id="subform" onsubmit="return subSubmit()">
+        <input type="email" id="subemail" placeholder="tvoj@email.sk" aria-label="E-mailová adresa" required>
+        <button class="btn btn-primary" type="submit">Odoberať</button>
+      </form>
+      <div class="subnote" id="subnote">Odoslaním súhlasíš so spracovaním e-mailu na zasielanie noviniek.</div>
+    </div>
+  </div>
+</div></section>
+
 <footer><div class="wrap">
   <span>© 2026 Aesir Digital Labs LLC · <a href="https://michalfarkas.com">michalfarkas.com</a></span>
-  <span><a href="/about">O mne</a> · <a href="/terms">Podmienky</a> · <a href="/returns">Storno podmienky</a> · <a href="/privacy">Súkromie</a> · <a href="mailto:hello@michalfarkas.com">hello@michalfarkas.com</a></span>
+  <span><a href="/workshop">Workshop</a> · <a href="/about">O mne</a> · <a href="/terms">Podmienky</a> · <a href="/returns">Storno podmienky</a> · <a href="/privacy">Súkromie</a> · <a href="mailto:hello@michalfarkas.com">hello@michalfarkas.com</a></span>
 </div></footer>
 
 <script>
@@ -328,6 +371,14 @@
   }
   function closeModal(){ document.getElementById('detailModal').classList.remove('open'); }
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeModal(); });
+
+  /* newsletter - placeholder, prepojime s Brevo neskor */
+  function subSubmit(){
+    var n=document.getElementById('subnote');
+    if(n){n.textContent='Ďakujeme! Newsletter spúšťame čoskoro - dáme ti vedieť.';n.style.color='var(--violet)';}
+    var f=document.getElementById('subform'); if(f) f.reset();
+    return false;
+  }
 </script>
 
 <div id="ckb" style="display:none;position:fixed;left:16px;right:16px;bottom:16px;z-index:200;max-width:560px;margin:0 auto;background:#14152A;border:2px solid #2A2C4D;border-radius:16px;padding:18px 20px;font-family:'Inter',system-ui,sans-serif;box-shadow:0 20px 50px -20px rgba(0,0,0,.7)">
