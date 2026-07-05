@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webinár: Automatizuj e-shop a marketing pomocou AI — Michal Farkaš</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0B14; --surface:#14152A; --surface2:#1B1D38; --ink:#F4F3FA; --dim:#A7A4C6;
+    --violet:#7B6CF6; --violet-d:#6354E0; --pink:#E27BC2; --indigo:#4F46B8; --line:#2A2C4D;
+    --disp:'Archivo',system-ui,sans-serif; --sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55}
+  a{color:inherit;text-decoration:none;cursor:pointer}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+  h1,h2,h3,.disp{font-family:var(--disp);letter-spacing:-.03em;line-height:.98}
+  .grad{background:linear-gradient(100deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:30;background:rgba(10,11,20,.82);backdrop-filter:blur(12px);border-bottom:2px solid var(--line)}
+  header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{width:46px;height:46px;border-radius:14px;background:var(--violet);display:grid;place-items:center;font-family:var(--disp);font-weight:900;font-size:17px;color:#fff;box-shadow:0 0 0 2px rgba(123,108,246,.3)}
+  nav.links{display:flex;gap:4px}
+  nav.links a{font-weight:700;font-size:14px;padding:9px 14px;border-radius:30px;color:var(--dim)}
+  nav.links a:hover{background:var(--surface);color:var(--ink)}
+  .cta{background:var(--violet);color:#fff!important;padding:11px 22px;border-radius:30px;font-weight:800;box-shadow:0 8px 24px -10px var(--violet)}
+  .cta:hover{background:var(--violet-d)}
+
+  /* format band (design-2 "band" feature) */
+  .band{background:var(--surface);border-bottom:2px solid var(--line)}
+  .band .wrap{display:flex;align-items:center;gap:10px;padding:13px 26px;flex-wrap:wrap}
+  .band .lbl{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  .pill{font-size:13px;font-weight:700;background:var(--bg);border:2px solid var(--line);padding:7px 14px;border-radius:30px;display:flex;align-items:center;gap:7px}
+  .pill.hot{background:var(--violet);border-color:var(--violet);color:#fff}
+
+  /* hero cover (magazine grid) */
+  .cover{padding:50px 0 30px}
+  .cover-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:26px;align-items:stretch}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--violet);border:2px solid var(--violet);padding:8px 16px;border-radius:30px;margin-bottom:22px}
+  .hero h1{font-size:62px;font-weight:900;margin-bottom:18px}
+  .hero p.lede{font-size:19px;color:var(--dim);max-width:30ch;margin-bottom:26px;font-weight:500}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+  .btn{font-family:var(--sans);font-weight:800;font-size:15px;padding:14px 26px;border-radius:30px;border:2px solid var(--line);cursor:pointer}
+  .btn-primary{background:var(--violet);border-color:var(--violet);color:#fff;box-shadow:0 10px 28px -12px var(--violet)}
+  .btn-primary:hover{background:var(--violet-d)}
+  .btn-ghost:hover{border-color:var(--violet);color:#fff}
+  .hero .when{font-size:14px;color:var(--dim);font-weight:600}
+
+  /* webinar ticket card */
+  .ticket{background:linear-gradient(160deg,var(--surface2),var(--surface));border:3px solid var(--violet);border-radius:22px;padding:28px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 30px 60px -34px var(--violet)}
+  .ticket .tag{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+  .ticket .big{font-family:var(--disp);font-weight:900;font-size:34px;margin:8px 0 4px}
+  .ticket .row{display:flex;justify-content:space-between;padding:11px 0;border-top:2px solid var(--line);font-size:14px}
+  .ticket .row b{font-weight:700}
+  .ticket .seats{font-size:13px;color:var(--dim);margin-top:6px}
+
+  /* section */
+  .sec{padding:46px 0 8px}
+  .sec .kh{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--violet);margin-bottom:8px}
+  .sec h2.title{font-size:42px;font-weight:900;margin-bottom:8px}
+  .sec .sub{font-size:16px;color:var(--dim);margin-bottom:26px;max-width:46ch}
+
+  /* use-case cards (design-2 tiles) */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .tile{border:3px solid var(--line);border-radius:18px;overflow:hidden;background:var(--surface);transition:transform .15s,border-color .15s}
+  .tile:hover{transform:translateY(-5px);border-color:var(--violet)}
+  .tile .art{height:118px;display:grid;place-items:center;font-size:46px;border-bottom:3px solid var(--line)}
+  .a1{background:linear-gradient(150deg,var(--violet),var(--indigo))}
+  .a2{background:linear-gradient(150deg,var(--pink),var(--violet))}
+  .a3{background:linear-gradient(150deg,var(--indigo),#2a2660)}
+  .a4{background:linear-gradient(150deg,var(--violet-d),var(--pink))}
+  .a5{background:linear-gradient(150deg,#3a3580,var(--violet))}
+  .a6{background:linear-gradient(150deg,var(--pink),#7a2e8f)}
+  .tile .body{padding:18px 20px 22px}
+  .tile h3{font-size:20px;font-weight:800;margin-bottom:7px}
+  .tile p{font-size:14px;color:var(--dim)}
+  .tile .more{margin-top:12px;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--violet)}
+
+  /* about */
+  .about{background:var(--surface);border:3px solid var(--line);border-radius:22px;padding:30px;display:grid;grid-template-columns:200px 1fr;gap:30px;align-items:center}
+  .about img{width:200px;height:200px;object-fit:cover;border-radius:18px;border:3px solid var(--violet)}
+  .about .kh{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:8px}
+  .about h3{font-size:30px;font-weight:900;margin-bottom:12px}
+  .about p{font-size:15.5px;color:var(--dim);margin-bottom:14px}
+
+  /* registration */
+  .reg{background:linear-gradient(160deg,var(--surface2),var(--bg));border:3px solid var(--violet);border-radius:24px;padding:44px;text-align:center;box-shadow:0 30px 70px -40px var(--violet)}
+  .reg h2{font-size:40px;font-weight:900;margin-bottom:8px}
+  .reg .when{color:var(--dim);font-weight:600;margin-bottom:22px}
+  .count{display:flex;gap:12px;justify-content:center;margin:0 0 26px}
+  .count .c{background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:14px 8px;min-width:78px}
+  .count .c .n{font-family:var(--disp);font-weight:900;font-size:34px;line-height:1}
+  .count .c .l{font-size:11px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+  .reg .note{font-size:13px;color:var(--dim);margin-top:16px}
+
+  /* faq */
+  .faq{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .qa{background:var(--surface);border:3px solid var(--line);border-radius:16px;padding:22px 24px}
+  .qa h4{font-size:17px;font-weight:800;margin-bottom:8px}
+  .qa p{font-size:14px;color:var(--dim)}
+
+  footer{margin-top:54px;border-top:2px solid var(--line);padding:34px 0 50px}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--dim)}
+  footer a:hover{color:var(--violet)}
+
+  @media(max-width:900px){
+    .cover-grid{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.faq{grid-template-columns:1fr}
+    .about{grid-template-columns:1fr;text-align:center}.about img{margin:0 auto}
+    nav.links{display:none}.hero h1{font-size:42px}.sec h2.title{font-size:30px}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+  <a class="brand">MF</a>
+  <nav class="links"><a>Webinár</a><a>Čo získaš</a><a>O mne</a><a>FAQ</a></nav>
+  <a class="cta">Registrovať zdarma</a>
+</div></div></header>
+
+<div class="band"><div class="wrap">
+  <span class="lbl">Formát</span>
+  <span class="pill">🎥 Live ~90 min</span>
+  <span class="pill">⏪ Záznam pre všetkých</span>
+  <span class="pill">📘 Playbook + scripty</span>
+  <span class="pill">❓ Q&amp;A naživo</span>
+  <span class="pill hot">🔥 Max 50 miest</span>
+</div></div>
+
+<section class="cover"><div class="wrap"><div class="cover-grid">
+  <div class="hero">
+    <span class="eyebrow">Bezplatný online webinár</span>
+    <h1>Automatizuj e-shop a marketing <span class="grad">pomocou AI</span></h1>
+    <p class="lede">Získaj späť <b style="color:var(--ink)">hodiny každý týždeň</b> - bez programátora a bez tímu.</p>
+    <div class="actions">
+      <a class="btn btn-primary">Zarezervovať miesto →</a>
+      <a class="btn btn-ghost">Čo získam</a>
+    </div>
+    <div class="when">16. 7. 2026 · 18:30-20:00 · online · max 50 miest</div>
+  </div>
+  <div class="ticket">
+    <span class="tag">Tvoja vstupenka</span>
+    <div class="big">Štvrtok 16. 7.</div>
+    <div class="row"><span>Čas</span><b>18:30 - 20:00</b></div>
+    <div class="row"><span>Kde</span><b>Online (Zoom)</b></div>
+    <div class="row"><span>Cena</span><b style="color:var(--pink)">Zdarma</b></div>
+    <div class="row"><span>Miesta</span><b>50 voľných</b></div>
+    <div class="seats">Po naplnení registráciu zatváram.</div>
+  </div>
+</div></div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="kh">Čo získaš na webinári</div>
+  <h2 class="title">S čím ti vie AI už dnes pomôcť</h2>
+  <div class="sub">Konkrétne veci, ktoré ti ušetria čas. Klikni na ktorúkoľvek pre detail.</div>
+  <div class="grid">
+    <a class="tile"><div class="art a1">🛍️</div><div class="body"><h3>Produktové popisy</h3><p>Desiatky popisov a kategórií za minúty namiesto hodín - v tvojom tóne.</p><div class="more">Klik pre detail →</div></div></a>
+    <a class="tile"><div class="art a2">✉️</div><div class="body"><h3>E-maily a newslettre</h3><p>Prvý draft kampaní, predmetov a sekvencií napíše AI, ty len ladíš.</p><div class="more">Klik pre detail →</div></div></a>
+    <a class="tile"><div class="art a3">📱</div><div class="body"><h3>Obsah na sociálne siete</h3><p>Posty, varianty a nápady na týždne dopredu - bez prázdnej hlavy.</p><div class="more">Klik pre detail →</div></div></a>
+    <a class="tile"><div class="art a4">💬</div><div class="body"><h3>Zákaznícka podpora</h3><p>Rýchle a konzistentné odpovede na rutinné otázky - šablóny, ktoré AI prispôsobí.</p><div class="more">Klik pre detail →</div></div></a>
+    <a class="tile"><div class="art a5">📊</div><div class="body"><h3>Reporty a podklady</h3><p>Z dát do zrozumiteľného prehľadu - rýchlo a bez Excel mučenia.</p><div class="more">Klik pre detail →</div></div></a>
+    <a class="tile"><div class="art a6">⚙️</div><div class="body"><h3>Systém, nie triky</h3><p>Ako z jednotlivých trikov spraviť opakovateľný systém, ku ktorému sa AI vždy vráti.</p><div class="more">Klik pre detail →</div></div></a>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="about">
+    <img src="https://consulting.michalfarkas.com/img/photo-06ab8efe.jpg" alt="Michal Farkaš">
+    <div>
+      <div class="kh">Kto ťa prevedie webinárom</div>
+      <h3>Michal Farkaš</h3>
+      <p>10 rokov v marketingu a e-commerce. Co-founder &amp; CMO značky Afterglow, predtým marketing v Shoptete a Filmzie. Na Digitálnej univerzite som viedol 3 webináre - o značke, e-commerce a budovaní webov s AI. AI používam denne na reálnu prácu, nie na efekt.</p>
+      <a class="btn btn-ghost" style="display:inline-block">Viac o mne →</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="reg">
+    <div class="kh" style="color:var(--pink)">Registrácia · zdarma</div>
+    <h2>Rezervuj si jedno z 50 miest</h2>
+    <div class="when">Štvrtok · 16. 7. 2026 · 18:30 - 20:00 · online</div>
+    <div class="count" id="count">
+      <div class="c"><div class="n" id="d">00</div><div class="l">dní</div></div>
+      <div class="c"><div class="n" id="h">00</div><div class="l">hodín</div></div>
+      <div class="c"><div class="n" id="m">00</div><div class="l">minút</div></div>
+      <div class="c"><div class="n" id="s">00</div><div class="l">sekúnd</div></div>
+    </div>
+    <a class="btn btn-primary" style="font-size:17px;padding:16px 32px">Zarezervovať miesto zdarma →</a>
+    <div class="note">Max 50 miest. Po naplnení registráciu zatváram. Vstup zdarma - žiadna platba.</div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="kh">Časté otázky</div>
+  <h2 class="title">Než sa prihlásiš</h2>
+  <div style="height:8px"></div>
+  <div class="faq">
+    <div class="qa"><h4>Pre koho je webinár?</h4><p>Pre ľudí, ktorí AI už skúsili alebo bežne používajú, no stále si nie sú istí v pojmoch, promptovaní a v budovaní automatizácie. Začneme od pevného základu - programovanie netreba.</p></div>
+    <div class="qa"><h4>Dostanem záznam, ak nestíham naživo?</h4><p>Áno. Všetci prihlásení dostanú nahrávku aj playbook, takže si to pozrieš kedykoľvek.</p></div>
+    <div class="qa"><h4>Potrebujem platené AI nástroje?</h4><p>Nie nutne. Ukážem, čo sa dá zadarmo a kde sa prípadne oplatí priplatiť. Nič si nemusíš kupovať vopred.</p></div>
+    <div class="qa"><h4>Je to o programovaní?</h4><p>Nie. Je to o tom, ako AI prakticky šetrí čas v e-shope a marketingu. Žiadny kód netreba.</p></div>
+    <div class="qa"><h4>Prečo je webinár zadarmo?</h4><p>Rozbieham sériu webinárov a chcem, aby si videl/a hodnotu naživo. Ďalšie webináre budú platené.</p></div>
+    <div class="qa"><h4>Koľko je miest?</h4><p>Max 50. Komorne - nech sa dostane na každú otázku.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>© 2026 Aesir Digital Labs LLC · <a>michalfarkas.com</a></span>
+  <span><a>O mne</a> · <a>Podmienky</a> · <a>Odstúpenie</a> · <a>hello@michalfarkas.com</a></span>
+</div></footer>
+
+<script>
+  var target=new Date("2026-07-16T18:30:00").getTime();
+  function pad(n){return String(n).padStart(2,'0');}
+  function tick(){
+    var t=target-Date.now();if(t<0)t=0;
+    document.getElementById('d').textContent=pad(Math.floor(t/86400000));
+    document.getElementById('h').textContent=pad(Math.floor(t/3600000)%24);
+    document.getElementById('m').textContent=pad(Math.floor(t/60000)%60);
+    document.getElementById('s').textContent=pad(Math.floor(t/1000)%60);
+  }
+  tick();setInterval(tick,1000);
+</script>
+</body>
+</html>

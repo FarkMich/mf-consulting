@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vytvor si webstránku pomocou AI - Michal Farkas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --indigo: #6366F1; --indigo-dark: #4338CA; --indigo-light: #EEF2FF;
+    --dark: #0D1117; --navy: #1E293B; --slate: #334155;
+    --gray: #64748B; --light-gray: #94A3B8; --white: #FFFFFF;
+    --emerald: #10B981; --amber: #F59E0B; --rose: #F43F5E;
+  }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: var(--dark); color: var(--white);
+    overflow: hidden; line-height: 1.55;
+  }
+  /* grid backdrop + left brand bar */
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: linear-gradient(var(--navy) 1px, transparent 1px),
+      linear-gradient(90deg, var(--navy) 1px, transparent 1px);
+    background-size: 120px 120px; opacity: 0.35;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: ''; position: fixed; left: 0; top: 0;
+    width: 5px; height: 100%; background: var(--indigo); z-index: 100;
+  }
+
+  /* SLIDE FRAME */
+  .deck { position: relative; width: 100vw; height: 100vh; z-index: 1; }
+  .slide {
+    position: absolute; inset: 0;
+    display: none; flex-direction: column; justify-content: flex-start;
+    padding: 6.5vh 6vw 8vh 7vw;
+    opacity: 0; transition: opacity 0.35s ease;
+  }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-inner { width: 100%; max-width: 1180px; }
+  .slide:not(.center) .slide-inner { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+  /* heading stays pinned at top, the rest is vertically centered in the space below */
+  .slide-inner > .body { flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 0; }
+  .slide.center { justify-content: center; }
+  .slide.center .slide-inner { margin: auto 0; }
+
+  /* TOP META ROW */
+  .kicker {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
+    color: var(--indigo); text-transform: uppercase; margin-bottom: 1.4rem;
+  }
+  .kicker::before { content: ''; width: 26px; height: 2px; background: var(--indigo); }
+
+  h1 { font-size: clamp(2rem, 5.2vw, 4.4rem); font-weight: 900; line-height: 1.05; letter-spacing: -1px; }
+  h1 .ac { color: var(--indigo); }
+  h2 { font-size: clamp(1.6rem, 3.4vw, 2.9rem); font-weight: 900; line-height: 1.12; letter-spacing: -0.5px; margin-bottom: 2rem; }
+  h2 .ac { color: var(--indigo); }
+  h3 { font-size: 1.05rem; font-weight: 700; }
+  p.lead { font-size: clamp(1rem, 1.5vw, 1.3rem); color: var(--light-gray); max-width: 760px; line-height: 1.65; }
+
+  .muted { color: var(--gray); }
+  .accent { color: var(--indigo); }
+  .ok { color: var(--emerald); }
+  .no { color: var(--rose); }
+
+  /* generic bullet list */
+  ul.clean { list-style: none; }
+  ul.clean li {
+    position: relative; padding-left: 1.6rem; margin: 0.65rem 0;
+    font-size: clamp(0.95rem, 1.35vw, 1.18rem); color: var(--light-gray); line-height: 1.5;
+  }
+  ul.clean li::before {
+    content: ''; position: absolute; left: 0; top: 0.62em;
+    width: 7px; height: 7px; background: var(--indigo); border-radius: 50%;
+  }
+  ul.clean li strong { color: var(--white); font-weight: 700; }
+
+  /* CARD GRID */
+  .grid { display: grid; gap: 1rem; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .card {
+    background: var(--navy); border: 1px solid var(--slate);
+    border-radius: 12px; padding: 1.3rem 1.4rem; position: relative; overflow: hidden;
+  }
+  .card .num { font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; color: var(--indigo); margin-bottom: 0.5rem; }
+  .card h3 { margin-bottom: 0.4rem; }
+  .card p { font-size: 0.86rem; color: var(--gray); line-height: 1.5; }
+  .card.hl { border-color: var(--indigo); }
+  .card.hl::before { content: ''; position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: var(--indigo); }
+
+  /* TWO-COLUMN COMPARE */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .panel { background: var(--navy); border: 1px solid var(--slate); border-radius: 12px; padding: 1.6rem 1.6rem; }
+  .panel.bad { opacity: 0.92; }
+  .panel.good { border: 2px solid var(--indigo); }
+  .panel-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 1.1rem; text-transform: uppercase; }
+  .row { display: flex; align-items: flex-start; gap: 0.55rem; font-size: 0.92rem; padding: 0.34rem 0; line-height: 1.45; }
+  .row.x { color: var(--gray); }
+  .row.x::before { content: '✕'; color: var(--rose); font-weight: 700; flex-shrink: 0; }
+  .row.c { color: var(--white); }
+  .row.c::before { content: '✓'; color: var(--emerald); font-weight: 700; flex-shrink: 0; }
+
+  /* TABLE (chat vs cowork vs code) */
+  table.cmp { width: 100%; border-collapse: collapse; font-size: clamp(0.78rem, 1.1vw, 0.98rem); }
+  table.cmp th, table.cmp td { text-align: left; padding: 0.85rem 1rem; border-bottom: 1px solid var(--slate); vertical-align: top; }
+  table.cmp thead th { color: var(--indigo); font-weight: 700; font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; border-bottom: 1px solid var(--indigo); }
+  table.cmp tbody th { color: var(--light-gray); font-weight: 600; width: 24%; }
+  table.cmp td { color: var(--gray); }
+  table.cmp td.win { color: var(--white); }
+
+  /* CODE / PROMPT BLOCK */
+  .code {
+    font-family: 'JetBrains Mono', monospace; font-size: clamp(0.74rem, 1.05vw, 0.95rem);
+    background: #070A0F; border: 1px solid var(--slate); border-radius: 12px;
+    padding: 1.2rem 1.4rem; color: var(--light-gray); line-height: 1.6; white-space: pre-wrap;
+  }
+  .code .cm { color: var(--gray); }
+  .code .kw { color: var(--indigo); }
+
+  /* FOLDER TREE */
+  .tree { font-family: 'JetBrains Mono', monospace; font-size: clamp(0.8rem, 1.15vw, 1.05rem); line-height: 1.9; color: var(--light-gray); }
+  .tree .fld { color: var(--indigo); font-weight: 700; }
+  .tree .file { color: var(--light-gray); }
+  .tree .ann { color: var(--gray); font-style: italic; }
+  .tree .ind { color: var(--slate); }
+
+  /* hierarchical row tree */
+  .ftree { font-family: 'JetBrains Mono', monospace; }
+  .fbranch { margin-left: 0.75rem; border-left: 1px solid var(--slate); padding-left: 0.9rem; }
+  .fr { display: flex; align-items: center; gap: 0.55rem; padding: 0.34rem 0; font-size: clamp(0.78rem, 1.05vw, 1rem); }
+  .fr .fi { flex-shrink: 0; opacity: 0.9; }
+  .fr.folder .fn { color: var(--indigo); font-weight: 700; }
+  .fr.file .fn { color: var(--light-gray); }
+  .fr .fa { margin-left: auto; color: var(--gray); font-style: italic; font-size: 0.76rem; font-family: 'Montserrat', sans-serif; white-space: nowrap; }
+
+  .pill { display: inline-block; background: var(--navy); border: 1px solid var(--slate); border-radius: 6px; padding: 0.3rem 0.85rem; font-size: 0.82rem; font-weight: 600; color: var(--light-gray); margin: 0.25rem 0.3rem 0.25rem 0; }
+  .pill.ac { border-color: var(--indigo); color: var(--white); }
+
+  .big-num { font-size: clamp(2.4rem, 6vw, 5rem); font-weight: 900; color: var(--indigo); line-height: 1; }
+
+  /* HUD */
+  .hud { position: fixed; bottom: 1.4rem; right: 2.2rem; display: flex; align-items: center; gap: 1.1rem; z-index: 60; font-size: 0.72rem; color: var(--gray); }
+  .hud .mono { display: flex; align-items: center; gap: 0.55rem; }
+  .monogram { width: 30px; height: 30px; background: var(--indigo); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 900; color: var(--white); }
+  .counter { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--light-gray); }
+  .nav-btns { display: flex; gap: 0.4rem; }
+  .nav-btns button { background: var(--navy); border: 1px solid var(--slate); color: var(--light-gray); width: 30px; height: 30px; border-radius: 7px; cursor: pointer; font-size: 14px; transition: border-color 0.2s, color 0.2s; }
+  .nav-btns button:hover { border-color: var(--indigo); color: var(--white); }
+  .progress { position: fixed; bottom: 0; left: 0; height: 3px; background: var(--indigo); z-index: 60; transition: width 0.35s ease; }
+  .topbrand { position: fixed; top: 1.4rem; right: 2.2rem; font-size: 0.7rem; letter-spacing: 2px; color: var(--slate); font-weight: 700; z-index: 60; text-transform: uppercase; }
+
+  .agenda { columns: 2; column-gap: 3rem; }
+  .agenda li { break-inside: avoid; }
+
+  @media (max-width: 820px) {
+    .g3, .g4 { grid-template-columns: repeat(2, 1fr); }
+    .cols, .g2 { grid-template-columns: 1fr; }
+    .agenda { columns: 1; }
+    .slide { padding: 4vh 6vw 9vh 8vw; }
+  }
+</style>
+</head>
+<body>
+<div class="topbrand">michalfarkas.com</div>
+<div class="deck" id="deck">
+
+  <!-- 1 - TITLE -->
+  <section class="slide center">
+    <div class="slide-inner">
+      <h1>Vytvorte si<br/>webstránku <span class="ac">pomocou AI</span></h1>
+      <p class="lead" style="margin-top:1.8rem;">Od prvého promptu po nasadenú stránku na internete. Bez vývojárskeho tímu, bez agentúry - len vy a umelá inteligencia.</p>
+      <div style="margin-top:2.4rem; display:flex; gap:0.4rem; flex-wrap:wrap;">
+        <span class="pill ac">Claude AI</span>
+        <span class="pill">Cursor</span>
+        <span class="pill">GitHub</span>
+        <span class="pill">Vercel</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 - AGENDA -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Čo nás dnes čaká</div>
+      <h2>Program <span class="ac">workshopu</span></h2>
+      <div class="body">
+      <ul class="clean agenda">
+        <li>Kto som a s čím pracujem</li>
+        <li>Základy práce s AI a nastavenie</li>
+        <li>9 pojmov, ktoré musíte poznať</li>
+        <li>Čo dnes AI dokáže - a kde je háčik</li>
+        <li>Na čo používame AI v Afterglow</li>
+        <li>Chat vs. Cowork vs. Code</li>
+        <li>Ako vyzerá dobrý prompt</li>
+        <li>Prečo si oplatí naprogramovať one-pager</li>
+        <li>Lokálne vs. nasadenie na internet</li>
+        <li>Naživo: postavíme jednoduchú stránku</li>
+        <li>Domáca úloha</li>
+        <li>Otázky &amp; diskusia</li>
+      </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 - ABOUT ME -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Predstavenie</div>
+      <h2>Som <span class="ac">Michal Farkas</span></h2>
+      <div class="body">
+      <div class="cols">
+        <div>
+          <ul class="clean">
+            <li><strong>9+ rokov</strong> v marketingu a e-commerce</li>
+            <li>Viedol som slovenský marketing v <strong>Shoptete</strong> - jednej z najväčších e-commerce platforiem v strednej Európe</li>
+            <li>Marketing v startupe <strong>Filmzie</strong> (filmový streaming)</li>
+            <li>Svoj prvý e-shop som rozbehol už v roku 2016</li>
+          </ul>
+        </div>
+        <div class="panel good">
+          <div class="panel-label accent">Dnes naplno</div>
+          <h3 style="font-size:1.5rem; margin-bottom:0.3rem;">Afterglow</h3>
+          <p class="accent" style="font-size:0.85rem; font-weight:700; letter-spacing:1px; margin-bottom:0.6rem;">Co-founder &amp; CMO</p>
+          <p class="muted" style="font-size:0.95rem; line-height:1.6;">Som co-founder a CMO značky Afterglow, ktorej sa momentálne venujem naplno. Marketing, obsah aj nový e-shop staviam s pomocou AI - presne to, čo si dnes ukážeme.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 - TOOLS -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Moje nástroje</div>
+      <h2>Prečo práve <span class="ac">Claude AI</span></h2>
+      <div class="body">
+      <div class="grid g2" style="margin-bottom:1.2rem;">
+        <div class="card hl">
+          <div class="num">HLAVNÝ NÁSTROJ</div>
+          <h3>Claude AI</h3>
+          <p>Používam výhradne Claude. Je špičkový v písaní aj v kóde, drží dlhý kontext, vie bezpečne pracovať s mojimi súbormi a má režimy na rôzne typy práce (chat, Cowork, kód).</p>
+        </div>
+        <div class="card">
+          <div class="num">DOPLNKOVÉ</div>
+          <h3>Cursor &middot; GitHub &middot; Vercel</h3>
+          <p>Editor s AI, kde žije kód (Cursor). Miesto, kde sa kód ukladá a verzuje (GitHub). Služba, ktorá stránku zverejní na internete (Vercel).</p>
+        </div>
+      </div>
+      <p class="lead" style="font-size:1.05rem;">Princíp: <span class="accent">jeden hlavný „mozog“</span> (Claude) a pár jednoduchých nástrojov okolo neho. Nemusíte poznať všetko - stačí pár vecí, ktoré do seba zapadajú.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 - FIRST PRINCIPLES + SETUP -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Než začnete</div>
+      <h2>Čo treba vedieť <span class="ac">na začiatku</span></h2>
+      <div class="body">
+      <div class="cols">
+        <div>
+          <ul class="clean">
+            <li><strong>AI nie je vševediace.</strong> Je to nástroj, nie orákulum - vždy si výstup overte.</li>
+            <li><strong>Kontext je kráľ.</strong> Čím lepšie zadanie a podklady dáte, tým lepší výsledok dostanete.</li>
+            <li><strong>Vy ste autor.</strong> AI navrhuje, vy rozhodujete a nesiete zodpovednosť.</li>
+            <li><strong>Iterujte.</strong> Prvý výstup je návrh, nie finál.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <div class="panel-label accent">Kde dávate AI prístup</div>
+          <div class="row c"><span><strong style="color:#fff">Cloud</strong> (web / appka) - chat a projekty. Nič na vašom počítači, len konverzácia.</span></div>
+          <div class="row c"><span><strong style="color:#fff">Počítač</strong> (Cowork / Code) - AI vidí a upravuje vaše súbory v jednom priečinku.</span></div>
+          <div class="row c"><span><strong style="color:#fff">Pravidlo</strong> - citlivé dáta dávajte len tam, kde viete, čo sa s nimi deje.</span></div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 - KEY TERMS 1-5 -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Slovníček &middot; 1-5 z 9</div>
+      <h2>Pojmy, ktoré <span class="ac">musíte poznať</span></h2>
+      <div class="body">
+      <div class="grid g3">
+        <div class="card"><div class="num">01 &middot; LLM</div><h3>Veľký jazykový model</h3><p>„Mozog“ za ChatGPT, Claude či Gemini. Naučený na obrovskom množstve textu, predpovedá najpravdepodobnejšie ďalšie slovo.</p></div>
+        <div class="card"><div class="num">02 &middot; HALUCINÁCIA</div><h3>Keď si AI vymýšľa</h3><p>Sebavedomo a úplne nesprávne. Stáva sa to tam, kde má model v dátach medzery. Preto overujte.</p></div>
+        <div class="card"><div class="num">03 &middot; TOKEN</div><h3>Stavebný kameň</h3><p>Nie slovo, ale kúsok slova. Viac tokenov = vyššia cena a dlhšie spracovanie.</p></div>
+        <div class="card"><div class="num">04 &middot; TRÉNING vs. INFERENCIA</div><h3>Učenie vs. práca</h3><p>Tréning = model sa učí. Inferencia = model už pracuje na vašej úlohe. Bez prvého niet druhého.</p></div>
+        <div class="card"><div class="num">05 &middot; FINE-TUNING</div><h3>Doladenie</h3><p>Vezmeme všeobecný model a „dokŕmime“ ho špecializovanými dátami, aby bol lepší v jednej konkrétnej veci.</p></div>
+        <div class="card hl" style="display:flex; align-items:center; justify-content:center;"><p style="color:var(--light-gray); font-size:0.95rem;">Nemusíte byť expert.<br/>Stačí, aby vám tieto<br/>pojmy <span class="accent">neboli cudzie.</span></p></div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 - KEY TERMS 6-9 -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Slovníček &middot; 6-9 z 9</div>
+      <h2>Pojmy, ktoré <span class="ac">musíte poznať</span></h2>
+      <div class="body">
+      <div class="grid g4">
+        <div class="card"><div class="num">06 &middot; REINFORCEMENT LEARNING</div><h3>Učenie posilňovaním</h3><p>AI sa učí pokusom, odmenou a opakovaním - ako pri výcviku psa, len ten pes je neurónová sieť. Takto sa zlepšujú modely v uvažovaní.</p></div>
+        <div class="card"><div class="num">07 &middot; DESTILÁCIA</div><h3>Veľký učí malého</h3><p>Veľký model „naučí“ menší napodobniť ho. Rýchlejšie, lacnejšie a takmer rovnako dobré.</p></div>
+        <div class="card"><div class="num">08 &middot; RAG</div><h3>AI + vaše dokumenty</h3><p>Retrieval-Augmented Generation. Model si „dohľadá“ vo vašich podkladoch - výrazne menej halucinácií.</p></div>
+        <div class="card"><div class="num">09 &middot; CHAIN OF THOUGHT</div><h3>Reťazec myšlienok</h3><p>Rozloženie zložitého problému na kroky - ako keď v škole píšete postup. Pomalšie, ale oveľa presnejšie.</p></div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 - WHAT AI CAN DO -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Realita 2026</div>
+      <h2>Čo dnes AI dokáže? <span class="ac">Takmer všetko.</span></h2>
+      <div class="body">
+      <p class="lead" style="margin-bottom:1.6rem;">A presne to je ten problém. Keď nástroj zvládne takmer hocičo, výsledok nezávisí od nástroja - <span class="accent">závisí od vás.</span></p>
+      <div class="grid g4">
+        <div class="card hl"><h3>Promptovať</h3><p>Vedieť presne a zrozumiteľne zadať, čo chcete.</p></div>
+        <div class="card hl"><h3>Tvoriť štruktúry</h3><p>Rozdeliť veľkú úlohu na menšie, zvládnuteľné kroky.</p></div>
+        <div class="card hl"><h3>Pracovať efektívne</h3><p>Iterovať, opakovať to, čo funguje, neopakovať chyby.</p></div>
+        <div class="card hl"><h3>Budovať pamäť</h3><p>Pripraviť podklady, ku ktorým sa AI vždy vráti.</p></div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 - MEMORY STRUCTURES (generic folder tree) -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Pamäťové štruktúry</div>
+      <h2>Dajte AI <span class="ac">poriadok</span>, dostanete poriadok</h2>
+      <div class="body">
+      <div class="cols">
+        <div class="panel">
+          <div class="ftree">
+            <div class="fr folder"><span class="fi">📁</span><span class="fn">PROJEKT/</span></div>
+            <div class="fbranch">
+              <div class="fr folder"><span class="fi">📁</span><span class="fn">KONTEXT/</span><span class="fa">kto ste, ako píšete</span></div>
+              <div class="fbranch">
+                <div class="fr file"><span class="fi">📄</span><span class="fn">o-mne.md</span></div>
+                <div class="fr file"><span class="fi">📄</span><span class="fn">styl-pisania.md</span></div>
+                <div class="fr file"><span class="fi">📄</span><span class="fn">ciele.md</span></div>
+              </div>
+              <div class="fr folder"><span class="fi">📁</span><span class="fn">VYSTUPY/</span><span class="fa">hotová práca</span></div>
+              <div class="fbranch">
+                <div class="fr folder"><span class="fi">📁</span><span class="fn">projekt-01/</span></div>
+                <div class="fr folder"><span class="fi">📁</span><span class="fn">projekt-02/</span></div>
+              </div>
+              <div class="fr folder"><span class="fi">📁</span><span class="fn">SABLONY/</span><span class="fa">opakovateľné vzory</span></div>
+              <div class="fbranch">
+                <div class="fr file"><span class="fi">📄</span><span class="fn">sablona-email.md</span></div>
+                <div class="fr file"><span class="fi">📄</span><span class="fn">sablona-clanok.md</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <ul class="clean">
+            <li><strong>Kontext</strong> - vaše „DNA“ pre AI: kto ste, čo robíte, akým tónom hovoríte.</li>
+            <li><strong>Výstupy</strong> - hotová práca, na ktorú sa dá nadviazať.</li>
+            <li><strong>Šablóny</strong> - vzory, ktoré spustia projekt za pár sekúnd.</li>
+            <li class="muted" style="margin-top:1rem;">Raz pripravíte, donekonečna využívate. Toto je rozdiel medzi „hraním sa s AI“ a <span class="accent">prácou s AI.</span></li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 - AFTERGLOW USE CASES -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Z praxe</div>
+      <h2>Na čo používame AI <span class="ac">v Afterglow</span></h2>
+      <div class="body">
+      <div class="grid g2">
+        <div class="card hl"><div class="num">E-MAIL MARKETING</div><h3>Newslettre a kampane</h3><p>Návrhy textov, predmetov, segmentácia obsahu. AI píše prvý draft, my ladíme tón.</p></div>
+        <div class="card hl"><div class="num">SOCIÁLNE SIETE</div><h3>Čiastočne - texty a obrázky</h3><p>Copy k príspevkom aj vizuály. Stratégiu a finálny výber držíme my.</p></div>
+        <div class="card hl"><div class="num">PPC</div><h3>Reklamné texty a kreatíva</h3><p>Varianty nadpisov, popisov a obrázkov na testovanie vo výkonnostných kampaniach.</p></div>
+        <div class="card hl"><div class="num">VSTUP NA TRH USA</div><h3>Nový e-shop - frontend</h3><p>Vizuálnu časť nového e-shopu pre americký trh staviame s pomocou AI.</p></div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 - CHAT vs COWORK vs CODE -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Porovnanie</div>
+      <h2>Chat vs. Cowork vs. <span class="ac">Code</span></h2>
+      <div class="body">
+      <table class="cmp">
+        <thead>
+          <tr><th></th><th>Chat</th><th>Cowork</th><th>Code</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Na čo je</th><td>Otázky, nápady, texty</td><td class="win">Práca so súbormi na počítači</td><td>Programovanie a projekty</td></tr>
+          <tr><th>Prístup k súborom</th><td>Žiadny</td><td class="win">Áno - vybraný priečinok</td><td class="win">Áno - celý projekt</td></tr>
+          <tr><th>Pre koho</th><td class="win">Každý</td><td class="win">Marketér, podnikateľ</td><td>Skôr technickejší</td></tr>
+          <tr><th>Krivka učenia</th><td class="win">Žiadna</td><td>Nízka</td><td>Stredná</td></tr>
+        </tbody>
+      </table>
+      <p class="lead" style="margin-top:1.6rem; font-size:1.05rem;">Niet jedného „najlepšieho“. <span class="accent">Chat</span> na premýšľanie, <span class="accent">Cowork</span> na bežnú prácu so súbormi, <span class="accent">Code</span> na serióznejšie programovanie. Dnes budeme najviac v Cowork a Code.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 - GOOD PROMPT -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Remeslo</div>
+      <h2>Ako vyzerá <span class="ac">dobrý prompt</span></h2>
+      <div class="body">
+      <div class="cols">
+        <div class="panel bad">
+          <div class="panel-label no">Slabý prompt</div>
+          <div class="code">Sprav mi web pre moju kaviareň.</div>
+          <p class="muted" style="font-size:0.85rem; margin-top:1rem;">Žiadny cieľ, žiadna cieľová skupina, žiadny tón. AI háda - a výsledok je priemerný.</p>
+        </div>
+        <div class="panel good">
+          <div class="panel-label accent">Silný prompt</div>
+          <div class="code"><span class="cm"># Cieľ</span>
+Jednostránkový web pre malú kaviareň
+v Bratislave. Cieľ: získať rezervácie.
+
+<span class="cm"># Cieľová skupina</span>
+Ľudia 25-40, ktorí hľadajú kvalitnú kávu.
+
+<span class="cm"># Sekcie</span>
+Hero, o nás, ponuka, galéria,
+otváracie hodiny, kontakt.
+
+<span class="cm"># Dizajn</span>
+Teplá hnedá a krémová, moderný font,
+priateľský tón. Čisté HTML + CSS,
+responzívne, bez backendu. Jeden súbor.</div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 - WHY ONE-PAGER -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Motivácia</div>
+      <h2>Prečo si oplatí <span class="ac">naprogramovať one-pager</span></h2>
+      <div class="body">
+      <div class="grid g3">
+        <div class="card"><h3>Test hypotézy</h3><p>Rýchlo overíte nápad alebo produkt skôr, než doň investujete.</p></div>
+        <div class="card"><h3>Osobná značka</h3><p>Profesionálna stránka, ktorú nájdu, keď si vás vygooglia.</p></div>
+        <div class="card"><h3>Portfólio</h3><p>Ukážka vašej práce na jednom mieste.</p></div>
+        <div class="card"><h3>Náhľad dizajnu</h3><p>Vizuál pre interného aj externého partnera - vývojára či klienta.</p></div>
+        <div class="card"><h3>Landing page</h3><p>Stránka šitá na jednu kampaň alebo jeden cieľ.</p></div>
+        <div class="card hl" style="display:flex; align-items:center;"><p style="color:var(--light-gray);">Jedna stránka,<br/><span class="accent">veľa využití</span> - a postavíte ju za jedno popoludnie.</p></div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 - DOS AND DONTS -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Pravidlá hry</div>
+      <h2>Čo <span class="no">nerobiť</span> a čo <span class="ac">áno</span></h2>
+      <div class="body">
+      <div class="cols">
+        <div class="panel bad">
+          <div class="panel-label no">Vyhnite sa (zatiaľ)</div>
+          <div class="row x"><span><strong style="color:#fff">Backend</strong> - serverová logika sa ťažko stráži a zabezpečuje.</span></div>
+          <div class="row x"><span><strong style="color:#fff">Admin</strong> - prihlasovanie a správa používateľov = riziko.</span></div>
+          <div class="row x"><span><strong style="color:#fff">Platobné brány</strong> - peniaze patria do overených riešení.</span></div>
+          <div class="row x"><span><strong style="color:#fff">Vlastné databázy</strong> - nesprávne uložené dáta sú bezpečnostné riziko.</span></div>
+        </div>
+        <div class="panel good">
+          <div class="panel-label accent">Pokojne robte</div>
+          <div class="row c"><span><strong style="color:#fff">Statické stránky</strong> - čisté HTML &amp; CSS. Rýchle a bezpečné.</span></div>
+          <div class="row c"><span><strong style="color:#fff">Kontaktný formulár</strong> cez overenú službu (napr. Tally).</span></div>
+          <div class="row c"><span><strong style="color:#fff">Responzívny dizajn</strong> - funguje na mobile aj počítači.</span></div>
+          <div class="row c"><span><strong style="color:#fff">Nasadenie cez Vercel</strong> - HTTPS a hosting zadarmo.</span></div>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:1.2rem; font-size:0.92rem;">Pravidlo: <span class="accent">čím menej pohyblivých častí, tým menej toho, čo sa môže pokaziť alebo zneužiť.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 - LOCAL VS DEPLOY -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Dva svety</div>
+      <h2>Lokálne vs. <span class="ac">nasadené</span></h2>
+      <div class="body">
+      <div class="cols">
+        <div class="panel">
+          <div class="panel-label accent">Lokálne (váš počítač)</div>
+          <ul class="clean">
+            <li>Stránku vidíte len vy</li>
+            <li>Ideálne na tvorbu a testovanie</li>
+            <li>Nič nie je verejné</li>
+          </ul>
+        </div>
+        <div class="panel good">
+          <div class="panel-label accent">Nasadené (internet)</div>
+          <ul class="clean">
+            <li>Stránka má vlastnú adresu (URL)</li>
+            <li>Dostupná komukoľvek na svete</li>
+            <li>Automatické HTTPS a rýchle načítanie</li>
+          </ul>
+        </div>
+      </div>
+      <p class="lead" style="margin-top:1.6rem; font-size:1.05rem;">Postup: <span class="accent">vytvorím lokálne → uložím → nasadím.</span> Na to slúžia tri nástroje.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 - CURSOR / GITHUB / VERCEL -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Nástroje nasadenia</div>
+      <h2>Cursor &middot; GitHub &middot; <span class="ac">Vercel</span></h2>
+      <div class="body">
+      <div class="grid g3">
+        <div class="card hl">
+          <div class="num">KDE TVORÍM</div><h3>Cursor</h3>
+          <p>Editor kódu so zabudovanou AI. Tu stránka vzniká - píšete zadania, AI generuje a upravuje kód.</p>
+          <p class="accent" style="margin-top:0.6rem; font-size:0.82rem;">Setup: stiahnuť → prihlásiť sa → otvoriť priečinok.</p>
+        </div>
+        <div class="card hl">
+          <div class="num">KDE SA UKLADÁ</div><h3>GitHub</h3>
+          <p>Miesto, kde kód žije a verzuje sa. História zmien, záloha, vlastníctvo kódu - všetko na jednom mieste.</p>
+          <p class="accent" style="margin-top:0.6rem; font-size:0.82rem;">Setup: účet → nový repozitár → prepojiť.</p>
+        </div>
+        <div class="card hl">
+          <div class="num">KDE SA ZVEREJNÍ</div><h3>Vercel</h3>
+          <p>Služba, ktorá z kódu na GitHube spraví živú stránku. HTTPS, rýchlosť a hosting - zadarmo.</p>
+          <p class="accent" style="margin-top:0.6rem; font-size:0.82rem;">Setup: prihlásiť cez GitHub → import → deploy.</p>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:1.3rem; font-size:0.92rem;">Reťaz je jednoduchá: <span class="accent">Cursor (tvorím) → GitHub (ukladám) → Vercel (zverejním).</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17 - LET'S CODE -->
+  <section class="slide center">
+    <div class="slide-inner" style="text-align:center;">
+      <div class="kicker" style="justify-content:center;">Praktická časť</div>
+      <h1>Poďme <span class="ac">kódovať</span></h1>
+      <p class="lead" style="margin:1.8rem auto 0;">Naživo postavíme jednoduchý one-pager - landing page pre nový produkt. Krok po kroku, spoločne, pomocou pripravených promptov.</p>
+    </div>
+  </section>
+
+  <!-- 18 - PROMPT: WHAT & PURPOSE -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Prompt 1 z 4</div>
+      <h2>Čo má byť na stránke <span class="ac">a aký má cieľ</span></h2>
+      <div class="body">
+      <div class="code"><span class="kw">## Zadanie</span>
+Vytvor jednostránkový web (one-pager) pre <span class="cm">[nový produkt]</span>.
+
+<span class="kw">## Cieľ stránky</span>
+Hlavný cieľ: <span class="cm">[napr. získať registrácie do čakacej listiny]</span>.
+Jedna jasná výzva na akciu (CTA).
+
+<span class="kw">## Cieľová skupina</span>
+<span class="cm">[komu je produkt určený - vek, potreba, situácia]</span>
+
+<span class="kw">## Tón</span>
+<span class="cm">[napr. dôveryhodný, moderný, priateľský]</span></div>
+      <p class="muted" style="margin-top:1.1rem; font-size:0.92rem;">Najprv <span class="accent">prečo a pre koho</span>, až potom ako to má vyzerať.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 19 - PROMPT: COLORS & FONTS -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Prompt 2 z 4</div>
+      <h2>Farebná paleta <span class="ac">a font</span></h2>
+      <div class="body">
+      <div class="code"><span class="kw">## Vizuálny štýl</span>
+Hlavná farba: <span class="cm">[napr. indigo #6366F1]</span>
+Pozadie: <span class="cm">[tmavé / svetlé]</span>
+Doplnková farba: <span class="cm">[napr. smaragdová na potvrdenia]</span>
+
+<span class="kw">## Typografia</span>
+Font: <span class="cm">[napr. Montserrat z Google Fonts]</span>
+Nadpisy výrazné a hrubé, text čitateľný.
+
+<span class="kw">## Atmosféra</span>
+<span class="cm">[napr. minimalistická, čistá, veľa priestoru]</span></div>
+      <p class="muted" style="margin-top:1.1rem; font-size:0.92rem;">Tip: dajte AI <span class="accent">konkrétne kódy farieb a názov fontu.</span> „Pekné modré“ nestačí.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 20 - PROMPT: STRUCTURE -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Prompt 3 z 4</div>
+      <h2>Štruktúra <span class="ac">landing page</span></h2>
+      <div class="body">
+      <div class="cols">
+        <div class="code"><span class="kw">## Sekcie zhora nadol</span>
+1. Hero - názov, slogan, CTA
+2. Problém / prísľub
+3. Ako to funguje (3 kroky)
+4. Výhody / vlastnosti
+5. Dôkaz (recenzie, čísla)
+6. Časté otázky
+7. Záverečná výzva (CTA)
+8. Pätička - kontakt
+
+<span class="kw">## Technika</span>
+Čisté HTML + CSS, responzívne,
+jeden súbor, bez backendu.</div>
+        <div>
+          <ul class="clean">
+            <li><strong>Jedna stránka = jeden príbeh.</strong> Od problému k riešeniu.</li>
+            <li><strong>CTA hore aj dole.</strong> Návštevník nemusí hľadať.</li>
+            <li><strong>Menej je viac.</strong> Každá sekcia má jeden účel.</li>
+            <li class="muted">Štruktúru pokojne upravte podľa produktu - toto je dobrý štart.</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 21 - PROMPT: DEPLOY -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Prompt 4 z 4 &middot; Nasadenie</div>
+      <h2>Vlastný vs. <span class="ac">generický hosting</span></h2>
+      <div class="body">
+      <div class="cols">
+        <div class="panel">
+          <div class="panel-label accent">Generický (odporúčam na štart)</div>
+          <ul class="clean">
+            <li>Adresa typu <strong>vas-projekt.vercel.app</strong></li>
+            <li>Zadarmo, hotové za pár minút</li>
+            <li>Netreba nič kupovať</li>
+          </ul>
+        </div>
+        <div class="panel good">
+          <div class="panel-label accent">Vlastná doména</div>
+          <ul class="clean">
+            <li>Adresa typu <strong>vasznacka.sk</strong></li>
+            <li>Profesionálnejší dojem</li>
+            <li>Doménu si treba kúpiť a prepojiť</li>
+          </ul>
+        </div>
+      </div>
+      <div class="code" style="margin-top:1.2rem;"><span class="cm"># Prompt na nasadenie</span>
+Priprav projekt na nasadenie cez Vercel. Vysvetli mi
+krok po kroku, ako kód dostať na GitHub a odtiaľ na Vercel.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 22 - SECURITY -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Bezpečnosť</div>
+      <h2>Čo mať na pamäti <span class="ac">pri kódovaní</span></h2>
+      <div class="body">
+      <ul class="clean">
+        <li><strong>Žiadne heslá ani kľúče v kóde.</strong> Nikdy ich nevkladajte priamo do stránky - kód býva verejný.</li>
+        <li><strong>Formuláre cez overené služby.</strong> Nezbierajte osobné údaje vlastným riešením.</li>
+        <li><strong>Žiadne citlivé dáta na statickej stránke.</strong> Všetko, čo je v stránke, vie prečítať ktokoľvek.</li>
+        <li><strong>HTTPS samozrejmosťou.</strong> Vercel ho dáva automaticky - využite to.</li>
+        <li><strong>Pýtajte sa AI na riziká.</strong> „Je na tejto stránke niečo, čo by mohlo byť bezpečnostný problém?“</li>
+      </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 23 - HOMEWORK -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Domáca úloha</div>
+      <h2>Naprogramujte si <span class="ac">tú svoju</span></h2>
+      <div class="body">
+      <p class="lead" style="margin-bottom:1.6rem;">Vyberte si niečo jednoduché a postavte to od začiatku do konca - vrátane nasadenia.</p>
+      <div class="grid g3">
+        <div class="card"><h3>Osobná vizitka</h3><p>Jedna stránka o vás a vašej práci.</p></div>
+        <div class="card"><h3>Landing pre nápad</h3><p>Otestujte produkt, ktorý ešte neexistuje.</p></div>
+        <div class="card"><h3>Pozvánka / podujatie</h3><p>Stránka k akcii s programom a kontaktom.</p></div>
+      </div>
+      <p class="muted" style="margin-top:1.4rem; font-size:0.95rem;">Cieľ nie je dokonalosť. Cieľ je <span class="accent">prejsť celý proces aspoň raz.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 24 - THANK YOU -->
+  <section class="slide center">
+    <div class="slide-inner" style="text-align:center;">
+      <div class="kicker" style="justify-content:center;">Ďakujem</div>
+      <h1>Otázky? <span class="ac">Sem s nimi.</span></h1>
+      <p class="lead" style="margin:1.8rem auto 2.2rem;">Vďaka, že ste si našli čas. Teraz je priestor na vaše otázky - a potom hor sa do kódovania.</p>
+      <a href="mailto:hello@michalfarkas.com" style="display:inline-block; background:var(--indigo); color:#fff; text-decoration:none; padding:0.95rem 2.4rem; border-radius:8px; font-weight:700; font-size:1.05rem;">hello@michalfarkas.com</a>
+      <p class="muted" style="margin-top:1.4rem; font-size:0.85rem; letter-spacing:2px;">MICHALFARKAS.COM</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- HUD -->
+<div class="progress" id="progress"></div>
+<div class="hud">
+  <div class="mono"><div class="monogram">MF</div></div>
+  <span class="counter"><span id="cur">1</span> / <span id="total">24</span></span>
+  <div class="nav-btns">
+    <button id="prev" aria-label="Predchádzajúci">&#8592;</button>
+    <button id="next" aria-label="Ďalší">&#8594;</button>
+  </div>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let i = 0;
+  const cur = document.getElementById('cur');
+  const total = document.getElementById('total');
+  const progress = document.getElementById('progress');
+  total.textContent = slides.length;
+
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => s.classList.toggle('active', k === i));
+    cur.textContent = i + 1;
+    progress.style.width = ((i + 1) / slides.length * 100) + '%';
+  }
+  function next() { show(i + 1); }
+  function prev() { show(i - 1); }
+
+  document.getElementById('next').onclick = next;
+  document.getElementById('prev').onclick = prev;
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+  // swipe on touch
+  let x0 = null;
+  document.addEventListener('touchstart', e => x0 = e.touches[0].clientX, {passive:true});
+  document.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) (dx < 0 ? next() : prev());
+    x0 = null;
+  }, {passive:true});
+
+  show(0);
+</script>
+</body>
+</html>
