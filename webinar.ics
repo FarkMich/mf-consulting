@@ -4,10 +4,10 @@ PRODID:-//Michal Farkas//Webinar//SK
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:webinar-8-7-2026@michalfarkas.com
+UID:webinar-16-7-2026@michalfarkas.com
 DTSTAMP:20260623T120000Z
-DTSTART:20260708T163000Z
-DTEND:20260708T180000Z
+DTSTART:20260716T163000Z
+DTEND:20260716T180000Z
 SUMMARY:Webinar: Automatizuj e-shop a marketing pomocou AI
 DESCRIPTION:Bezplatny online webinar. Pripojenie: https://meet.proton.me/join/id-KCJ4DWD258#pwd-grmmumVxq1ct
 LOCATION:https://meet.proton.me/join/id-KCJ4DWD258#pwd-grmmumVxq1ct
