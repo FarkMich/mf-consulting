@@ -336,8 +336,8 @@
       <p>Praktické tipy na AI v e-shope a marketingu + info o ďalších webinároch a workshopoch. Žiadny spam, odhlásiš sa jedným klikom.</p>
     </div>
     <div>
-      <form class="subform" id="subform" onsubmit="return subSubmit()">
-        <input type="email" id="subemail" placeholder="tvoj@email.sk" aria-label="E-mailová adresa" required>
+      <form class="subform" id="subform" onsubmit="return subSubmit(event)">
+        <input type="email" name="EMAIL" id="subemail" placeholder="tvoj@email.sk" aria-label="E-mailová adresa" required>
         <button class="btn btn-primary" type="submit">Odoberať</button>
       </form>
       <div class="subnote" id="subnote">Odoslaním súhlasíš so spracovaním e-mailu na zasielanie noviniek.</div>
@@ -372,10 +372,18 @@
   function closeModal(){ document.getElementById('detailModal').classList.remove('open'); }
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeModal(); });
 
-  /* newsletter - placeholder, prepojíme s Brevo neskôr */
-  function subSubmit(){
+  /* newsletter -> Brevo (double opt-in cez automation) */
+  function subSubmit(e){
+    if(e&&e.preventDefault)e.preventDefault();
+    var el=document.getElementById('subemail');
+    var email=(el&&el.value||'').trim();
+    if(!email)return false;
+    var body='EMAIL='+encodeURIComponent(email)+'&email_address_check=&locale=sk';
+    try{
+      fetch('https://285540ba.sibforms.com/serve/MUIFAMJq5y6d0BTJduRuBuWU7fbAugcMqWBMFrMFdu9gYY0xYNfBrl_sQ8LyxsauInO7LdObRfIEnG53nsj47XANfgLZESDPBBEld2x-Ln68nt39g2noLTdTOHrYqtSsNUlHoQmYVLKs1ip3TN_lZby-rKWc3nZtROfKaDgDmieYL6JPRfYwNwGFPz4jCk6-eKHd1FIwLFH5kRRrsw==',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body});
+    }catch(err){}
     var n=document.getElementById('subnote');
-    if(n){n.textContent='Ďakujeme! Newsletter spúšťame čoskoro - dáme ti vedieť.';n.style.color='var(--violet)';}
+    if(n){n.textContent='Skoro hotovo - poslal som ti potvrdzovací e-mail. Klikni v ňom na tlačidlo a potvrď odber.';n.style.color='var(--violet)';}
     var f=document.getElementById('subform'); if(f) f.reset();
     return false;
   }
