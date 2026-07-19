@@ -10,6 +10,17 @@
         b.setAttribute('aria-disabled',on?'false':'true');
       });
     }
+    if(b){
+      b.addEventListener('click',function(){
+        if(window.gtag){
+          gtag('event','purchase_initiated',{
+            currency:'EUR',
+            value:29,
+            item_name:'Workshop: Optimalizuj e-shop a marketing pomocou AI'
+          });
+        }
+      });
+    }
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
